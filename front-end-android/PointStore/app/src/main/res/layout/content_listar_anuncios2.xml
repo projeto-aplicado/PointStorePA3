@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_listar_anuncios2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="br.com.pointstore.ListarAnunciosActivity"
+    tools:showIn="@layout/app_bar_listar_anuncios2"
+    android:background="@color/colorWhiteBackGround"
+    >
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        card_view:cardBackgroundColor="#fff"
+        card_view:cardCornerRadius="5dp"
+        card_view:cardElevation="4dp"
+
+        card_view:cardUseCompatPadding="true"
+        xmlns:tools="http://schemas.android.com/tools">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFFFFF">
+
+            <ImageView
+                android:id="@+id/appImagem"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginLeft="14dp"
+                android:background="@drawable/pointstorelogo"
+                android:scaleType="centerCrop"
+                tools:ignore="ContentDescription"
+                android:layout_below="@+id/tituloTextPonto"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="14dp" />
+
+            <TextView
+                android:id="@+id/tituloTextPonto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16sp"
+                android:paddingRight="16dp"
+                android:text="HotMilhas"
+                android:textColor="#000"
+                android:textSize="18sp"
+                tools:ignore="RtlHardcoded"
+                android:layout_alignParentTop="true"
+                android:layout_alignLeft="@+id/emailText"
+                android:layout_alignStart="@+id/emailText" />
+
+            <TextView
+                android:id="@+id/emailText"
+                style="@style/Base.TextAppearance.AppCompat.Subhead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tituloTextPonto"
+                android:layout_toRightOf="@+id/appImagem"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="Michele Santos"
+                android:textColor="#000"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/ValorText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:lines="5"
+                android:maxLines="5"
+                android:paddingBottom="16dp"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:text="70 milhas por R$ 50,00"
+                android:textColor="#737078"
+                android:textSize="14sp"
+                android:layout_below="@+id/emailText"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@+id/appImagem"
+                android:layout_toEndOf="@+id/appImagem" />
+
+            <Button
+                android:id="@+id/BtnComprar"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ValorText"
+                android:background="@color/colorAccent"
+                android:text="Comprar"
+                android:onClick="finalizarCompra"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cardView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:background="#FFFF"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/appImagem2"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tituloTextPonto2"
+            android:layout_marginLeft="17dp"
+            android:layout_marginStart="17dp"
+            android:background="@drawable/pointstorelogo"
+            android:scaleType="centerCrop"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tituloTextPonto2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/appImagem2"
+            android:paddingLeft="16sp"
+            android:paddingRight="16dp"
+            android:text="Allpoints"
+            android:textColor="#000"
+            android:textSize="18sp"
+            tools:ignore="RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/usuarioHeaderText2"
+            style="@style/Base.TextAppearance.AppCompat.Subhead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tituloTextPonto2"
+            android:layout_toRightOf="@+id/appImagem2"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="Júnior Felix"
+            android:textColor="#000"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/ValorText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/usuarioHeaderText2"
+            android:layout_toRightOf="@+id/appImagem2"
+            android:gravity="left"
+            android:lines="5"
+            android:maxLines="5"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:text="Vendo 1000 pontos por R$ 70.00 "
+            android:textColor="#737078"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/BtnComprar2"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ValorText2"
+            android:background="@color/colorAccent"
+            android:text="Comprar"
+            android:onClick="finalizarCompra"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

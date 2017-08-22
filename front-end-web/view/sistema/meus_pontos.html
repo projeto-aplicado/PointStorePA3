@@ -1,0 +1,42 @@
+<div class="perfilTopo col-md-8">
+    <div class="row perfil-header">
+        <div class="perfil-header-sub">
+            <h1 class="title titulo">Meus Pontos</h1>
+        
+            <div class="col-md-3 box-menu">
+                <a href="#/perfil">
+                    <img src="img/icone-perfil.PNG" alt="icone perfil usuário">
+                </a>
+
+                <a href="#/perfil">Perfil do usuário</a>
+            </div>
+
+            <div class="col-md-3 col-md-offset-1 box-menu">
+                <a href="#/meus_pontos">
+                    <img src="img/icone-meus-pontos.PNG" alt="Meus Pontos">
+                </a>
+
+                <a href="#/meus_pontos">Meus de pontos </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="conteudoPage col-md-6">
+    <p>
+        <select class="form-control" ng-model="tipoDePontos">
+            <option value="TAM" ng-selected="tipoDePontos==TAM">TAM</option>
+            <option value="GOL" ng-selected="tipoDePontos==GOL">GOL</option>
+            <option value="TUDO AZUL" ng-selected="tipoDePontos==TUDO AZUL">TUDO AZUL</option>
+            <option value="DOTS" ng-selected="tipoDePontos==DOTS">DOTS</option>
+        </select>
+    </p>
+
+    <p>
+        <input type="text" name="quantidadePonto" class="form-control formPadrao" placeholder="quantidade de pontos" ng-model="quantidadePonto">
+    </p>
+
+    <button class="botaoPadrao" ng-click="cadastrarTiposDePontos(tipoDePontos, quantidadePonto)">cadastrar</button>
+
+</div>

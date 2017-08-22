@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="br.com.pointstore">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".util.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".util.Login" />
+        <activity android:name=".util.AlterarSenha" />
+        <activity android:name=".util.CadastroTenhoInteresse" />
+        <activity android:name=".util.CadastrarPontos" />
+        <activity android:name=".util.CadastrarVendas" />
+        <activity android:name=".util.FinalizarCompra" />
+        <activity android:name=".util.ListarPontos" />
+        <activity android:name=".util.QualificarUsuario" />
+
+
+        <activity android:name=".MainActivity" />
+        <activity android:name=".util.CadastrarUsuario" />
+        <activity
+            android:name=".ListarAnunciosActivity"
+            android:label="@string/title_activity_listar_anuncios"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".util.Perfil"
+            android:label="@string/title_activity_perfil"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
+
+</manifest>

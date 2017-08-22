@@ -1,0 +1,44 @@
+<div class="perfilTopo col-md-8">
+	<div class="row perfil-header">
+		<div class="perfil-header-sub">
+			<h1 class="title titulo">Perfil</h1>
+			<div class="col-md-3 box-menu">
+				<a href="#/perfil">
+					<img src="img/icone-perfil.PNG" alt="icone perfil usuário">
+				</a>
+
+				<a href="#/perfil">Perfil do usuário</a>
+			</div>
+
+			<div class="col-md-3 col-md-offset-1 box-menu">
+				<a href="#/meus_pontos">
+					<img src="img/icone-meus-pontos.PNG" alt="Meus Pontos">
+				</a>
+
+				<a href="#/meus_pontos">Meus de pontos</a>
+			</div>
+		</div>
+	</div>
+</div>
+		
+<div class="conteudoPage col-md-6">
+	<h4 class="titulo">Perfil do usuário</h4>
+	
+	<form class="form-horizontal">
+		<input id="nomeUser" type="text"  name="nome" class="form-control formPadrao" placeholder="Nome" ng-model="usuario.nome" required>
+
+		<input type="text" name="sobrenome" class="form-control formPadrao" placeholder="Sobrenome" ng-model="usuario.sobrenome" required>
+
+		<input type="email" name="email" class="form-control formPadrao" placeholder="E-mail" ng-model="usuario.email" required>
+
+		<input type="text" name="cpf" class="form-control formPadrao" placeholder="CPF" ng-model="usuario.cpf" required>
+		
+		<input type="text" name="login" class="form-control formPadrao" placeholder="Login" ng-model="usuario.login" required>
+
+		<input type="password" name="senha" class="form-control formPadrao" placeholder="Senha" ng-model="usuario.senha" required>
+		
+		<button type="button" class="botaoPadrao" ng-click="atualizarPerfilUsuario()">atualizar</button>
+
+	</form>
+
+</div>
