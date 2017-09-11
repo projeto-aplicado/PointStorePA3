@@ -1,5 +1,5 @@
 
-ul, ol {list-style: none; margin: 0 !important;}
+ul, ol {list-style: none; margin: 0 !important; padding: 0 !important;}
 
 .nav {
 	position:relative;
@@ -35,8 +35,8 @@ ul, ol {list-style: none; margin: 0 !important;}
 	display:none;
 	position:absolute;
 	left: 0;
-        padding: 0;
-	min-width: 137px;
+    padding: 0;
+	min-width: 200px;
 	z-index: 9999;
 }
 .nav-submenu-item a{

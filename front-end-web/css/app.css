@@ -16,9 +16,11 @@ body {background-color: #f2f2f2 !important; color: #00000;}
 header, footer{display: table !important;}
 header{background-color: #00888b; height: 80px; color: #ffffff; display: table;}
 .headerTopoUser{display: table;}
-.logo{}
+.logo a{color: #ffffff; transition: 0.3s ease 0s;}
+.logo a:hover{color: #ff5f3f;}
 .nomeusuario{margin: 30px 0 0 0;}
-.nomeusuario a{color: #ffffff !important; font-weight: bold;}
+.nomeusuario a{color: #ffffff !important; font-weight: bold; transition: 0.3s ease 0s;}
+.nomeusuario a:hover{color: #ff5f3f !important; font-weight: bold;}
 
 .headerMenu{background-color: #00bdc1; height: 80px; display: table;}
 .menuBloco{padding: 10px 15px !important; display: table;}
