@@ -39,7 +39,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.43.17:8080/")
+                .baseUrl("http://10.0.2.2:8080/")
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
 
@@ -53,7 +53,7 @@ public class Login extends AppCompatActivity {
 
     public void logar(View v) {
 
-        usuario = new Usuario(null, null, null, null, null, null, editTextLogin.getText().toString(),editTextSenha.getText().toString(), null, null, null, null);
+        usuario = new Usuario(null, null, null, null, null, editTextLogin.getText().toString(),editTextSenha.getText().toString(), null, null, null, null);
 
         if ((editTextLogin.getText().length() > 0) && ((editTextSenha.getText().length() > 0))) {
 

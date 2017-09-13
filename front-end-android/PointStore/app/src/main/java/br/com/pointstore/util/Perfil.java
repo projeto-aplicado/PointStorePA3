@@ -52,7 +52,7 @@ public class Perfil extends AppCompatActivity implements View.OnClickListener{
         });
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.43.17:8080/")
+                .baseUrl("http://10.0.2.2:8080/")
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
         this.mUsuarioService = retrofit.create(UsuarioService.class);
@@ -83,7 +83,7 @@ public class Perfil extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
 
-        usuario = new Usuario(usuario.getIdUsuario(), this.editTextNome.getText().toString(), this.editTextSobrenome.getText().toString(), null, this.editTextEmail.getText().toString(), this.editTextCPF.getText().toString(), this.editTextLogin.getText().toString(), this.editTextSenha.getText().toString(), null, null, null, null);
+        usuario = new Usuario(usuario.getIdUsuario(), this.editTextNome.getText().toString(), this.editTextSobrenome.getText().toString(), null, this.editTextEmail.getText().toString(), this.editTextCPF.getText().toString(), this.editTextLogin.getText().toString(), this.editTextSenha.getText().toString(), null, null, null);
 
         if((this.editTextNome.getText().length() > 0) && (this.editTextSobrenome.getText().length() > 0) &&
 

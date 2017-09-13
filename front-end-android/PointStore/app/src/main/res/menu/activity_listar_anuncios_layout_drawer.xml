@@ -13,11 +13,6 @@
             android:title="Meus Pontos" />
 
         <item
-        android:id="@+id/nav_tenhointeresse"
-        android:icon="@drawable/ic_menu_slideshow"
-        android:title="Tenho Interesse" />
-
-        <item
             android:id="@+id/nav_cadastrarvendas"
             android:icon="@drawable/ic_menu_manage"
             android:title="Cadastrar Vendas" />

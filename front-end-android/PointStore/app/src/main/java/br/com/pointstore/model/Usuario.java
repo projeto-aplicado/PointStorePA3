@@ -25,7 +25,6 @@ public class Usuario implements Serializable {
     private MeusPontos meusPontos;
     private MinhasCompras minhasCompras;
     private MinhasVendas minhasVenda;
-    private MinhasQualificacoes minhasQualificacoes;
 
     public Usuario() {
 
@@ -47,7 +46,7 @@ public class Usuario implements Serializable {
         this.senha = senha;
     }
 
-    public Usuario(Integer idUsuario, String nome, String sobrenome, String credito, String email, String cpf, String login, String senha, MeusPontos meusPontos, MinhasCompras minhasCompras, MinhasVendas minhasVenda, MinhasQualificacoes minhasQualificacoes) {
+    public Usuario(Integer idUsuario, String nome, String sobrenome, String credito, String email, String cpf, String login, String senha, MeusPontos meusPontos, MinhasCompras minhasCompras, MinhasVendas minhasVenda) {
 
         this.idUsuario = idUsuario;
         this.nome = nome;
@@ -60,7 +59,6 @@ public class Usuario implements Serializable {
         this.meusPontos = meusPontos;
         this.minhasCompras = minhasCompras;
         this.minhasVenda = minhasVenda;
-        this.minhasQualificacoes = minhasQualificacoes;
     }
 
     protected Usuario(Parcel in) {
@@ -162,12 +160,6 @@ public class Usuario implements Serializable {
         this.minhasVenda = minhasVenda;
     }
 
-    public MinhasQualificacoes getMinhasQualificacoes() {
-        return minhasQualificacoes;
-    }
 
-    public void setMinhasQualificacoes(MinhasQualificacoes minhasQualificacoes) {
-        this.minhasQualificacoes = minhasQualificacoes;
-    }
 
 }

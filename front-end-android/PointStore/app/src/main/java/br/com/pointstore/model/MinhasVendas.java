@@ -5,6 +5,11 @@ public class MinhasVendas{
 
 	private Integer idMinhasVendas;
 	private Vendas vendas;
+
+	public MinhasVendas (Integer idMinhasVendas, Vendas vendas){
+		this.idMinhasVendas = idMinhasVendas;
+		this.vendas = vendas;
+	}
 	
 
 	public Integer getIdMinhasVendas() {

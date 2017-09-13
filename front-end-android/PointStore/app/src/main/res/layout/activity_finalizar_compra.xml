@@ -110,7 +110,7 @@
 
 
     <TextView
-        android:id="@+id/textViewTituloLogin"
+        android:id="@+id/textViewPagamento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cardView"
@@ -130,26 +130,13 @@
         android:layout_marginBottom="19dp"
         android:background="@drawable/screen_border"
         android:text="Finalizar"
-        android:onClick="qualificarUser"
+        android:onClick="finalizarCompra"
         android:textColor="@android:color/white"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/cardView"
         android:layout_alignStart="@+id/cardView" />
 
-    <RadioButton
-        android:id="@+id/radioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/cardView"
-        android:layout_alignStart="@+id/cardView"
-        android:layout_alignTop="@+id/textViewTituloLogin"
-        android:layout_marginLeft="83dp"
-        android:layout_marginStart="83dp"
-        android:layout_marginTop="41dp"
-        android:checked="true"
-        android:duplicateParentState="false"
-        android:text="PayPal"
-        android:textSize="16sp" />
+
 
     <Spinner
         android:id="@+id/spinner"
@@ -157,20 +144,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:visibility="visible"
-        android:layout_below="@+id/radioButton"
+        android:layout_below="@+id/textViewPagamento"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
 
-    <EditText
-        android:id="@+id/editTextNumCartao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner"
-        android:layout_marginTop="28dp"
-        android:ems="3"
-        android:hint="Número do Cartão"
-        android:inputType="textPersonName" />
 
 
 

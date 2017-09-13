@@ -11,7 +11,6 @@ public class Vendas implements Serializable {
 	private String valor;
 	private Loja loja;
 	private MeusPontos meusPontos;
-	private Qualificacao qualificacao;
 	private String status;
 	
 	
@@ -44,12 +43,6 @@ public class Vendas implements Serializable {
 	}
 	public void setMeusPontos(MeusPontos meusPontos) {
 		this.meusPontos = meusPontos;
-	}
-	public Qualificacao getQualificacao() {
-		return qualificacao;
-	}
-	public void setQualificacao(Qualificacao qualificacao) {
-		this.qualificacao = qualificacao;
 	}
 	public String getStatus() {
 		return status;

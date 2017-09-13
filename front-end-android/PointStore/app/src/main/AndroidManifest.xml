@@ -19,12 +19,11 @@
         </activity>
         <activity android:name=".util.Login" />
         <activity android:name=".util.AlterarSenha" />
-        <activity android:name=".util.CadastroTenhoInteresse" />
         <activity android:name=".util.CadastrarPontos" />
         <activity android:name=".util.CadastrarVendas" />
         <activity android:name=".util.FinalizarCompra" />
         <activity android:name=".util.ListarPontos" />
-        <activity android:name=".util.QualificarUsuario" />
+
 
 
         <activity android:name=".MainActivity" />

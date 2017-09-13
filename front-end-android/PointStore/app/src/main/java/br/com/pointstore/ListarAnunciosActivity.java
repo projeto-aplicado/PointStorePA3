@@ -19,7 +19,6 @@ import android.widget.TextView;
 import br.com.pointstore.model.Usuario;
 import br.com.pointstore.util.CadastrarPontos;
 import br.com.pointstore.util.CadastrarVendas;
-import br.com.pointstore.util.CadastroTenhoInteresse;
 import br.com.pointstore.util.FinalizarCompra;
 import br.com.pointstore.util.ListarPontos;
 import br.com.pointstore.util.Login;
@@ -110,9 +109,6 @@ public class ListarAnunciosActivity extends AppCompatActivity
         } else if (id == R.id.nav_meuspontos) {
             Intent listarPontos = new Intent(this, ListarPontos.class);
             startActivity(listarPontos);
-        } else if (id == R.id.nav_tenhointeresse) {
-            Intent cadastroTenhoInteresse = new Intent(this, CadastroTenhoInteresse.class);
-            startActivity(cadastroTenhoInteresse);
         }else if (id == R.id.nav_cadastrarvendas) {
             Intent cadastrarVendas = new Intent(this, CadastrarVendas.class);
             startActivity(cadastrarVendas);

@@ -5,13 +5,7 @@ public class MeusPontos{
 
 	private Integer idMeusPontos;
 	private String quantidade;
-	private String loja;
-
-
-	public MeusPontos(String quantidade, String loja){
-		this.quantidade = quantidade;
-		this.loja = loja;
-	}
+	private Loja loja;
 
 
 	public Integer getIdMeusPontos() {
@@ -30,11 +24,11 @@ public class MeusPontos{
 		this.quantidade = quantidade;
 	}
 
-	public String getLoja() {
+	public Loja getLoja() {
 		return loja;
 	}
 
-	public void setLoja(String loja) {
+	public void setLoja(Loja loja) {
 		this.loja = loja;
 	}
 

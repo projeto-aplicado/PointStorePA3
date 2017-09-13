@@ -16,6 +16,7 @@ import android.widget.Toast;
 import java.util.List;
 import java.util.ArrayList;
 
+import br.com.pointstore.ListarAnunciosActivity;
 import br.com.pointstore.R;
 import rest.LoginService;
 import retrofit2.Retrofit;
@@ -26,7 +27,7 @@ public class FinalizarCompra extends Activity {
     private Spinner spn1;
     private List<String> nomes = new ArrayList<String>();
     private String nome;
-    private EditText editTextNumCartao;
+    //private EditText editTextNumCartao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +39,18 @@ public class FinalizarCompra extends Activity {
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
 
+        //editTextNumCartao = (EditText) findViewById(R.id.editTextNumCartao);
+
+        //if ((editTextNumCartao.getText().length() <= 0) ) {
+          //  editTextNumCartao.setError("Insira a Forma de Pagamento!");
+        //}
+
+
 
         //Adicionando Nomes no ArrayList
-        nomes.add("MasterCard");
-        nomes.add("Visa");
-        nomes.add("Nubank");
-        nomes.add("Caixa");
-        nomes.add("Bradesco");
+        nomes.add("Cartao de Crédito");
+        nomes.add("Boleto");
+
 
         //Identifica o Spinner no layout
         spn1 = (Spinner) findViewById(R.id.spinner);
@@ -62,7 +68,8 @@ public class FinalizarCompra extends Activity {
                 //pega nome pela posição
                 nome = parent.getItemAtPosition(posicao).toString();
                 //imprime um Toast na tela com o nome que foi selecionado
-                Toast.makeText(FinalizarCompra.this, "Cartão Selecionado: " + nome, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(FinalizarCompra.this, nome + " Selecionado" , Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -71,19 +78,17 @@ public class FinalizarCompra extends Activity {
             }
         });
 
-        editTextNumCartao = (EditText) findViewById(R.id.editTextNumCartao);
 
-        if ((editTextNumCartao.getText().length() > 0) ) {
-            editTextNumCartao.setError("Insira o Número do Seu Cartão!");
-        }
+
+
 
     }
 
 
 
-    public void qualificarUser (View view) {
-        Intent qualificaruser = new Intent(this, QualificarUsuario.class);
-        startActivity(qualificaruser);
-    }
+    //public void qualificarUser (View view) {
+      //  Intent qualificaruser = new Intent(this, QualificarUsuario.class);
+        //startActivity(qualificaruser);
+    //}
 
 }

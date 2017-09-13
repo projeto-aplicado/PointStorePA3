@@ -50,7 +50,7 @@ public class CadastrarVendas extends AppCompatActivity {
 
     public void cadastrarPontos (View v) {
 
-        //usuario = new Usuario(editTextTipoPontos.getText().toString(),editTextQtdPontos.getText().toString(),"3",editTextValorPontos.getText().toString());
+        //usuario = new Usuario(editTextTipoPontos.getText().toString(),editTextQtdPontos.getText().toString(),editTextValorPontos.getText().toString());
 
         if ((editTextTipoPontos.getText().length() > 0) && (editTextQtdPontos.getText().length() > 0) && (editTextValorPontos.getText().length() > 0)){
 

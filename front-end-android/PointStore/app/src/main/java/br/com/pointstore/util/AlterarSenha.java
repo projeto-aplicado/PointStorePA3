@@ -32,7 +32,7 @@ public class AlterarSenha extends AppCompatActivity {
         setContentView(R.layout.activity_alterar_senha);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.43.17:8080/")
+                .baseUrl("http://10.0.2.2:8080/")
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
 

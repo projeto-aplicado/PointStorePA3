@@ -6,6 +6,11 @@ public class Loja{
 	private Integer idLoja;
 	private String nome;
 
+	public Loja (Integer idLoja, String nome){
+		this.idLoja = idLoja;
+		this.nome = nome;
+	}
+
 	
 	public Integer getIdLoja() {
 		return idLoja;

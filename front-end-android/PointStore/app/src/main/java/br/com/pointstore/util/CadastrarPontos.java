@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -13,7 +12,6 @@ import br.com.pointstore.R;
 import br.com.pointstore.model.Loja;
 import br.com.pointstore.model.MeusPontos;
 import br.com.pointstore.model.Usuario;
-import rest.CadastroPontosService;
 import rest.UsuarioService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,9 +28,10 @@ public class CadastrarPontos extends AppCompatActivity {
     private EditText editTextTipoPontos;
     private EditText editTextQtdPontos;
 
-    private CadastroPontosService cadastroPontosService;
+    private UsuarioService mUsuarioService;
     private Usuario usuario;
     private MeusPontos meusPontos;
+    private Loja loja;
 
 
     @Override
@@ -41,11 +40,11 @@ public class CadastrarPontos extends AppCompatActivity {
         setContentView(R.layout.activity_cadastrar_pontos);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.43.17:8080/")
+                .baseUrl("http://10.0.2.2:8080/")
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
 
-        cadastroPontosService = retrofit.create(CadastroPontosService.class);
+        mUsuarioService = retrofit.create(UsuarioService.class);
 
 
         editTextTipoPontos = (EditText) findViewById(R.id.editTextTipoPonto);
@@ -59,22 +58,26 @@ public class CadastrarPontos extends AppCompatActivity {
 
         usuario = (Usuario) getIntent().getSerializableExtra("user");
 
-        meusPontos = new MeusPontos(editTextQtdPontos.getText().toString(), editTextQtdPontos.getText().toString());
+        //loja = (Loja)this.editTextTipoPontos.getText().toString();
+
+        //meusPontos = new MeusPontos(editTextTipoPontos.getText().toString(),editTextQtdPontos.getText().toString());
 
         if ((editTextTipoPontos.getText().length() > 0) && (editTextQtdPontos.getText().length() > 0) ){
+            Intent cadastrarPontos = new Intent(this, ListarAnunciosActivity.class);
+            startActivity(cadastrarPontos);
 
-            Call<MeusPontos> meusPontosCall = cadastroPontosService.cadastrarPonto(meusPontos);
-            meusPontosCall.enqueue(new Callback<MeusPontos>() {
+            Call<Usuario> userCall = mUsuarioService.createUser(usuario);
+            userCall.enqueue(new Callback<Usuario>() {
                 @Override
-                public void onResponse(Call<MeusPontos> call, Response<MeusPontos> response) {
-                    Intent listaranuncio = new Intent(CadastrarPontos.this, ListarAnunciosActivity.class);
-                    startActivity(listaranuncio);
+                public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+
 
                 }
 
                 @Override
-                public void onFailure(Call<MeusPontos> call, Throwable t) {
-                    Log.e("APP", t.getMessage());
+                public void onFailure(Call<Usuario> call, Throwable t) {
+
+
                 }
             });
 
@@ -91,5 +94,11 @@ public class CadastrarPontos extends AppCompatActivity {
         }
 
     }
+
+    public void listarAnuncio (View view){
+        Intent listaranuncio = new Intent(this, ListarAnunciosActivity.class);
+        startActivity(listaranuncio);
+    }
+
 
 }
