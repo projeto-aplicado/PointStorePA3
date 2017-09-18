@@ -3,17 +3,15 @@ package br.com.unifor.PA3.entitys;
 import java.io.Serializable;
 import java.util.Collection;
 
+import javax.ejb.Stateless;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
-
+@Stateless
 @Entity
-@Table(name="usuario")
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 7578849729765946537L;
@@ -23,11 +21,22 @@ public class Usuario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+
+	@Column(name="login")
+	private String login;
+	
+	
 	@Column(name="nome") 
 	private String nome;
 	
+
+	
 	@Column(name="sobrenome")
 	private String sobrenome;
+	
+	@Column(name="cpf")
+	private int cpf;
+	
 	
 	@Column(name="credito") 
 	private  double credito;
@@ -68,34 +77,21 @@ public class Usuario implements Serializable {
 		return id;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Usuario other = (Usuario) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
-
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	
+	public String getLogin() {
+		return login;
+	}
+
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
 
 	public String getNome() {
 		return nome;
@@ -111,6 +107,14 @@ public class Usuario implements Serializable {
 
 	public void setSobrenome(String sobrenome) {
 		this.sobrenome = sobrenome;
+	}
+	
+	public int getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(int cpf) {
+		this.cpf = cpf;
 	}
 
 	public double getCredito() {

@@ -35,9 +35,11 @@ public class PointStoreResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response testejson(){
-		usuario.setNome("TesteJson");
-		usuario.setSobrenome("testando json agora");
-		return Response.ok(usuario).build();
+		
+		Usuario usuarionovo = new Usuario();
+		usuarionovo.setNome("TesteJson");
+		usuarionovo.setSobrenome("testando json agora");
+		return Response.ok(usuarionovo).build();
 		
 		
 	}
