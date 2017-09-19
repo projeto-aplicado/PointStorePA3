@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Stateless
 @Entity
 public class Usuario implements Serializable {
 
@@ -141,9 +140,4 @@ public class Usuario implements Serializable {
 	public void setVendas(int vendas) {
 		this.vendas = vendas;
 	}
-	
-	
-	
-	
-
 }

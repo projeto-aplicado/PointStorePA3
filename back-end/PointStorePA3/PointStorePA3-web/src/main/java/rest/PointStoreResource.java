@@ -33,37 +33,30 @@ public class PointStoreResource {
 	private Usuario usuario;
 	
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces("application/json")
 	public Response testejson(){
 		
-		Usuario usuarionovo = new Usuario();
-		usuarionovo.setNome("TesteJson");
-		usuarionovo.setSobrenome("testando json agora");
-		return Response.ok(usuarionovo).build();
+		usuario.setNome("Testando o Json");
+		usuario.setCpf(123456789);
+		return Response.ok(usuario).build();
+		
 		
 		
 	}
+	
 	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/caduser/{nome}/{sobrenome}/{senha}")
-	public Response cadusuario(@PathParam("nome") String nome,@PathParam("sobrenome") String sobrenome,
-	@PathParam("senha") Double senha){
-	 
-		
-		
-		usuario.setNome(nome);
-		usuario.setSobrenome(sobrenome);
-		usuario.setSenha(senha);
-		
+	@Produces("application/json")
+	@Consumes("application/json")
+	@Path("/caduser")
+	public Response caduser(Usuario usuario){
+	 	
 		usuarioBO.gravarUsuario(usuario);
 		
 		System.out.println("usuário "+usuario.getNome()+" cadastrado");
 		System.out.println("sobrenome "+usuario.getSobrenome()+" cadastrado");
 		System.out.println("senha  "+usuario.getSenha()+" cadastrado");
 		System.out.println("quantidade de vendas "+usuario.getVendas()+" cadastrado");
-		
-		
-		
+
 		return Response.ok(usuario).build();
 		
 		
