@@ -22,11 +22,8 @@ public class UsuarioBO {
 	public Usuario fazerLogin(Usuario usuario) {
 		
 		
-		return usuarioDAO.logarUsuario(usuario);
+		return usuarioDAO.fazerLogin(usuario);
 	}
-	
-	
-	
 	
 	
 }

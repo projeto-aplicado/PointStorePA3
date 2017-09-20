@@ -23,12 +23,8 @@ import javax.ws.rs.POST;
 @RequestScoped
 @Path("/pointstore")
 public class PointStoreResource {
-	
-	
 	@Inject
 	private UsuarioBO usuarioBO;
-	
-
 	@Inject
 	private Usuario usuario;
 	
@@ -38,11 +34,7 @@ public class PointStoreResource {
 		
 		usuario.setNome("Testando o Json");
 		usuario.setCpf(123456789);
-		return Response.ok(usuario).build();
-		
-		
-		
-	}
+		return Response.ok(usuario).build();}
 	
 	@POST
 	@Produces("application/json")
@@ -57,26 +49,14 @@ public class PointStoreResource {
 		System.out.println("senha  "+usuario.getSenha()+" cadastrado");
 		System.out.println("quantidade de vendas "+usuario.getVendas()+" cadastrado");
 
-		return Response.ok(usuario).build();
-		
-		
-	}
+		return Response.ok(usuario).build();}
 	
 	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/login/{nome}/{senha}")
-	public Response login(@PathParam("nome") String nome,@PathParam("senha") Double senha) {
-		
-		usuario.setNome(nome);
-		usuario.setSenha(senha);
-		
-		
-		
-		usuario = usuarioBO.fazerLogin(usuario);
-		
-		System.out.println("usuário "+usuario.getNome()+"cadastrado");
-		return Response.ok("Tentando login").build();
-	}
+	@Path("/login")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response login(Usuario usuario) {
+		return Response.ok(usuarioBO.fazerLogin(usuario)).build();}
 	
 	
 }

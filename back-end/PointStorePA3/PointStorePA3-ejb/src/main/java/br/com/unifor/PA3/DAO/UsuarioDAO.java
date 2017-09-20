@@ -29,51 +29,31 @@ public class UsuarioDAO {
 	private Usuario usuario;
 	
 	public void salvarUsuario(Usuario usuario){
-		em.persist(usuario);
-		
-		}
+		em.persist(usuario);}
 	
-	
-	/*public Usuario efetuarLogin(String nome, double senha) {
+	public Usuario fazerLogin(Usuario usuario) {
+        
 		
-	try {
-		em.getTransaction().begin();
-	Query query= (Query) em.createQuery("from usuario  where nome = ?1 and senha = ?2");
+		this.usuario = usuario;
 		
-		((javax.persistence.Query) query).setParameter(1, nome);
-		((javax.persistence.Query) query).setParameter(2, senha);
-		((javax.persistence.Query) query).setMaxResults(1);
-		
-		Usuario novousuario = new Usuario();
-		
-		Collection<Usuario>usuarios = ((javax.persistence.Query) query).getResultList();
-		em.getTransaction().commit();
-		
-		
-	} catch (Exception e) {
-		 em.getTransaction().rollback();
-	}
-			
-	
-      return null;
-		
-		
-	}*/
-	
-	public Usuario logarUsuario(Usuario userLogin){
-		Usuario usuarioDetached = (Usuario) this.em.createQuery("from usuario  where nome = :nome and senha = :senha")
-				  .setParameter("nome", userLogin.getNome() ).setParameter("senha", userLogin.getSenha()).getSingleResult();
-		
-		
-		System.out.println("usuario: " + userLogin.getNome() + " senha: " + userLogin.getSenha());
-		
-		
-		return usuarioDetached;
-	}
-	
-	
-	
-	
+		Usuario user = null;
+        try {
+            StringBuilder consulta = new StringBuilder("select u from Usuario u  "
+            		+ "where u.login = :login and u.senha = :senha");
+            javax.persistence.Query q = em.createQuery(consulta.toString());
+            q.setParameter("login", this.usuario.getLogin());
+            q.setParameter("senha", this.usuario.getSenha());
+            user = (Usuario) q.getSingleResult();
+       
+        } catch (NoResultException e) {
+           user = null;
+           
+          // System.out.println("Nenhum usuario encontrado");
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
 	
 	
 	public Usuario carregarUsuario(Long id) {
