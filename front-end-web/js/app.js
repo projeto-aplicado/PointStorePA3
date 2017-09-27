@@ -29,6 +29,10 @@ app.config(['$routeProvider', function($routeProvider) {
         templateUrl: 'view/sistema/loja.html',
         controller: 'lojaController'
     });
+     $routeProvider.when('/finalizar_compra', {
+        templateUrl: 'view/sistema/finalizar_compras.html',
+        controller: 'vendasController'
+    });
     $routeProvider.when('/qualificacao', {
         templateUrl: 'view/sistema/qualificacao_usuario.html',
         controller: 'qualificacaoController'

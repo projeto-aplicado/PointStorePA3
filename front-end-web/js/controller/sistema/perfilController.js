@@ -44,7 +44,7 @@ app.controller('perfilController', function($scope, $http) {
             alert(retorno);
         }).error(function(){
             erroMessage = "O ponto "+tipoDePontosDAO.tipoDePontos+" não foi salvo!";
-        });        
+        });
     }
 
 });
