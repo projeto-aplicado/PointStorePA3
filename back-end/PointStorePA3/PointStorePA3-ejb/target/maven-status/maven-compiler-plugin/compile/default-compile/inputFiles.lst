@@ -1,0 +1,8 @@
+/home/oliveira/PA3/PointStorePA3/back-end/PointStorePA3/PointStorePA3-ejb/src/main/java/br/com/unifor/PA3/service/MemberRegistration.java
+/home/oliveira/PA3/PointStorePA3/back-end/PointStorePA3/PointStorePA3-ejb/src/main/java/br/com/unifor/PA3/data/MemberRepository.java
+/home/oliveira/PA3/PointStorePA3/back-end/PointStorePA3/PointStorePA3-ejb/src/main/java/br/com/unifor/PA3/DAO/UsuarioDAO.java
+/home/oliveira/PA3/PointStorePA3/back-end/PointStorePA3/PointStorePA3-ejb/src/main/java/br/com/unifor/PA3/data/MemberListProducer.java
+/home/oliveira/PA3/PointStorePA3/back-end/PointStorePA3/PointStorePA3-ejb/src/main/java/br/com/unifor/PA3/entitys/Usuario.java
+/home/oliveira/PA3/PointStorePA3/back-end/PointStorePA3/PointStorePA3-ejb/src/main/java/br/com/unifor/PA3/util/Resources.java
+/home/oliveira/PA3/PointStorePA3/back-end/PointStorePA3/PointStorePA3-ejb/src/main/java/br/com/unifor/PA3/BO/UsuarioBO.java
+/home/oliveira/PA3/PointStorePA3/back-end/PointStorePA3/PointStorePA3-ejb/src/main/java/br/com/unifor/PA3/model/Member.java

@@ -32,7 +32,6 @@ $scope.isEditing = false;
         });
         $scope.isEditing = false;
     }
-
 }
   
 );

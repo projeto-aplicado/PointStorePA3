@@ -24,19 +24,23 @@
 
 
 <div class="conteudoPage col-md-6">
-    <p>
-        <select class="form-control" ng-model="tipoDePontos">
-            <option value="TAM" ng-selected="tipoDePontos==TAM">TAM</option>
-            <option value="GOL" ng-selected="tipoDePontos==GOL">GOL</option>
-            <option value="TUDO AZUL" ng-selected="tipoDePontos==TUDO AZUL">TUDO AZUL</option>
-            <option value="DOTS" ng-selected="tipoDePontos==DOTS">DOTS</option>
-        </select>
-    </p>
+    <form name="meusPontos" onSubmit="return validarMeusPontos();" ng-submit="cadastrarMeusPontos()">
+        <p>
+            <select name="tipoDePontos" class="form-control" ng-model="tipoDePontos">
+                <option value="TAM" ng-selected="tipoDePontos==TAM">TAM</option>
+                <option value="GOL" ng-selected="tipoDePontos==GOL">GOL</option>
+                <option value="TUDO AZUL" ng-selected="tipoDePontos==TUDO AZUL">TUDO AZUL</option>
+                <option value="DOTS" ng-selected="tipoDePontos==DOTS">DOTS</option>
+            </select>
+        </p>
 
-    <p>
-        <input type="text" name="quantidadePonto" class="form-control formPadrao" placeholder="quantidade de pontos" ng-model="quantidadePonto">
-    </p>
+        <p>
+            <input type="text" name="quantidadePonto" class="form-control formPadrao" placeholder="quantidade de pontos" ng-model="quantidadePonto">
+        </p>
 
-    <button class="botaoPadrao" ng-click="cadastrarTiposDePontos(tipoDePontos, quantidadePonto)">cadastrar</button>
+        <input type="submit" name="enviar" value="cadastrar" class="botaoPadrao">
+
+
+    </form>
 
 </div>
