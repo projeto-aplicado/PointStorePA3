@@ -27,7 +27,6 @@ public class FinalizarCompra extends Activity {
     private Spinner spn1;
     private List<String> nomes = new ArrayList<String>();
     private String nome;
-    //private EditText editTextNumCartao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +37,6 @@ public class FinalizarCompra extends Activity {
                 .baseUrl("http://10.0.2.2:8080/")
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
-
-        //editTextNumCartao = (EditText) findViewById(R.id.editTextNumCartao);
-
-        //if ((editTextNumCartao.getText().length() <= 0) ) {
-          //  editTextNumCartao.setError("Insira a Forma de Pagamento!");
-        //}
-
-
 
         //Adicionando Nomes no ArrayList
         nomes.add("Cartao de Crédito");
@@ -68,7 +59,7 @@ public class FinalizarCompra extends Activity {
                 //pega nome pela posição
                 nome = parent.getItemAtPosition(posicao).toString();
                 //imprime um Toast na tela com o nome que foi selecionado
-                //Toast.makeText(FinalizarCompra.this, nome + " Selecionado" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(FinalizarCompra.this, nome + " Selecionado", Toast.LENGTH_SHORT).show();
 
             }
 
@@ -79,16 +70,13 @@ public class FinalizarCompra extends Activity {
         });
 
 
+    }
 
-
-
+    public void paginainicial (View view){
+        Intent paginainicial = new Intent(FinalizarCompra.this, ListarAnunciosActivity.class);
+        startActivity(paginainicial);
     }
 
 
-
-    //public void qualificarUser (View view) {
-      //  Intent qualificaruser = new Intent(this, QualificarUsuario.class);
-        //startActivity(qualificaruser);
-    //}
 
 }

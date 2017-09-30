@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "723315526932",
+    "firebase_url": "https://pointstore-132c3.firebaseio.com",
+    "project_id": "pointstore-132c3",
+    "storage_bucket": "pointstore-132c3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723315526932:android:460e80842a12b447",
+        "android_client_info": {
+          "package_name": "br.com.pointstore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "723315526932-hv9r3d6nkif9uebup9gc8jhaqj9dkmsd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.pointstore",
+            "certificate_hash": "c4dc0de3f67942348629ffad3f4c4ae3260acf96"
+          }
+        },
+        {
+          "client_id": "723315526932-lu5b3uucm97n3dnqt3bkl89j8sclm8i4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKakvQ4qKzbl_L6RxnFZGJdcZ3x-trE64"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "723315526932-lu5b3uucm97n3dnqt3bkl89j8sclm8i4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
