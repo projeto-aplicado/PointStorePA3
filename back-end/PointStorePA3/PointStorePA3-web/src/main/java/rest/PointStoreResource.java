@@ -33,7 +33,7 @@ public class PointStoreResource {
 	public Response testejson(){
 		
 		usuario.setNome("Testando o Json");
-		usuario.setCpf(123456789);
+		usuario.setCpf("123456789");
 		return Response.ok(usuario).build();}
 	
 	@POST
