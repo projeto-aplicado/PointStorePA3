@@ -9,6 +9,7 @@ import javax.ws.rs.core.Response;
 
 import org.jboss.logging.Param;
 
+import br.com.unifor.PA3.BO.PontosBO;
 import br.com.unifor.PA3.BO.UsuarioBO;
 
 import br.com.unifor.PA3.entitys.Usuario;
@@ -27,6 +28,8 @@ public class PointStoreResource {
 	private UsuarioBO usuarioBO;
 	@Inject
 	private Usuario usuario;
+	@Inject
+	private PontosBO pontosBO;
 	
 	@GET
 	@Produces("application/json")
@@ -34,6 +37,7 @@ public class PointStoreResource {
 		
 		usuario.setNome("Testando o Json");
 		usuario.setCpf("123456789");
+		pontosBO.verificarBancoPontos();
 		return Response.ok(usuario).build();}
 	
 	@POST
