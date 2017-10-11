@@ -21,6 +21,10 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
+/**
+ * Created by Juan on 11/03/2017.
+ */
+
 public class Perfil extends AppCompatActivity implements View.OnClickListener{
 
     private EditText editTextNome;
@@ -83,7 +87,7 @@ public class Perfil extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
 
-        usuario = new Usuario(usuario.getIdUsuario(), this.editTextNome.getText().toString(), this.editTextSobrenome.getText().toString(), null, this.editTextEmail.getText().toString(), this.editTextCPF.getText().toString(), this.editTextLogin.getText().toString(), this.editTextSenha.getText().toString(), null, null, null);
+        usuario = new Usuario(this.editTextNome.getText().toString(), this.editTextSobrenome.getText().toString(), null, this.editTextEmail.getText().toString(), this.editTextCPF.getText().toString(), this.editTextLogin.getText().toString(), this.editTextSenha.getText().toString());
 
         if((this.editTextNome.getText().length() > 0) && (this.editTextSobrenome.getText().length() > 0) &&
 

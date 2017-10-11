@@ -23,6 +23,10 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
+/**
+ * Created by Juan on 11/03/2017.
+ */
+
 public class Login extends AppCompatActivity {
 
     private EditText editTextLogin;
@@ -53,7 +57,7 @@ public class Login extends AppCompatActivity {
 
     public void logar(View v) {
 
-        usuario = new Usuario(null, null, null, null, null, editTextLogin.getText().toString(),editTextSenha.getText().toString(), null, null, null, null);
+        usuario = new Usuario(null, null, null, null, null, editTextLogin.getText().toString(),editTextSenha.getText().toString());
 
         if ((editTextLogin.getText().length() > 0) && ((editTextSenha.getText().length() > 0))) {
 
