@@ -36,6 +36,7 @@
       <!-- Aqui são listadas todas as entidades -->
       
       <class>br.com.unifor.PA3.entitys.Usuario</class>
+      <class>br.com.unifor.PA3.entitys.Pontos</class>
       <properties>
          <!-- Properties for Hibernate -->
          <property name="hibernate.hbm2ddl.auto" value="create-drop" />

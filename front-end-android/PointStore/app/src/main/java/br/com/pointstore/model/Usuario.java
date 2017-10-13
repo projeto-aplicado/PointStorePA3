@@ -1,5 +1,6 @@
 package br.com.pointstore.model;
 
+import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -13,7 +14,7 @@ import java.io.Serializable;
 
 public class Usuario implements Serializable {
 
-    private Integer idUsuario;
+    //private Integer idUsuario;
     private String nome;
     private String sobrenome;
     private String cpf;
@@ -21,13 +22,11 @@ public class Usuario implements Serializable {
     private String email;
     private String login;
     private String senha;
+    private Integer vendas;
+    //private MeusPontos meusPontos;
+    //private MinhasCompras minhasCompras;
 
-    private MeusPontos meusPontos;
-    private MinhasCompras minhasCompras;
-    private MinhasVendas minhasVenda;
-
-    public Usuario() {
-
+    public Usuario (){
     }
 
     public Usuario(String login, String senha) {
@@ -35,8 +34,7 @@ public class Usuario implements Serializable {
         this.senha = senha;
     }
 
-    public Usuario(String nome, String sobrenome, String credito, String email, String cpf, String login, String senha) {
-
+    public Usuario(String nome, String sobrenome, String credito, String email, String cpf, String login, String senha) {//perfil e login
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpf = cpf;
@@ -46,19 +44,34 @@ public class Usuario implements Serializable {
         this.senha = senha;
     }
 
-    public Usuario(Integer idUsuario, String nome, String sobrenome, String credito, String email, String cpf, String login, String senha, MeusPontos meusPontos, MinhasCompras minhasCompras, MinhasVendas minhasVenda) {
+    public Usuario(String nome, String sobrenome, String email, String login, String senha) { //cadastro
 
-        this.idUsuario = idUsuario;
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.cpf = cpf;
-        this.credito = credito;
-        this.email = email;
         this.login = login;
+        this.sobrenome = sobrenome;
         this.senha = senha;
-        this.meusPontos = meusPontos;
-        this.minhasCompras = minhasCompras;
-        this.minhasVenda = minhasVenda;
+        this.credito = credito;
+        this.vendas = vendas;
+        this.nome = nome;
+        this.cpf = cpf;
+        //this.idUsuario = idUsuario;
+        this.email = email;
+        //this.meusPontos = meusPontos;
+        //this.minhasCompras = minhasCompras;
+    }
+
+
+    public Usuario(Usuario caduser) { //Perfil
+
+        this.login = caduser.getLogin();
+        this.sobrenome = caduser.getSobrenome();
+        this.senha = caduser.getSenha();
+        this.credito = caduser.getCredito();
+        this.nome = caduser.getNome();
+        this.cpf = caduser.getCpf();
+        //this.idUsuario = caduser.getIdUsuario();
+        this.email = caduser.getEmail();
+        //this.meusPontos = meusPontos;
+        //this.minhasCompras = minhasCompras;
     }
 
     protected Usuario(Parcel in) {
@@ -70,6 +83,8 @@ public class Usuario implements Serializable {
         login = in.readString();
         senha = in.readString();
     }
+
+
 
 
     public String getNome() {
@@ -127,7 +142,7 @@ public class Usuario implements Serializable {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
+/*
     public Integer getIdUsuario() {
         return idUsuario;
     }
@@ -152,14 +167,6 @@ public class Usuario implements Serializable {
         this.minhasCompras = minhasCompras;
     }
 
-    public MinhasVendas getMinhasVenda() {
-        return minhasVenda;
-    }
-
-    public void setMinhasVenda(MinhasVendas minhasVenda) {
-        this.minhasVenda = minhasVenda;
-    }
-
-
+    */
 
 }

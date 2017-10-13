@@ -2,6 +2,9 @@ package br.com.pointstore.model;
 
 import java.io.Serializable;
 
+/**
+ * Created by Juan on 11/03/2017.
+ */
 
 public class Vendas implements Serializable {
 

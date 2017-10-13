@@ -7,16 +7,22 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.List;
 
 import br.com.pointstore.R;
 import br.com.pointstore.model.Usuario;
+import okio.Buffer;
 import rest.UsuarioService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
+
+/**
+ * Created by Juan on 11/03/2017.
+ */
 
 public class CadastrarUsuario extends AppCompatActivity {
 
@@ -52,7 +58,16 @@ public class CadastrarUsuario extends AppCompatActivity {
 
     public void cadastrarUsuario (View v) {
 
-        usuario = new Usuario(editTextNome.getText().toString(),editTextSobrenome.getText().toString(),"3",editTextCadEmail.getText().toString(),"",editTextCadUsuario.getText().toString(),editTextCadSenha.getText().toString());
+        /*usuario.setNome(editTextNome.getText().toString());
+        usuario.setSobrenome(editTextSobrenome.getText().toString());
+        usuario.setEmail(editTextCadEmail.getText().toString());
+        usuario.setLogin(editTextCadUsuario.getText().toString());
+        usuario.setSenha(editTextCadSenha.getText().toString());
+
+         Usuario usuario2 = new Usuario(usuario);*/
+
+
+        usuario = new Usuario(editTextNome.getText().toString(),editTextSobrenome.getText().toString(),editTextCadEmail.getText().toString(),editTextCadUsuario.getText().toString(),editTextCadSenha.getText().toString());
 
 
         if ((editTextNome.getText().length() > 0) && (editTextCadEmail.getText().length() > 0) &&
@@ -63,6 +78,14 @@ public class CadastrarUsuario extends AppCompatActivity {
 
 
             Call<Usuario> userCall = mUsuarioService.createUser(usuario);
+
+            Buffer buffer = new Buffer();
+            try {
+                userCall.request().body().writeTo(buffer);
+                System.out.println(buffer.readUtf8Line());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             userCall.enqueue(new Callback<Usuario>() {
                 @Override
                 public void onResponse(Call<Usuario> call, Response<Usuario> response) {
