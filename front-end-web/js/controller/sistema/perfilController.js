@@ -22,29 +22,4 @@ app.controller('perfilController', function($scope, $http) {
 
     }
 
-
-    $scope.cadastrarTiposDePontos = function(tipoDePontos, quantidadePonto){
-        var meusPontosDAO = new Object();
-        var tipoDePontosDAO = new Loja();
-
-
-        meusPontosDAO.quantidadePonto = quantidadePonto;
-
-        
-        tipoDePontosDAO.tipoDePontos = tipoDePontos;
-
-        meusPontosDAO.loja = tipoDePontosDAO;
-
-
-
-
-        var tipoDePontosUsuario = angular.toJson(meusPontosDAO);
-        $http.post('http://localhost:8080/PointStoreWeb/rest/meuspontos', tipoDePontosUsuario)
-        .success(function(retorno){
-            alert(retorno);
-        }).error(function(){
-            erroMessage = "O ponto "+tipoDePontosDAO.tipoDePontos+" não foi salvo!";
-        });
-    }
-
 });

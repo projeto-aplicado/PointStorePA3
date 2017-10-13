@@ -1,6 +1,6 @@
 app.controller('usuarioController', function($scope, $http, $route, $routeParams, $location) {
 
-	/*$scope.cadastrarUsuario = function (nome, sobrenome, email, login, senha) {
+	$scope.cadastrarUsuario = function (nome, sobrenome, email, login, senha) {
 		
 		var usuarioDAO = new Object();
         usuarioDAO.nome = nome;
@@ -10,32 +10,13 @@ app.controller('usuarioController', function($scope, $http, $route, $routeParams
         usuarioDAO.senha = senha;
 
         var usuario = angular.toJson(usuarioDAO);
-        $http.post('http://localhost:8080/PointStoreWeb/rest/usuario', usuario)
+        $http.post('http://localhost:8080/PointStorePA3-web/rest/pointstore/caduser', usuario)
         .success(function(retorno){
-            alert(retorno);
+            alert("dados cadastrado com sucesso!");
         }).error(function(){
             erroMessage = "Usuario "+usuarioDAO.nome+" não foi salvo!";
         });
-	}*/
-
-
-
-    $scope.cadastrarUsuario = function (nome, sobrenome, email, login, senha) {
-        
-        var usuarioDAO = new Object();
-        usuarioDAO.nome = nome;
-        usuarioDAO.sobrenome = sobrenome;
-        usuarioDAO.senha = senha;
-
-
-        var usuario = angular.toJson(usuarioDAO);
-        $http.post("http://localhost:8080/PointStorePA3-web/rest/pointstore/caduser", usuario)
-        .success(function(retorno){
-            alert(retorno);
-        }).error(function(){
-            erroMessage = "Usuario "+usuarioDAO.nome+" não foi salvo!";
-        });
-    }
+	}
 
 
     $scope.recuperarSenhaUsuario = function(email, senha){

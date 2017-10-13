@@ -11,7 +11,7 @@ app.config(['$routeProvider', function($routeProvider) {
     });
     $routeProvider.when('/meus_pontos', {
         templateUrl: 'view/sistema/meus_pontos.html',
-        controller: 'perfilController'
+        controller: 'lojasController'
     });
     $routeProvider.when('/cadastrar_vendas', {
         templateUrl: 'view/sistema/cadastrar_vendas.html',

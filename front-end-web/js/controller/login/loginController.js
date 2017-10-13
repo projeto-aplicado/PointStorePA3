@@ -6,7 +6,7 @@ app.controller('loginController', function ($scope, $http, $route, $routeParams,
 		logarDAO.senha = senha;
 
 		var logar = angular.toJson(logarDAO);
-        $http.post('http://localhost:8080/PointStoreWeb/rest/usuarioLogin', logar)
+        $http.post('http://localhost:8080/PointStorePA3-web/rest/pointstore/login', logar)
         .success(function(retorno){
             if (retorno != undefined && retorno != null) {
             	localStorage.setItem("usuario", JSON.stringify(retorno));
