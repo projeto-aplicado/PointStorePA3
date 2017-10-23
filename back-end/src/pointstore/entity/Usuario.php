@@ -9,57 +9,57 @@ namespace pointstore\entity;
 class Usuario{
 
 	/**
-	* @var integer @Id
-	* @Column(name="id", type="integer")
-	* @GeneratedValue(strategy="AUTO")
+	*	@var integer @Id
+	*      @Column(type="integer")
+	*      @GeneratedValue(strategy="AUTO")
 	*/
 	private $id;
 
 	/**
 	*
-	* @var string @Column(type="string", lenght="255")
+	* @var string @Column(type="string", length=255)
 	*/
 	private $nome;
 	
 	/**
 	*
-	* @var string @Column(type="string", lenght="255")
+	* @var string @Column(type="string", length=255)
 	*/
 	private $sobrenome;
 	
 	/**
 	*
-	* @var string @Column(type="string", lenght="255")
+	* @var string @Column(type="string", length=255)
 	*/
 	private $cpf;
 	
 	/**
 	*
-	* @var string @Column(type="string", lenght="255")
+	* @var string @Column(type="string", length=255)
 	*/
 	private $credito;
 	
 	/**
 	*
-	* @var string @Column(type="string", lenght="255")
+	* @var string @Column(type="string", length=255)
 	*/
 	private $email;
 	
 	/**
 	*
-	* @var string @Column(type="string", lenght="255")
+	* @var string @Column(type="string", length=255)
 	*/
 	private $login;
 	
 	/**
 	*
-	* @var string @Column(type="string", lenght="255")
+	* @var string @Column(type="string", length=255)
 	*/
 	private $senha;
 	
 	/**
 	*
-	* @var string @Column(type="decimal", lenght="255")
+	* @var integer @Column(type="integer", length=255)
 	*/
 	private $vendas;
 	
