@@ -135,6 +135,38 @@ class Usuario{
 		$this->vendas = $vendas;
 	}
 
+	public function __construct(){}
+
+	public function __construct($json->nome,$json->sobrenome,$json->email,$json->login,$json->senha){
+		$this->nome = $json->nome;
+  		$this->sobrenome = $json->sobrenome;
+   		$this->email = $json->email;
+   		$this->login = $json->login;
+   		$this->senha = $json->senha;
+	}
+
+	public function __construct($json->nome,$json->sobrenome,$json->cpf,$json->credito,$json->email,$json->login,$json->senha,$json->vendas){
+		$this->nome = $json->nome;
+  		$this->sobrenome = $json->sobrenome;
+  		$this->cpf = $json->cpf;
+  		$this->credito = $json->credito;
+   		$this->email = $json->email;
+   		$this->login = $json->login;
+   		$this->senha = $json->senha;
+   		$this->vendas = $json->vendas;
+	}
+
+	//CORRIGIR ESSE METODO
+	public static function construct($array){
+		$obj = new Usuario();
+		$obj->setNome( $array['nome']);
+		$obj->setSobrenome( $array['sobrenome']);
+		$obj->setEmail( $array['email']);
+		$obj->setLogin( $array['login']);
+		$obj->setSenha( $array['senha']);
+		return $obj;
+	}
+
 	public function toString(){
  		return "  [id:" .$this->id. "]  [nome:" .$this->nome. "]  [sobrenome:" .$this->sobrenome. "]  
  		[cpf:" .$this->cpf. "]  [credito:" .$this->credito. "]  [email:" .$this->email. "]  [login:" .$this->login. "]  
