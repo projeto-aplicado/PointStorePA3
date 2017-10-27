@@ -20,7 +20,6 @@ public class ListarPontos extends Activity{
     private String descricao1;
     private String descricao2;
 
-
     public String getNome() {
         return nome;
     }
@@ -47,6 +46,13 @@ public class ListarPontos extends Activity{
     }
 
 
+    public static void main (String[] args) {
+        String[] pontos = {"IPIRANGA", "PAODEACUCAR", "DOTS", "TAM", "AZUL"};
+        System.out.printf("%s %12s \n", "Index", "Tipos de Pontos");
+        for( int contador = 0; contador < pontos.length; contador ++){
+            System.out.printf("%5d %4s %4d \n", contador, "=>" , pontos[ contador ]);
+        }
 
+    }
 
 }

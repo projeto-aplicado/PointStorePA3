@@ -11,7 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.Collection;
+import javax.inject.Inject;
+
+
 import br.com.pointstore.R;
+import br.com.pointstore.model.MeusPontos;
 import br.com.pointstore.model.Usuario;
 import rest.LoginService;
 import rest.UsuarioService;
@@ -36,8 +41,6 @@ public class Perfil extends AppCompatActivity implements View.OnClickListener{
     private Button btnAtualizar;
     private UsuarioService mUsuarioService;
     private Usuario usuario;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +85,7 @@ public class Perfil extends AppCompatActivity implements View.OnClickListener{
 
 
     }
+
 
 
     @Override
@@ -135,4 +139,5 @@ public class Perfil extends AppCompatActivity implements View.OnClickListener{
 
         }
     }
+
 }
