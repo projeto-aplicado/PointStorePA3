@@ -12,8 +12,13 @@ class UsuarioController extends AbstractController {
 	}
 
 	public function insert($json){
-    	$user = new Usuario($json->nome,$json->sobrenome,$json->email,$json->login,$json->senha);
-    	$this->getDao()->insert( $user );
+    	$user = new Usuario();
+    	$user->setNome($json->nome);
+    	$user->setSobrenome($json->sobrenome);
+    	$user->setEmail($json->email);
+    	$user->setLogin($json->login);
+    	$user->setSenha($json->senha);
+    	$this->getDao()->insert($user);
     	return ["mensagem"=>"Usuario inserido com sucesso"];
 	}
 	
