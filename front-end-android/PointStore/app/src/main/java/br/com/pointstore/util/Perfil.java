@@ -11,8 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.util.Collection;
-import javax.inject.Inject;
+/*import java.util.Collection;
+import javax.inject.Inject;*/
 
 
 import br.com.pointstore.R;

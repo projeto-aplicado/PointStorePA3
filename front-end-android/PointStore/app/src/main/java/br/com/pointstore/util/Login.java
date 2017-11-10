@@ -57,12 +57,18 @@ public class Login extends AppCompatActivity {
 
     public void logar(View v) {
 
+        Intent listarAnuncios = new Intent(Login.this, ListarAnunciosActivity.class);
+        startActivity(listarAnuncios);
+        /*
         usuario = new Usuario(null, null, null, null, null, editTextLogin.getText().toString(),editTextSenha.getText().toString());
 
         if ((editTextLogin.getText().length() > 0) && ((editTextSenha.getText().length() > 0))) {
 
+
                 Call<Usuario> userLoginCall = mLoginService.loginUser(usuario);
                 userLoginCall.enqueue(new Callback<Usuario>() {
+
+
 
                     @Override
                     public void onResponse(Call<Usuario> call, Response<Usuario> response) {
@@ -77,6 +83,7 @@ public class Login extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<Usuario> call, Throwable t) {
+
                         Log.e("APP", t.getMessage());
                     }
                 });
@@ -90,7 +97,7 @@ public class Login extends AppCompatActivity {
                 editTextSenha.setError("Digite a Senha!");
             }
 
-        }
+        }*/
     }
     public void cadastrarUsuario (View v) {
         Intent cadastrarUsuario = new Intent(this, CadastrarUsuario.class);

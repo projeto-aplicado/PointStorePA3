@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="100dp"
+    xmlns:fab="http://schemas.android.com/tools"
     android:orientation="horizontal">
 
 
@@ -55,6 +56,8 @@
         android:layout_below="@+id/descricaoList1"
         android:text="R$ 50,90 reais"
         android:textSize="20dp" />
+
+
 
 
 </RelativeLayout>
