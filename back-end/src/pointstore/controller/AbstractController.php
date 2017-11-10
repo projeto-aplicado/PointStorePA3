@@ -27,7 +27,7 @@ abstract class AbstractController {
 			$data = array();
 			$result = $this->getDao()->findAll();
 			foreach( $result as $obj ) {
-				$data [] = $obj->toArray ();
+				$data [] = $obj->toArray();
 			}
 		} else {
 			$obj = $this->getDao()->findById( $id );
@@ -38,6 +38,26 @@ abstract class AbstractController {
 		}
 		return $data;
 	}
+
+	public function getEmail($email) {
+		if ($email === null) {
+			$data = array();
+			$result = $this->getDao()->findAll();
+			foreach( $result as $obj ) {
+				$data [] = $obj->toArray();
+			}
+		} 
+		if($email != ""){
+			$data = array();
+			$result = $this->getDao()->findAll();
+			foreach( $result as $obj ) {
+				$data [] = $obj->toArray();
+			}
+		}
+		return $data;
+	}
+
     abstract public function insert($json);
-	abstract public function update($id, $json);
+	abstract public function update($json);
+	abstract public function atualizarEmail($email, $json);
 }

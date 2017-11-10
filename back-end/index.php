@@ -15,19 +15,21 @@ $app->get ( '/', function () {
 	] );
 } );
 
-$app->get ( '/usuario(/(:id))', function($id = null) use ($usuarioCtrl){
+$app->get( '/usuario(/(:id))', function($id = null) use ($usuarioCtrl){
 	echo json_encode($usuarioCtrl->get($id));
 });
 
-$app->post ( '/usuario(/)', function() use ($usuarioCtrl){
+$app->post( '/usuario(/)', function() use ($usuarioCtrl){
 	$app = \Slim\Slim::getInstance();
 	$json = json_decode($app->request()->getBody());
 	echo json_encode($usuarioCtrl->insert($json));
-	//echo "POST";
 } );
 
-$app->put ( '/usuario(/)', function() {
-	echo "PUT";
+$app->put( '/usuario(/(:email))', function($email = null) use ($usuarioCtrl) {
+	//echo json_encode($usuarioCtrl->getEmail($email));
+	$app = \Slim\Slim::getInstance();
+	$json = json_decode($app->request()->getBody());
+	echo json_encode($usuarioCtrl->atualizarEmail($email, $json));
 } );
 
 $app->run();

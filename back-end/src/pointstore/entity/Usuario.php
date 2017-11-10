@@ -137,25 +137,6 @@ class Usuario{
 
 	public function __construct(){}
 
-	/*public function __construct($json->nome,$json->sobrenome,$json->email,$json->login,$json->senha){
-		$this->nome = $json->nome;
-  		$this->sobrenome = $json->sobrenome;
-   		$this->email = $json->email;
-   		$this->login = $json->login;
-   		$this->senha = $json->senha;
-	}*/
-
-	/*public function __construct($nome = null, $sobrenome = null, $cpf = null, $credito = null, $email = null, $login = null, $senha = null, $vendas = null){
-		$this->nome = $nome;
-  		$this->sobrenome = $sobrenome;
-  		$this->cpf = $cpf;
-  		$this->credito = $credito;
-   		$this->email = $email;
-   		$this->login = $login;
-   		$this->senha = $senha;
-   		$this->vendas = $vendas;
-	}*/
-
 	public static function construct($array){
 		$obj = new Usuario();
 		$obj->setNome( $array['nome']);
