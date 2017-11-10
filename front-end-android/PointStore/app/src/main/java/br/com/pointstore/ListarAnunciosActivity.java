@@ -117,6 +117,9 @@ public class ListarAnunciosActivity extends AppCompatActivity
         } else if (id == R.id.nav_sair) {
             Intent sair = new Intent(this, Login.class);
             startActivity(sair);
+        } else if (id == R.id.nav_home){
+            Intent home = new Intent(this, ListarAnunciosActivity.class);
+            startActivity(home);
         }
 
 
