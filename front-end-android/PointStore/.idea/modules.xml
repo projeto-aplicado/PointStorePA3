@@ -3,8 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PointStore.iml" filepath="$PROJECT_DIR$/PointStore.iml" />
+      <module fileurl="file://C:\Users\juant\Documents\PointStorePA3-master\front-end-android\PointStore\PointStore.iml" filepath="C:\Users\juant\Documents\PointStorePA3-master\front-end-android\PointStore\PointStore.iml" />
       <module fileurl="file://C:\Users\Oliveira\Documents\GitHub\PointStorePA3\front-end-android\PointStore\PointStore.iml" filepath="C:\Users\Oliveira\Documents\GitHub\PointStorePA3\front-end-android\PointStore\PointStore.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\juant\Documents\PointStorePA3-master\front-end-android\PointStore\app\app.iml" filepath="C:\Users\juant\Documents\PointStorePA3-master\front-end-android\PointStore\app\app.iml" />
       <module fileurl="file://C:\Users\Oliveira\Documents\GitHub\PointStorePA3\front-end-android\PointStore\app\app.iml" filepath="C:\Users\Oliveira\Documents\GitHub\PointStorePA3\front-end-android\PointStore\app\app.iml" />
     </modules>
   </component>
