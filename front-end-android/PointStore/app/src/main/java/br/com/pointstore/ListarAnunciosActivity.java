@@ -37,14 +37,6 @@ public class ListarAnunciosActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Em Desenvolvimento", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         //this.userLogin = (TextView) findViewById(R.id.textViewLogin);
         //this.userLogin.setText(user.getLogin());
@@ -117,6 +109,9 @@ public class ListarAnunciosActivity extends AppCompatActivity
         } else if (id == R.id.nav_sair) {
             Intent sair = new Intent(this, Login.class);
             startActivity(sair);
+        }else if (id == R.id.nav_home){
+            Intent home = new Intent(this, ListarAnunciosActivity.class);
+            startActivity(home);
         }
 
 

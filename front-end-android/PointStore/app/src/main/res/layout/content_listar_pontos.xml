@@ -1,42 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    android:id="@+id/content_listar_anuncios2"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="br.com.pointstore.util.ListarPontos"
+    tools:showIn="@layout/app_bar_listar_pontos"
+    android:background="@color/colorWhiteBackGround"
+    >
+
+    <ImageView
+        android:id="@+id/imagemLogo"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:visibility="visible"
+        app:srcCompat="@drawable/pointstorelogo" />
+
 
     <TextView
-        android:id="@+id/title_hist_vendas"
+        android:id="@+id/tituloList"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="23dp"
-        android:text="Histórico de Vendas"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="24sp" />
+        android:layout_marginLeft="37dp"
+        android:layout_marginStart="37dp"
+        android:layout_toEndOf="@+id/imagemLogo"
+        android:layout_toRightOf="@+id/imagemLogo"
+        android:layout_centerVertical="true"
+        android:text="HotMilhas"
+        android:textSize="30dp" />
 
-    <android.support.v7.widget.RecyclerView
+    <TextView
+        android:id="@+id/descricaoList1"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@+id/tituloList"
+        android:layout_centerVertical="true"
+        android:text="700 milhas"
+        android:textSize="20dp"
+        android:layout_alignLeft="@+id/tituloList" />
+
+    <TextView
+        android:id="@+id/descricaoList2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/title_hist_vendas"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:scrollbars="vertical"
-        tools:listitem="@layout/activity_hist_vendas" />
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/descricaoList1"
+        android:layout_alignStart="@+id/descricaoList1"
+        android:layout_below="@+id/descricaoList1"
+        android:text="R$ 50,90 reais"
+        android:textSize="20dp" />
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/menu"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginBottom="47dp"
         fab:menu_animationDelayPerItem="50"
         fab:menu_backgroundColor="@android:color/transparent"
         fab:menu_buttonSpacing="0dp"
@@ -44,7 +75,7 @@
         fab:menu_colorPressed="#f17a1a"
         fab:menu_colorRipple="#99FFFFFF"
         fab:menu_fab_hide_animation="@anim/hide_to_bottom"
-        fab:menu_fab_label="your_label_here"
+        fab:menu_fab_label="Fechar menu"
         fab:menu_fab_show_animation="@anim/show_from_bottom"
         fab:menu_fab_size="normal"
         fab:menu_icon="@drawable/fab_add"
@@ -92,5 +123,5 @@
 
     </com.github.clans.fab.FloatingActionMenu>
 
-</RelativeLayout>
 
+</RelativeLayout>
