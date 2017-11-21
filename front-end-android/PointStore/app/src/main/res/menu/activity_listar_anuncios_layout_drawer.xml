@@ -5,7 +5,7 @@
 
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/point_store_icon"
             android:title="Início" />
 
         <item

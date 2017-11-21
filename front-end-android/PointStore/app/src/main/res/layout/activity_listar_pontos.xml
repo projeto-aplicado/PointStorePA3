@@ -1,61 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:orientation="horizontal">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-
-    <TextView
-        android:id="@+id/textView2"
+    <include
+        layout="@layout/content_listar_pontos"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tituloList"
-        android:layout_alignStart="@+id/tituloList"
-        android:layout_centerVertical="true"
-        android:text="700 milhas"
-        android:textSize="20dp" />
+        android:layout_height="match_parent" />
 
-    <ImageView
-        android:id="@+id/imagemLogo"
-        android:layout_width="100dp"
-        android:layout_height="match_parent"
-        app:srcCompat="@drawable/pointstorelogo" />
-
-
-
-    <TextView
-        android:id="@+id/tituloList"
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HotMilhas"
-        android:textSize="30dp"
-        android:layout_marginLeft="34dp"
-        android:layout_marginStart="34dp"
-        android:layout_above="@+id/descricaoList1"
-        android:layout_toRightOf="@+id/imagemLogo"
-        android:layout_toEndOf="@+id/imagemLogo" />
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/activity_listar_anuncios_layout_drawer"
+        android:background="?attr/colorPrimary"
+        app:headerLayout="@layout/nav_header_listar_pontos"
 
-    <TextView
-        android:id="@+id/descricaoList1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tituloList"
-        android:layout_alignStart="@+id/tituloList"
-        android:layout_centerVertical="true"
-        android:text="700 milhas"
-        android:textSize="20dp" />
-
-    <TextView
-        android:id="@+id/descricaoList2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/descricaoList1"
-        android:layout_alignStart="@+id/descricaoList1"
-        android:layout_below="@+id/descricaoList1"
-        android:text="R$ 50,90 reais"
-        android:textSize="20dp" />
+        />
 
 
-</RelativeLayout>
+</android.support.v4.widget.DrawerLayout>
 

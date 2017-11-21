@@ -14,7 +14,7 @@ import retrofit2.http.PUT;
 
 public interface UsuarioService {
 
-    @POST("/PointStorePA3-web/rest/pointstore/caduser")
+    @POST("/pointstorePA3/index.php/usuario")   
     Call<Usuario> createUser(@Body Usuario usuario);
 
     @PUT("/PointStoreWeb/rest/usuario")
