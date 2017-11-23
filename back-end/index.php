@@ -30,10 +30,10 @@ $app->post( '/usuario(/)', function() use ($usuarioCtrl){
 	echo json_encode($usuarioCtrl->insert($json));
 } );
 
-$app->put( '/usuario(/)', function() use ($usuarioCtrl) {
+$app->put( '/usuario/senha(/)', function() use ($usuarioCtrl) {
 	$app = \Slim\Slim::getInstance();
 	$json = json_decode($app->request()->getBody());
-	echo json_encode($usuarioCtrl->atualizarEmail($json));
+	echo json_encode($usuarioCtrl->atualizarSenha($json));
 } );
 
 $app->post( '/login(/)', function() use ($usuarioCtrl){
@@ -41,7 +41,5 @@ $app->post( '/login(/)', function() use ($usuarioCtrl){
 	$json = json_decode($app->request()->getBody());
 	echo json_encode($usuarioCtrl->logarUsuario($json));
 } );
-
-
 
 $app->run();

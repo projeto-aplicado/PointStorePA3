@@ -26,16 +26,12 @@ class UsuarioController extends AbstractController {
 	}
 	
 	public function atualizarEmail($email, $json){
-		$user = new Usuario();
-		$usuarioDetached = $this->entityManager->createQuery('SELECT user FROM Usuario user WHERE user.email = :email');
-		$usuarioDetached->setParameter("email", $json->email);
-		$queryResult = $usuarioDetached->getResult();
-
-		var_dump($queryResult);
-
-		//$user->setSenha($json->senha);
-		//$this->getDao()->update($user);
-    	//return ["mensagem"=>"Senha atualizada com sucesso"];
+		$usuarioDetached = $this->getDao()->entityManager->createQuery('SELECT user FROM \pointstore\entity\Usuario user WHERE user.email = :email');
+		$usuarioDetached->setParameter('email', $json->email);
+		$queryResult = $usuarioDetached->getResult()[0];
+    	$queryResult->setSenha($json->senha);
+		$this->getDao()->update($queryResult);
+    	return ["mensagem"=>"Senha atualizada com sucesso"];
 	}
 
 	public function update($json){}
