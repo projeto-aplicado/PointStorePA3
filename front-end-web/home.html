@@ -92,7 +92,7 @@
 </body>
 <script type="text/javascript">
     var usuario = null;
-	if(localStorage.usuario != undefined){
+	if(localStorage.usuario != undefined && localStorage.usuario != "" && localStorage.usuario != null){
 		usuario = JSON.parse(localStorage.usuario);
 		$("#nome_usuario").html(usuario.nome);
 

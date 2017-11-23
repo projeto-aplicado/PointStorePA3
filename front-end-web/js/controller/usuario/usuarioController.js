@@ -10,7 +10,7 @@ app.controller('usuarioController', function($scope, $http, $route, $routeParams
         usuarioDAO.senha = senha;
 
         var usuario = angular.toJson(usuarioDAO);
-        $http.post('http://localhost:8080/PointStorePA3-web/rest/pointstore/caduser', usuario)
+        $http.post('http://localhost/pointstorePA3/index.php/usuario', usuario)
         .success(function(retorno){
             alert("dados cadastrado com sucesso!");
         }).error(function(){
@@ -25,9 +25,9 @@ app.controller('usuarioController', function($scope, $http, $route, $routeParams
         usuarioDAO.senha = senha;
 
         var usuario = angular.toJson(usuarioDAO);
-        $http.put('http://localhost:8080/PointStoreWeb/rest/usuarioLogin/'+email, usuario)
+        $http.put('http://localhost/pointstorePA3/index.php/usuario/senha', usuario)
         .success(function(retorno){
-            alert(retorno);
+            alert("senha do email atualizada com sucesso!");
         }).error(function(){
             erroMessage = "Usuario "+usuarioDAO.email+" não foi salvo!";
         });
@@ -35,3 +35,6 @@ app.controller('usuarioController', function($scope, $http, $route, $routeParams
     }
 
 });
+
+
+
