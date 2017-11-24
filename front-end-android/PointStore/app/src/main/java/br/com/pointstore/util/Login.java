@@ -42,8 +42,11 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
+        Retrofit retrofit = new Retrofit.Builder().
+                //baseUrl("http://localhost/")
+               // baseUrl("http://10.0.3.2:8080/")
+               baseUrl("http://10.0.3.2")
+                //baseUrl("http://192.168.0.108:8080/")
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
 
@@ -57,9 +60,9 @@ public class Login extends AppCompatActivity {
 
     public void logar(View v) {
 
-        Intent listarAnuncios = new Intent(Login.this, ListarAnunciosActivity.class);
-        startActivity(listarAnuncios);
-        /*
+       /* Intent listarAnuncios = new Intent(Login.this, ListarAnunciosActivity.class);
+        startActivity(listarAnuncios);*/
+
         usuario = new Usuario(null, null, null, null, null, editTextLogin.getText().toString(),editTextSenha.getText().toString());
 
         if ((editTextLogin.getText().length() > 0) && ((editTextSenha.getText().length() > 0))) {
@@ -97,7 +100,7 @@ public class Login extends AppCompatActivity {
                 editTextSenha.setError("Digite a Senha!");
             }
 
-        }*/
+        }
     }
     public void cadastrarUsuario (View v) {
         Intent cadastrarUsuario = new Intent(this, CadastrarUsuario.class);
