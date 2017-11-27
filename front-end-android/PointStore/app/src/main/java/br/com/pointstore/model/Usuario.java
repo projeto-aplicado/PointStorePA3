@@ -14,7 +14,7 @@ import java.io.Serializable;
 
 public class Usuario implements Serializable {
 
-    //private Integer idUsuario;
+    private Integer idUsuario;
     private String nome;
     private String sobrenome;
     private String cpf;
@@ -75,6 +75,9 @@ public class Usuario implements Serializable {
     }
 
     protected Usuario(Parcel in) {
+        /*
+        * Testar serializar o idUsuário*/
+        //idUsuario = in.readInt();
         nome = in.readString();
         sobrenome = in.readString();
         cpf = in.readString();
