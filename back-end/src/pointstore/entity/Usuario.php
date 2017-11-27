@@ -2,6 +2,7 @@
 
 namespace pointstore\entity;
 
+
 /**
  * @Entity
  * @Table(name="usuario")

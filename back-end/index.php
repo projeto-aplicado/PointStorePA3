@@ -42,4 +42,10 @@ $app->post( '/login(/)', function() use ($usuarioCtrl){
 	echo json_encode($usuarioCtrl->logarUsuario($json));
 } );
 
+$app->put( '/login/usuario(/)', function() use ($usuarioCtrl){
+	$app = \Slim\Slim::getInstance();
+	$json = json_decode($app->request()->getBody());
+	echo json_encode($usuarioCtrl->update($json));
+} );
+
 $app->run();

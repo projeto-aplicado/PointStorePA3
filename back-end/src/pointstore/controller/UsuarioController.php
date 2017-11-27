@@ -7,8 +7,6 @@ use pointstore\controller\AbstractController;
 use Doctrine\ORM\EntityManager;
 
 class UsuarioController extends AbstractController {
-
-	public $entityManager;
 	
 	public function __construct(){
     	parent::__construct(new UsuarioDAO());
@@ -25,7 +23,7 @@ class UsuarioController extends AbstractController {
     	return ["mensagem"=>"Usuario inserido com sucesso"];
 	}
 	
-	public function atualizarEmail($email, $json){
+	public function atualizarSenha($json){
 		$usuarioDetached = $this->getDao()->entityManager->createQuery('SELECT user FROM \pointstore\entity\Usuario user WHERE user.email = :email');
 		$usuarioDetached->setParameter('email', $json->email);
 		$queryResult = $usuarioDetached->getResult()[0];
@@ -34,7 +32,19 @@ class UsuarioController extends AbstractController {
     	return ["mensagem"=>"Senha atualizada com sucesso"];
 	}
 
-	public function update($json){}
+	public function update($json){
+		$usuarioDetached = new Usuario();
+		$usuarioDetached = $this->getDao()->entityManager->find('\pointstore\entity\Usuario', $json->id);
+		$usuarioDetached->setNome($json->nome);
+    	$usuarioDetached->setSobrenome($json->sobrenome);
+    	$usuarioDetached->setCpf($json->cpf);
+    	$usuarioDetached->setEmail($json->email);
+    	$usuarioDetached->setLogin($json->login);
+    	$usuarioDetached->setSenha($json->senha);
+		$this->getDao()->update($usuarioDetached);
+    	return ["mensagem"=>"Usuario atualizada com sucesso"];
+		
+	}
 
 	public function logarUsuario($json){
 		$usuarioDetached = new Usuario();
