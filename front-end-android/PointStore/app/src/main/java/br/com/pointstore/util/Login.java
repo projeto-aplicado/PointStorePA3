@@ -88,6 +88,7 @@ public class Login extends AppCompatActivity {
                     public void onFailure(Call<Usuario> call, Throwable t) {
 
                         Log.e("APP", t.getMessage());
+                        t.printStackTrace();
                     }
                 });
 

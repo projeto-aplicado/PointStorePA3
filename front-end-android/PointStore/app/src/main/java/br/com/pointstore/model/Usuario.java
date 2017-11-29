@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 
@@ -14,6 +16,7 @@ import java.io.Serializable;
 
 public class Usuario implements Serializable {
 
+    @JsonProperty("id")
     private Integer idUsuario;
     private String nome;
     private String sobrenome;
@@ -22,6 +25,7 @@ public class Usuario implements Serializable {
     private String email;
     private String login;
     private String senha;
+    @JsonIgnore
     private Integer vendas;
     //private MeusPontos meusPontos;
     //private MinhasCompras minhasCompras;
