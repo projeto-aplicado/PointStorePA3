@@ -18,17 +18,28 @@ public class Usuario implements Serializable {
 
     @JsonProperty("id")
     private Integer idUsuario;
+    @JsonProperty("nome")
     private String nome;
+    @JsonProperty("sobrenome")
     private String sobrenome;
+    @JsonProperty("cpf")
     private String cpf;
+    @JsonProperty("credito")
     private String credito;
+    @JsonProperty("email")
     private String email;
+    @JsonProperty("login")
     private String login;
+    @JsonProperty("senha")
     private String senha;
-    @JsonIgnore
+
+   // @JsonIgnore
+    @JsonProperty("vendas")
+
     private Integer vendas;
     //private MeusPontos meusPontos;
     //private MinhasCompras minhasCompras;
+
 
     public Usuario (){
     }
@@ -54,7 +65,7 @@ public class Usuario implements Serializable {
         this.sobrenome = sobrenome;
         this.senha = senha;
         this.credito = credito;
-        this.vendas = vendas;
+       // this.vendas = vendas;
         this.nome = nome;
         this.cpf = cpf;
         //this.idUsuario = idUsuario;
