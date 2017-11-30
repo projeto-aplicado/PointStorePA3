@@ -103,7 +103,7 @@ public class Login extends AppCompatActivity {
                             listarAnuncios.putExtra("user", user);
 
                             Context context = getApplicationContext();
-                            Toast toast = Toast.makeText(context, "Sucesso", Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(context, "Bem vindo (a)"+user.getNome(), Toast.LENGTH_SHORT);
                             toast.show();
                             startActivity(listarAnuncios);
 

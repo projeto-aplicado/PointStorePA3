@@ -10,6 +10,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.List;
 
+import br.com.pointstore.Adapter.UsuarioCadastro;
 import br.com.pointstore.R;
 import br.com.pointstore.model.Usuario;
 import okio.Buffer;
@@ -22,6 +23,13 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 
 /**
  * Created by Juan on 11/03/2017.
+ *
+ * Atualizacao 30/11/2017
+ * ->configuracao da conexao com genymotion
+ * ->implementacao  da entidade no pacote adapter para cadastrar usuario "UsuarioCadastro"
+ * -> cadastro realizado com sucesso
+ * ->realizado teste na base de dados url http://localhost/pointstorePA3/index.php/usuario
+ *
  */
 
 public class CadastrarUsuario extends AppCompatActivity {
@@ -41,7 +49,8 @@ public class CadastrarUsuario extends AppCompatActivity {
         setContentView(R.layout.activity_cadastrar_usuario);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
+                //.baseUrl("http://10.0.2.2:8080/")
+                .baseUrl("http://10.0.3.2")
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
 
@@ -66,9 +75,15 @@ public class CadastrarUsuario extends AppCompatActivity {
 
          Usuario usuario2 = new Usuario(usuario);*/
 
+        UsuarioCadastro usuarioCadastro = new UsuarioCadastro();
 
-        usuario = new Usuario(editTextNome.getText().toString(),editTextSobrenome.getText().toString(),editTextCadEmail.getText().toString(),editTextCadUsuario.getText().toString(),editTextCadSenha.getText().toString());
+        //usuario = new Usuario(editTextNome.getText().toString(),editTextSobrenome.getText().toString(),editTextCadEmail.getText().toString(),editTextCadUsuario.getText().toString(),editTextCadSenha.getText().toString());
 
+        usuarioCadastro.setNome(editTextNome.getText().toString());
+        usuarioCadastro.setSobrenome(editTextSobrenome.getText().toString());
+        usuarioCadastro.setEmail(editTextCadEmail.getText().toString());
+        usuarioCadastro.setLogin(editTextCadUsuario.getText().toString());
+        usuarioCadastro.setSenha(editTextCadSenha.getText().toString());
 
         if ((editTextNome.getText().length() > 0) && (editTextCadEmail.getText().length() > 0) &&
 
@@ -77,7 +92,8 @@ public class CadastrarUsuario extends AppCompatActivity {
                 (editTextCadUsuario.getText().length()> 0)){
 
 
-            Call<Usuario> userCall = mUsuarioService.createUser(usuario);
+            //Call<Usuario> userCall = mUsuarioService.createUser(usuario);
+            Call<Usuario> userCall = mUsuarioService.createUserNoPoints(usuarioCadastro);
 
             Buffer buffer = new Buffer();
             try {
