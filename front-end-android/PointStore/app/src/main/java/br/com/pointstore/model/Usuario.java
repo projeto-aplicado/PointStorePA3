@@ -49,7 +49,8 @@ public class Usuario implements Serializable {
         this.senha = senha;
     }
 
-    public Usuario(String nome, String sobrenome, String credito, String email, String cpf, String login, String senha) {//perfil e login
+    public Usuario(Integer idUsuario,String nome, String sobrenome, String credito, String email, String cpf, String login, String senha) {//perfil e login
+        this.idUsuario = idUsuario;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpf = cpf;
@@ -92,7 +93,7 @@ public class Usuario implements Serializable {
     protected Usuario(Parcel in) {
         /*
         * Testar serializar o idUsuário*/
-        //idUsuario = in.readInt();
+        idUsuario = in.readInt();
         nome = in.readString();
         sobrenome = in.readString();
         cpf = in.readString();
@@ -160,7 +161,7 @@ public class Usuario implements Serializable {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-/*
+
     public Integer getIdUsuario() {
         return idUsuario;
     }
@@ -168,7 +169,7 @@ public class Usuario implements Serializable {
     public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
-
+/*
     public MeusPontos getMeusPontos() {
         return meusPontos;
     }

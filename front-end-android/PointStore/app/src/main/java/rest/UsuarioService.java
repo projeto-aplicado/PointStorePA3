@@ -2,6 +2,8 @@ package rest;
 
 import java.util.List;
 
+import br.com.pointstore.Adapter.Menssagem;
+import br.com.pointstore.Adapter.UsuarioAlterarSenha;
 import br.com.pointstore.Adapter.UsuarioCadastro;
 import br.com.pointstore.model.Usuario;
 import retrofit2.Call;
@@ -29,6 +31,11 @@ public interface UsuarioService {
     @POST("/pointstorePA3/index.php/usuario")
     Call<Usuario> createUserNoPoints (@Body UsuarioCadastro usuarioCadastro);
 
-    @PUT("/PointStoreWeb/rest/usuario")
-    Call<Usuario> updateUser(@Body Usuario usuario);
+    /* nao editar esse metodo ate testar tudo esse éo metodo padrao
+    @PUT("/pointstorePA3/index.php/login/usuario")
+    Call<Usuario> updateUser(@Body Usuario usuario);*/
+
+
+    @PUT("/pointstorePA3/index.php/login/usuario")
+    Call<Menssagem> updateUser(@Body Usuario usuario);
 }
