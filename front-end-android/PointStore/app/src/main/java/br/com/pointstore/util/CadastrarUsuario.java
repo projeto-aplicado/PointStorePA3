@@ -67,17 +67,8 @@ public class CadastrarUsuario extends AppCompatActivity {
 
     public void cadastrarUsuario (View v) {
 
-        /*usuario.setNome(editTextNome.getText().toString());
-        usuario.setSobrenome(editTextSobrenome.getText().toString());
-        usuario.setEmail(editTextCadEmail.getText().toString());
-        usuario.setLogin(editTextCadUsuario.getText().toString());
-        usuario.setSenha(editTextCadSenha.getText().toString());
-
-         Usuario usuario2 = new Usuario(usuario);*/
 
         UsuarioCadastro usuarioCadastro = new UsuarioCadastro();
-
-        //usuario = new Usuario(editTextNome.getText().toString(),editTextSobrenome.getText().toString(),editTextCadEmail.getText().toString(),editTextCadUsuario.getText().toString(),editTextCadSenha.getText().toString());
 
         usuarioCadastro.setNome(editTextNome.getText().toString());
         usuarioCadastro.setSobrenome(editTextSobrenome.getText().toString());
@@ -91,8 +82,6 @@ public class CadastrarUsuario extends AppCompatActivity {
 
                 (editTextCadUsuario.getText().length()> 0)){
 
-
-            //Call<Usuario> userCall = mUsuarioService.createUser(usuario);
             Call<Usuario> userCall = mUsuarioService.createUserNoPoints(usuarioCadastro);
 
             Buffer buffer = new Buffer();

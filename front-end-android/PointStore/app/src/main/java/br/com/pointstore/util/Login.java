@@ -71,17 +71,6 @@ public class Login extends AppCompatActivity {
         usuarioLogin.setLogin(editTextLogin.getText().toString());
         usuarioLogin.setSenha(editTextSenha.getText().toString());
 
-        Context context = getApplicationContext();
-        /*Toast toast = Toast.makeText(context, "login "+usuarioLogin.getLogin(), Toast.LENGTH_SHORT);
-        toast.show();*/
-
-
-       /* Intent listarAnuncios = new Intent(Login.this, ListarAnunciosActivity.class);
-        startActivity(listarAnuncios);*/
-
-        //usuario = new Usuario(null, null, null, null, null, editTextLogin.getText().toString(),editTextSenha.getText().toString());
-        //usuarioLogin = new UsuarioLogin(editTextLogin.getText().toString(),editTextSenha.getText().toString());
-
 
         if ((editTextLogin.getText().length() > 0) && ((editTextSenha.getText().length() > 0))) {
 
