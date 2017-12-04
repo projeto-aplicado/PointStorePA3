@@ -3,6 +3,7 @@ package br.com.pointstore.util;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -102,8 +103,10 @@ public class Login extends AppCompatActivity {
                         }else {
 
                             Context context = getApplicationContext();
-                            Toast toast = Toast.makeText(context, "Dados inválidos", Toast.LENGTH_SHORT);
-                            toast.show();
+                            //Toast toast = Toast.makeText(context, "Dados inválidos", Toast.LENGTH_SHORT);
+                            //toast.show();
+                            Snackbar.make(findViewById(R.id.buttonLogin), "Dados inválidos", Snackbar.LENGTH_SHORT).show();
+
                         }
 
                     }

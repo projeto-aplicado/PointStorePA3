@@ -98,8 +98,9 @@ public class Perfil extends AppCompatActivity implements View.OnClickListener{
 
 
         Context context = getApplicationContext();
-        Toast toast = Toast.makeText(context, " : "+usuario.getIdUsuario(), Toast.LENGTH_SHORT);
-        toast.show();
+        //Toast toast = Toast.makeText(context, " : "+usuario.getIdUsuario(), Toast.LENGTH_SHORT);
+        //toast.show();
+        Snackbar.make(findViewById(R.id.buttonAtualizar), " : "+usuario.getIdUsuario(), Snackbar.LENGTH_SHORT).show();
         if((this.editTextNome.getText().length() > 0) && (this.editTextSobrenome.getText().length() > 0) &&
 
                 (this.editTextEmail.getText().length() > 0)&& (this.editTextCPF.getText().length() > 0)&&
@@ -116,13 +117,14 @@ public class Perfil extends AppCompatActivity implements View.OnClickListener{
                     Menssagem menssagem = response.body();
 
                     Context context = getApplicationContext();
-                    Toast toast = Toast.makeText(context, " : "+menssagem.getMensagem(), Toast.LENGTH_SHORT);
-                    toast.show();
+                    //Toast toast = Toast.makeText(context, " : "+menssagem.getMensagem(), Toast.LENGTH_SHORT);
+                    //toast.show();
                 }
 
                 @Override
                 public void onFailure(Call<Menssagem> call, Throwable t) {
                     Log.e("APP", t.getMessage());
+                    t.printStackTrace();
                 }
             });
 
