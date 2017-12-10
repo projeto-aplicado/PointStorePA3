@@ -17,7 +17,16 @@ class MeusPontosController extends AbstractController{
 
 	public function update($json){}
 
-	public function cadastrarPontoUsuario($user){
+	public function listarPontoUsuario($id){
+		if($id == null){
+			$meusPontosDetached = $this->getDao()->entityManager->createQuery('SELECT meusPontos FROM pointstore\entity\MeusPontos meusPontos');
+			$queryResult = $meusPontosDetached->getArrayResult();
+		} else{
+			$meusPontosDetached = $this->getDao()->entityManager->createQuery('SELECT meusPontos FROM \pointstore\entity\MeusPontos meusPontos WHERE meusPontos.usuario_id = :usuario_id');
+			$meusPontosDetached->setParameter('usuario_id', $id);
+			$queryResult = $meusPontosDetached->getResult()[0];
+		}
+		return $queryResult;
 
 	}
 

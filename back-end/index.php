@@ -4,10 +4,13 @@ $loader = require __DIR__ . '/vendor/autoload.php';
 
 use pointstore\entity\Usuario;
 use pointstore\controller\UsuarioController;
+use pointstore\entity\MeusPontos;
+use pointstore\controller\MeusPontosController;
 
 $app = new \Slim\Slim();
 
 $usuarioCtrl = new UsuarioController();
+$meusPontosCtrl = new MeusPontosController();
 
 $app->get ( '/', function () {
 	echo json_encode( [
@@ -47,5 +50,13 @@ $app->put( '/login/usuario(/)', function() use ($usuarioCtrl){
 	$json = json_decode($app->request()->getBody());
 	echo json_encode($usuarioCtrl->update($json));
 } );
+
+$app->get ( '/meuspontos(/)', function ($id = null) use ($meusPontosCtrl) {
+	echo json_encode($meusPontosCtrl->listarPontoUsuario($id));
+});
+
+$app->get( '/meuspontos(/(:id))', function($id = null) use ($meusPontosCtrl){
+	echo json_encode($meusPontosCtrl->listarPontoUsuario($id));
+});
 
 $app->run();
