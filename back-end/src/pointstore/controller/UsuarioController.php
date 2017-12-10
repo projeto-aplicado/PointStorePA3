@@ -3,6 +3,7 @@ namespace pointstore\controller;
 
 use pointstore\persistence\UsuarioDAO;
 use pointstore\entity\Usuario;
+use pointstore\entity\MeusPontos;
 use pointstore\controller\AbstractController;
 use Doctrine\ORM\EntityManager;
 
@@ -19,8 +20,26 @@ class UsuarioController extends AbstractController {
     	$user->setEmail($json->email);
     	$user->setLogin($json->login);
     	$user->setSenha($json->senha);
+
+    	
+    	$pontos = $this->getMeusPontosDefault();
+    	$user->setMeusPontos($pontos);
+
+
     	$this->getDao()->insert($user);
     	return ["mensagem"=>"Usuario inserido com sucesso"];
+	}
+
+	public function getMeusPontosDefault(){
+		$tam = new MeusPontos();
+    	$tam->setTipoDePonto("Tam");
+    	$tam->setQuantidadePonto(0);
+
+    	$gol = new MeusPontos();
+    	$gol->setTipoDePonto("Gol");
+    	$gol->setQuantidadePonto(0);
+
+    	return array($tam, $gol);
 	}
 	
 	public function atualizarSenha($json){

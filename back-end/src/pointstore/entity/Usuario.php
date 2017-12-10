@@ -63,6 +63,13 @@ class Usuario{
 	* @var integer @Column(type="integer", length=255)
 	*/
 	private $vendas;
+
+	/**
+	 * @OneToMany(targetEntity="\pointstore\entity\MeusPontos", mappedBy="usuario", cascade={"persist", "remove", "merge"}, orphanRemoval=true)
+	 */
+	private $meusPontos;
+
+
 	
 	public function getId(){
 		return $this->id;
@@ -135,6 +142,14 @@ class Usuario{
 	public function setVendas($vendas){
 		$this->vendas = $vendas;
 	}
+
+	public function getMeusPontos(){
+		return $this->meusPontos;
+	}
+
+	public function setMeusPontos($meusPontos){
+		$this->meusPontos = $meusPontos;
+	}	
 
 	public function __construct(){}
 

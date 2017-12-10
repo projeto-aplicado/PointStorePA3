@@ -40,6 +40,4 @@ abstract class AbstractController {
 	}
     abstract public function insert($json);
 	abstract public function update($json);
-	abstract public function atualizarSenha($json);
-	abstract public function logarUsuario($json);
 }
