@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 
@@ -14,17 +16,30 @@ import java.io.Serializable;
 
 public class Usuario implements Serializable {
 
+    @JsonProperty("id")
     private Integer idUsuario;
+    @JsonProperty("nome")
     private String nome;
+    @JsonProperty("sobrenome")
     private String sobrenome;
+    @JsonProperty("cpf")
     private String cpf;
+    @JsonProperty("credito")
     private String credito;
+    @JsonProperty("email")
     private String email;
+    @JsonProperty("login")
     private String login;
+    @JsonProperty("senha")
     private String senha;
+
+   // @JsonIgnore
+    @JsonProperty("vendas")
+
     private Integer vendas;
     //private MeusPontos meusPontos;
     //private MinhasCompras minhasCompras;
+
 
     public Usuario (){
     }
@@ -34,7 +49,8 @@ public class Usuario implements Serializable {
         this.senha = senha;
     }
 
-    public Usuario(String nome, String sobrenome, String credito, String email, String cpf, String login, String senha) {//perfil e login
+    public Usuario(Integer idUsuario,String nome, String sobrenome, String credito, String email, String cpf, String login, String senha) {//perfil e login
+        this.idUsuario = idUsuario;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpf = cpf;
@@ -50,7 +66,7 @@ public class Usuario implements Serializable {
         this.sobrenome = sobrenome;
         this.senha = senha;
         this.credito = credito;
-        this.vendas = vendas;
+       // this.vendas = vendas;
         this.nome = nome;
         this.cpf = cpf;
         //this.idUsuario = idUsuario;
@@ -77,7 +93,7 @@ public class Usuario implements Serializable {
     protected Usuario(Parcel in) {
         /*
         * Testar serializar o idUsuário*/
-        //idUsuario = in.readInt();
+        idUsuario = in.readInt();
         nome = in.readString();
         sobrenome = in.readString();
         cpf = in.readString();
@@ -145,7 +161,7 @@ public class Usuario implements Serializable {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-/*
+
     public Integer getIdUsuario() {
         return idUsuario;
     }
@@ -153,7 +169,7 @@ public class Usuario implements Serializable {
     public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
-
+/*
     public MeusPontos getMeusPontos() {
         return meusPontos;
     }

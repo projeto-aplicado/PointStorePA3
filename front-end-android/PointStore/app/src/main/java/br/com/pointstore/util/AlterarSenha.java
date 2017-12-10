@@ -1,5 +1,6 @@
 package br.com.pointstore.util;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import br.com.pointstore.Adapter.Menssagem;
+import br.com.pointstore.Adapter.UsuarioAlterarSenha;
 import br.com.pointstore.R;
 import br.com.pointstore.model.Usuario;
 import rest.LoginService;
@@ -32,7 +35,7 @@ public class AlterarSenha extends AppCompatActivity {
         setContentView(R.layout.activity_alterar_senha);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
+                .baseUrl("http://10.0.3.2")
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
 
@@ -47,23 +50,30 @@ public class AlterarSenha extends AppCompatActivity {
 
     public void atualizarSenha (View v) {
 
-        usuario = new Usuario();
+        UsuarioAlterarSenha usuarioAlterarSenha = new UsuarioAlterarSenha();
 
-        usuario.setEmail(editTextEmailAtual.getText().toString());
-        usuario.setSenha(editTextNovaSenha.getText().toString());
+        usuarioAlterarSenha.setEmail(editTextEmailAtual.getText().toString());
+        usuarioAlterarSenha.setSenha(editTextNovaSenha.getText().toString());
 
         if ((editTextEmailAtual.getText().length() > 0) && (editTextNovaSenha.getText().length() > 0) && (editTextConfirmarNovaSenha.getText().length() > 0) &&
                 ((editTextNovaSenha.getText().toString()).equals(editTextConfirmarNovaSenha.getText().toString())) ) {
 
-            Call<Usuario> userCallAtualizaSenha = mLoginAlterarSenhaService.atualizaSenha(usuario, usuario.getEmail().toString());
-            userCallAtualizaSenha.enqueue(new Callback<Usuario>() {
-                @Override
-                public void onResponse(Call<Usuario> call, Response<Usuario> response) {
 
+            Call<Menssagem> userCallAtualizaSenha = mLoginAlterarSenhaService.atualizaSenha(usuarioAlterarSenha);
+
+            userCallAtualizaSenha.enqueue(new Callback<Menssagem>() {
+                @Override
+                public void onResponse(Call<Menssagem> call, Response<Menssagem> response) {
+
+                    Menssagem menssagem = response.body();
+
+                    Context context = getApplicationContext();
+                    Toast toast = Toast.makeText(context, " : "+menssagem.getMensagem(), Toast.LENGTH_SHORT);
+                    toast.show();
                 }
 
                 @Override
-                public void onFailure(Call<Usuario> call, Throwable t) {
+                public void onFailure(Call<Menssagem> call, Throwable t) {
 
                 }
             });

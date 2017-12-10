@@ -7,6 +7,7 @@ package br.com.pointstore.util;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -59,7 +60,8 @@ public class FinalizarCompra extends Activity {
                 //pega nome pela posição
                 nome = parent.getItemAtPosition(posicao).toString();
                 //imprime um Toast na tela com o nome que foi selecionado
-                Toast.makeText(FinalizarCompra.this, nome + " Selecionado", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(FinalizarCompra.this, nome + " Selecionado", Toast.LENGTH_SHORT).show();
+                Snackbar.make(findViewById(R.id.button2), nome + " Selecionado", Snackbar.LENGTH_SHORT).show();
 
             }
 

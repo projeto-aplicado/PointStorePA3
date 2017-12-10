@@ -1,5 +1,6 @@
 package br.com.pointstore.util;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -10,11 +11,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /*import java.util.Collection;
 import javax.inject.Inject;*/
 
 
+import br.com.pointstore.Adapter.Menssagem;
 import br.com.pointstore.R;
 import br.com.pointstore.model.MeusPontos;
 import br.com.pointstore.model.Usuario;
@@ -59,7 +62,7 @@ public class Perfil extends AppCompatActivity implements View.OnClickListener{
         });
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080/")
+                .baseUrl("http://10.0.3.2")
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
         this.mUsuarioService = retrofit.create(UsuarioService.class);
@@ -91,8 +94,13 @@ public class Perfil extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
 
-        usuario = new Usuario(this.editTextNome.getText().toString(), this.editTextSobrenome.getText().toString(), null, this.editTextEmail.getText().toString(), this.editTextCPF.getText().toString(), this.editTextLogin.getText().toString(), this.editTextSenha.getText().toString());
+        usuario = new Usuario(usuario.getIdUsuario(),this.editTextNome.getText().toString(), this.editTextSobrenome.getText().toString(), null, this.editTextEmail.getText().toString(), this.editTextCPF.getText().toString(), this.editTextLogin.getText().toString(), this.editTextSenha.getText().toString());
 
+
+        Context context = getApplicationContext();
+        //Toast toast = Toast.makeText(context, " : "+usuario.getIdUsuario(), Toast.LENGTH_SHORT);
+        //toast.show();
+        Snackbar.make(findViewById(R.id.buttonAtualizar), " : "+usuario.getIdUsuario(), Snackbar.LENGTH_SHORT).show();
         if((this.editTextNome.getText().length() > 0) && (this.editTextSobrenome.getText().length() > 0) &&
 
                 (this.editTextEmail.getText().length() > 0)&& (this.editTextCPF.getText().length() > 0)&&
@@ -101,16 +109,22 @@ public class Perfil extends AppCompatActivity implements View.OnClickListener{
 
                 (this.editTextCPF.getText().length() > 0)){
 
-            Call<Usuario> userCall = mUsuarioService.updateUser(this.usuario);
-            userCall.enqueue(new Callback<Usuario>() {
+            Call<Menssagem> userCall = mUsuarioService.updateUser(this.usuario);
+            userCall.enqueue(new Callback<Menssagem>() {
                 @Override
-                public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                public void onResponse(Call<Menssagem> call, Response<Menssagem> response) {
 
+                    Menssagem menssagem = response.body();
+
+                    Context context = getApplicationContext();
+                    //Toast toast = Toast.makeText(context, " : "+menssagem.getMensagem(), Toast.LENGTH_SHORT);
+                    //toast.show();
                 }
 
                 @Override
-                public void onFailure(Call<Usuario> call, Throwable t) {
+                public void onFailure(Call<Menssagem> call, Throwable t) {
                     Log.e("APP", t.getMessage());
+                    t.printStackTrace();
                 }
             });
 

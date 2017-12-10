@@ -1,7 +1,9 @@
 package br.com.pointstore.util;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import br.com.pointstore.Adapter.UsuarioLogin;
 import br.com.pointstore.ListarAnunciosActivity;
 import br.com.pointstore.R;
 import br.com.pointstore.model.Usuario;
@@ -25,6 +28,12 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 
 /**
  * Created by Juan on 11/03/2017.
+ *
+ * ->Alteração 29/11/2017 Arley
+ * ->Auteração na conexão do app com genymotion
+ * ->Método Login feito por Arley, se logar e dados estiver inválidos, será retornado  um aviso de dados
+ * invalidos
+ *
  */
 
 public class Login extends AppCompatActivity {
@@ -35,6 +44,7 @@ public class Login extends AppCompatActivity {
 
     private List<Usuario> listaUsuarios;
     private Usuario usuario;
+
     private String TAG_I;
 
     @Override
@@ -42,13 +52,8 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Retrofit retrofit = new Retrofit.Builder().
-                //baseUrl("http://localhost/")
-               // baseUrl("http://10.0.3.2:8080/")
-               baseUrl("http://10.0.3.2")
-                //baseUrl("http://192.168.0.108:8080/")
-                .addConverterFactory(JacksonConverterFactory.create())
-                .build();
+        /*Configuracao para uso da genymtion como emulador android*/
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://10.0.3.2").addConverterFactory(JacksonConverterFactory.create()).build();
 
         mLoginService = retrofit.create(LoginService.class);
 
@@ -56,19 +61,23 @@ public class Login extends AppCompatActivity {
 
         editTextLogin = (EditText) findViewById(R.id.editTextLogin);
         editTextSenha = (EditText) findViewById(R.id.editTextSenha);
+
+
     }
+
 
     public void logar(View v) {
 
-       /* Intent listarAnuncios = new Intent(Login.this, ListarAnunciosActivity.class);
-        startActivity(listarAnuncios);*/
+        UsuarioLogin usuarioLogin = new UsuarioLogin();
+        usuarioLogin.setLogin(editTextLogin.getText().toString());
+        usuarioLogin.setSenha(editTextSenha.getText().toString());
 
-        usuario = new Usuario(null, null, null, null, null, editTextLogin.getText().toString(),editTextSenha.getText().toString());
 
         if ((editTextLogin.getText().length() > 0) && ((editTextSenha.getText().length() > 0))) {
 
 
-                Call<Usuario> userLoginCall = mLoginService.loginUser(usuario);
+                //Call<Usuario> userLoginCall = mLoginService.loginUser(usuarioLogin);
+                Call<Usuario> userLoginCall = mLoginService.loginUser(usuarioLogin);
                 userLoginCall.enqueue(new Callback<Usuario>() {
 
 
@@ -78,9 +87,27 @@ public class Login extends AppCompatActivity {
 
                         Usuario user = response.body();
 
-                        Intent listarAnuncios = new Intent(Login.this, ListarAnunciosActivity.class);
-                        listarAnuncios.putExtra("user", user);
-                        startActivity(listarAnuncios);
+                        if(user != null ){
+
+                            Intent listarAnuncios = new Intent(Login.this, ListarAnunciosActivity.class);
+                            listarAnuncios.putExtra("user", user);
+
+                            Context context = getApplicationContext();
+                            Toast toast = Toast.makeText(context, "Bem vindo (a)"+user.getNome(), Toast.LENGTH_SHORT);
+                            toast.show();
+                            startActivity(listarAnuncios);
+
+
+
+
+                        }else {
+
+                            Context context = getApplicationContext();
+                            //Toast toast = Toast.makeText(context, "Dados inválidos", Toast.LENGTH_SHORT);
+                            //toast.show();
+                            Snackbar.make(findViewById(R.id.buttonLogin), "Dados inválidos", Snackbar.LENGTH_SHORT).show();
+
+                        }
 
                     }
 
@@ -88,6 +115,7 @@ public class Login extends AppCompatActivity {
                     public void onFailure(Call<Usuario> call, Throwable t) {
 
                         Log.e("APP", t.getMessage());
+                        t.printStackTrace();
                     }
                 });
 
