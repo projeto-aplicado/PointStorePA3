@@ -40,7 +40,7 @@ public class FinalizarCompra extends Activity {
                 .build();
 
         //Adicionando Nomes no ArrayList
-        nomes.add("Cartao de Crédito");
+        //nomes.add("Cartao de Crédito");
         nomes.add("Boleto");
 
 

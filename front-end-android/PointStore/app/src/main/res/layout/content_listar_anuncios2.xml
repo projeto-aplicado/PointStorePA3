@@ -168,6 +168,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/if_insert"
+            android:onClick="cadastrarPontos"
+            app:fab_colorNormal="@color/colorAccent"
+            app:fab_colorPressed="@color/colorAccentDark"
             fab:fab_label="Cadastrar  pontos"
             fab:fab_size="mini" />
 
@@ -176,7 +179,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/if_buy"
-            fab:fab_label="Finalizar compra1"
+            android:onClick="finalizarCompra"
+            app:fab_colorNormal="@color/colorAccent"
+            app:fab_colorPressed="@color/colorAccentDark"
+            fab:fab_label="Finalizar compra"
             fab:fab_size="mini" />
 
     </com.github.clans.fab.FloatingActionMenu>

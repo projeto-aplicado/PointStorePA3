@@ -91,4 +91,8 @@ public class CadastrarVendas extends AppCompatActivity {
     }
 
 
+    public void finalizarCompra(View view) {
+        Intent finalizarcompra = new Intent(this, FinalizarCompra.class);
+        startActivity(finalizarcompra);
+    }
 }

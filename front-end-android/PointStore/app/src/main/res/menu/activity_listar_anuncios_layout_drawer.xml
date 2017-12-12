@@ -22,14 +22,6 @@
             android:id="@+id/nav_cadastrarvendas"
             android:icon="@drawable/ic_menu_manage"
             android:title="Cadastrar Vendas" />
-        <item
-            android:id="@+id/nav_finalizarcompra"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Finalizar Compra" />
-        <item
-            android:id="@+id/nav_cadastrarpontos"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Cadastrar Pontos" />
 
         <item
             android:id="@+id/nav_sair"

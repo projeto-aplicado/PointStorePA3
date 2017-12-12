@@ -101,4 +101,8 @@ public class CadastrarPontos extends AppCompatActivity {
     }
 
 
+    public void finalizarCompra(View view) {
+        Intent finalizarcompra = new Intent(this, FinalizarCompra.class);
+        startActivity(finalizarcompra);
+    }
 }
