@@ -58,9 +58,14 @@
         android:inputType="number" />
 
     <Button
-        android:id="@+id/buttonGravarDados"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="251dp"
+        android:id="@+id/buttonGravarDados"
+        android:onClick="cadastrarPontos"
+        android:textColor="#fff"
+        android:textColorHint="@color/colorPrimary"
+        android:background="@drawable/screen_border"
         android:layout_alignLeft="@+id/textView3"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/textView3"

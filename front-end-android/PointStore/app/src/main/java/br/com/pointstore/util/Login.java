@@ -89,6 +89,8 @@ public class Login extends AppCompatActivity {
 
                         if(user != null ){
 
+
+
                             Intent listarAnuncios = new Intent(Login.this, ListarAnunciosActivity.class);
                             listarAnuncios.putExtra("user", user);
 
@@ -96,6 +98,7 @@ public class Login extends AppCompatActivity {
                             Toast toast = Toast.makeText(context, "Bem vindo (a)"+user.getNome(), Toast.LENGTH_SHORT);
                             toast.show();
                             startActivity(listarAnuncios);
+
 
 
 

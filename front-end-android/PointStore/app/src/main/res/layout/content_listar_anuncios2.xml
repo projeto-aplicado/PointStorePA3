@@ -175,14 +175,14 @@
             fab:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/finalizar_venda"
+            android:id="@+id/listar_pontos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/if_buy"
-            android:onClick="finalizarCompra"
+            android:onClick="listarPontos"
             app:fab_colorNormal="@color/colorAccent"
             app:fab_colorPressed="@color/colorAccentDark"
-            fab:fab_label="Finalizar compra"
+            fab:fab_label="Meus Pontos"
             fab:fab_size="mini" />
 
     </com.github.clans.fab.FloatingActionMenu>

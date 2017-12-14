@@ -1,5 +1,6 @@
 package br.com.pointstore;
 
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -68,9 +69,6 @@ public class Listar_pontos_cadastradros extends AppCompatActivity {
         pontos5.setNome("Latam"); pontos5.setQuantidade("25");
 
 
-
-
-
         /*
         Toast.makeText(getApplication(), "Ponto : "
                 + pontos.getNome(), Toast.LENGTH_LONG).show();*/
@@ -87,9 +85,11 @@ public class Listar_pontos_cadastradros extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 pontosSelecionado = adaptadorLista.getItem(i);
 
-                Toast.makeText(getApplication(), "Ponto selecionado : "
-                        + pontosSelecionado.getNome(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplication(), "Ponto selecionado : "
+                        //+ pontosSelecionado.getNome(), Toast.LENGTH_LONG).show();
 
+                Snackbar.make(findViewById(R.id.btRetorna), "Ponto selecionado : "
+                        + pontosSelecionado.getNome(), Snackbar.LENGTH_SHORT).show();
                 NomeSelecionadotextView.setText(pontosSelecionado.getNome());
             }
 

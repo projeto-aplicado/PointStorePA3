@@ -1,6 +1,7 @@
 package br.com.pointstore;
 
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -70,8 +71,10 @@ public class CadastrarSeusPontos extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 pontosSelecionado = adaptadorLista.getItem(i);
 
-                Toast.makeText(getApplication(), "Ponto selecionado : "
-                        + pontosSelecionado.getNome(), Toast.LENGTH_LONG).show();
+               // Toast.makeText(getApplication(), "Ponto selecionado : "
+                       // + pontosSelecionado.getNome(), Toast.LENGTH_LONG).show();
+
+                Snackbar.make(findViewById(R.id.buttonGravarDados), pontosSelecionado.getNome(), Snackbar.LENGTH_SHORT).show();
 
                 NomeSelecionadotextView.setText(pontosSelecionado.getNome());
             }

@@ -15,6 +15,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="245dp" />
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -64,7 +65,12 @@
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="41dp"
-        android:text="Retornar ao menu" />
+        android:text="Retornar ao menu"
+        android:textColor="#fff"
+        android:onClick="listarAnuncio"
+        android:textColorHint="@color/colorPrimary"
+        android:background="@drawable/screen_border"/>
+
 
 
 </RelativeLayout>
