@@ -3,11 +3,14 @@
 			
 		<h1 class="tituloLogin">PointStore</h1>
 
-		<input id="login" ng-model="login" type="text" name="login" class="form-control formPadrao" placeholder="login" />
+		<form name="formLogin" method="post">
+			<input id="login" ng-model="login" type="text" name="login" class="form-control formPadrao" placeholder="login" />
 
-		<input ng-model="senha" id="senha" type="password" name="senha" class="form-control formPadrao" placeholder="senha" />
+			<input ng-model="senha" id="senha" type="password" name="senha" class="form-control formPadrao" placeholder="senha" />
 
-		<button ng-click="logarUsuario(login, senha)" class="botaoPadrao">logar</button>
+			<button ng-click="logarUsuario(login, senha)" class="botaoPadrao">logar</button>
+		</form>
+
 
 	</div><!-- fim da DIV formulario -->
 
