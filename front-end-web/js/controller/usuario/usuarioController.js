@@ -9,13 +9,22 @@ app.controller('usuarioController', function($scope, $http, $route, $routeParams
         usuarioDAO.login = login;
         usuarioDAO.senha = senha;
 
-        var usuario = angular.toJson(usuarioDAO);
-        $http.post('http://localhost/pointstorePA3/index.php/usuario', usuario)
-        .success(function(retorno){
-            alert("dados cadastrado com sucesso!");
-        }).error(function(){
-            erroMessage = "Usuario "+usuarioDAO.nome+" não foi salvo!";
-        });
+        if(document.formCadastrarUsuario.nome.value == "" || document.formCadastrarUsuario.sobrenome.value == "" ||
+            document.formCadastrarUsuario.email.value == "" || document.formCadastrarUsuario.login.value == "" ||
+            document.formCadastrarUsuario.senha.value == ""){
+            alert("preencha os campos que estiverem vazio!");
+        }else {
+            var usuario = angular.toJson(usuarioDAO);
+            $http.post('http://localhost/pointstorePA3/index.php/usuario', usuario)
+            .success(function(retorno){
+                alert("dados cadastrado com sucesso!");
+                window.location = "http://localhost/pointstorePA3/pointstore/index.html#/view/login/tela_login";
+            }).error(function(){
+                 alert("erro ao cadastrar o usuario, favor, tente novamente mais tarde");
+            });
+        }
+
+        
 	}
 
 
@@ -29,12 +38,10 @@ app.controller('usuarioController', function($scope, $http, $route, $routeParams
         .success(function(retorno){
             alert("senha do email atualizada com sucesso!");
         }).error(function(){
-            erroMessage = "Usuario "+usuarioDAO.email+" não foi salvo!";
+            alert("erro ao autalizar a senha!");
         });
 
     }
 
 });
-
-
 
