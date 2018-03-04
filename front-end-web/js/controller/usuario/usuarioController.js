@@ -13,12 +13,12 @@ app.controller('usuarioController', function($scope, $http, $route, $routeParams
             document.formCadastrarUsuario.email.value == "" || document.formCadastrarUsuario.login.value == "" ||
             document.formCadastrarUsuario.senha.value == ""){
             alert("preencha os campos que estiverem vazio!");
-        }else {
+        }else{
             var usuario = angular.toJson(usuarioDAO);
             $http.post('http://localhost/pointstorePA3/index.php/usuario', usuario)
             .success(function(retorno){
                 alert("dados cadastrado com sucesso!");
-                window.location = "http://localhost/pointstorePA3/pointstore/index.html#/view/login/tela_login";
+                window.location.href = "http://localhost/pointstorePA3/pointstore/index.html#/view/login/tela_login";
             }).error(function(){
                  alert("erro ao cadastrar o usuario, favor, tente novamente mais tarde");
             });
@@ -33,13 +33,20 @@ app.controller('usuarioController', function($scope, $http, $route, $routeParams
         usuarioDAO.email = email;
         usuarioDAO.senha = senha;
 
-        var usuario = angular.toJson(usuarioDAO);
-        $http.put('http://localhost/pointstorePA3/index.php/usuario/senha', usuario)
-        .success(function(retorno){
-            alert("senha do email atualizada com sucesso!");
-        }).error(function(){
-            alert("erro ao autalizar a senha!");
-        });
+        if(document.formAlterarSenha.email.value == "" || document.formAlterarSenha.senha.value == ""){
+            alert("preencha os campos que estiverem vazio!");
+        }else{
+            var usuario = angular.toJson(usuarioDAO);
+            $http.put('http://localhost/pointstorePA3/index.php/usuario/senha', usuario)
+            .success(function(retorno){
+                alert("senha do usuario atualizada com sucesso!");
+                window.location.href = "http://localhost/pointstorePA3/pointstore/index.html#/view/login/tela_login";
+            }).error(function(){
+                alert("erro ao atualizar a senha!");
+            });
+        }
+
+        
 
     }
 
