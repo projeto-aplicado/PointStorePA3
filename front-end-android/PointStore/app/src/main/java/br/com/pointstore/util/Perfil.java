@@ -18,6 +18,7 @@ import javax.inject.Inject;*/
 
 
 import br.com.pointstore.Adapter.Menssagem;
+import br.com.pointstore.Adapter.UsuarioCadastro;
 import br.com.pointstore.R;
 import br.com.pointstore.model.MeusPontos;
 import br.com.pointstore.model.Usuario;
@@ -88,8 +89,20 @@ public class Perfil extends AppCompatActivity implements View.OnClickListener{
 
 
     }
+    public boolean validaUsuarioExpressao(Usuario usuario) {
 
+        String emailParaVerificar = usuario.getEmail();
 
+        return emailParaVerificar.matches("[a-zA-Z0-9]+[a-zA-Z0-9_.-]+@{1}[a-zA-Z0-9_.-]*\\.+[a-z]{2,4}");
+
+        /*
+        * Aceita palavras que comecem de a ate z maiúsculo ou minusculo
+        * Depois aceita de a ate z e alguns caracteres especiais como . _ e -
+        * Aceita um único @
+        * Por fim tem que ter de 2 a 4 letras no final da palavra
+        */
+
+    }
 
     @Override
     public void onClick(View v) {
@@ -109,24 +122,34 @@ public class Perfil extends AppCompatActivity implements View.OnClickListener{
 
                 (this.editTextCPF.getText().length() > 0)){
 
-            Call<Menssagem> userCall = mUsuarioService.updateUser(this.usuario);
-            userCall.enqueue(new Callback<Menssagem>() {
-                @Override
-                public void onResponse(Call<Menssagem> call, Response<Menssagem> response) {
+            if(validaUsuarioExpressao(usuario)){
+                Call<Menssagem> userCall = mUsuarioService.updateUser(this.usuario);
+                userCall.enqueue(new Callback<Menssagem>() {
+                    @Override
+                    public void onResponse(Call<Menssagem> call, Response<Menssagem> response) {
 
-                    Menssagem menssagem = response.body();
+                        Menssagem menssagem = response.body();
 
-                    Context context = getApplicationContext();
-                    //Toast toast = Toast.makeText(context, " : "+menssagem.getMensagem(), Toast.LENGTH_SHORT);
-                    //toast.show();
-                }
+                        Context context = getApplicationContext();
+                        Toast toast = Toast.makeText(context, " : "+menssagem.getMensagem(), Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
 
-                @Override
-                public void onFailure(Call<Menssagem> call, Throwable t) {
-                    Log.e("APP", t.getMessage());
-                    t.printStackTrace();
-                }
-            });
+                    @Override
+                    public void onFailure(Call<Menssagem> call, Throwable t) {
+                        Log.e("APP", t.getMessage());
+                        t.printStackTrace();
+                    }
+                });
+
+
+            }else{
+
+                Toast toast = Toast.makeText(context, " email do tipo inválido", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+
+
 
         }else{
             if (editTextNome.getText().length() <= 0){

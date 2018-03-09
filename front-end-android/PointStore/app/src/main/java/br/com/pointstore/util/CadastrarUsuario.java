@@ -1,5 +1,6 @@
 package br.com.pointstore.util;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -64,6 +65,20 @@ public class CadastrarUsuario extends AppCompatActivity {
         editTextCadUsuario = (EditText) findViewById (R.id.editTextCadUsuario);
     }
 
+    public boolean validaUsuarioExpressao(UsuarioCadastro usuarioCadastro) {
+
+        String emailParaVerificar = usuarioCadastro.getEmail();
+
+        return emailParaVerificar.matches("[a-zA-Z0-9]+[a-zA-Z0-9_.-]+@{1}[a-zA-Z0-9_.-]*\\.+[a-z]{2,4}");
+
+        /*
+        * Aceita palavras que comecem de a ate z maiúsculo ou minusculo
+        * Depois aceita de a ate z e alguns caracteres especiais como . _ e -
+        * Aceita um único @
+        * Por fim tem que ter de 2 a 4 letras no final da palavra
+        */
+
+    }
 
     public void cadastrarUsuario (View v) {
 
@@ -82,31 +97,49 @@ public class CadastrarUsuario extends AppCompatActivity {
 
                 (editTextCadUsuario.getText().length()> 0)){
 
-            Call<Usuario> userCall = mUsuarioService.createUserNoPoints(usuarioCadastro);
 
-            Buffer buffer = new Buffer();
-            try {
-                userCall.request().body().writeTo(buffer);
-                System.out.println(buffer.readUtf8Line());
-            } catch (IOException e) {
-                e.printStackTrace();
+            /*Aqui irei inserir a expressao regular de validar email, se a expressao estiver correta
+            * prossegue o block de instrução*/
+
+            if(validaUsuarioExpressao(usuarioCadastro)){
+
+
+                Call<Usuario> userCall = mUsuarioService.createUserNoPoints(usuarioCadastro);
+
+                Buffer buffer = new Buffer();
+                try {
+                    userCall.request().body().writeTo(buffer);
+                    System.out.println(buffer.readUtf8Line());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                userCall.enqueue(new Callback<Usuario>() {
+                    @Override
+                    public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Usuario> call, Throwable t) {
+
+
+                    }
+                });
+
+                Intent telaDeLogin = new Intent(this, Login.class);
+                startActivity(telaDeLogin);
+
+            }else {
+
+                Context context = getApplicationContext();
+                CharSequence text = "Email invalido";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
             }
-            userCall.enqueue(new Callback<Usuario>() {
-                @Override
-                public void onResponse(Call<Usuario> call, Response<Usuario> response) {
 
-
-                }
-
-                @Override
-                public void onFailure(Call<Usuario> call, Throwable t) {
-
-
-                }
-            });
-
-            Intent telaDeLogin = new Intent(this, Login.class);
-            startActivity(telaDeLogin);
 
         } else {
 
