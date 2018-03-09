@@ -7,7 +7,7 @@
 
 			<input type="text" name="sobrenome" class="form-control formPadrao" placeholder="sobrenome" ng-model="sobrenome" required>
 
-			<input type="email" name="email" class="form-control formPadrao" placeholder="email" ng-model="email" required>
+			<input type="email" name="email" class="form-control formPadrao" placeholder="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" ng-model="email" required>
 
 			<input type="text" name="login" class="form-control formPadrao" placeholder="login" ng-model="login" required>
 

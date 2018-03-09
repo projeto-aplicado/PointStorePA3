@@ -4,7 +4,7 @@
 		<h1 class="tituloLogin">Alterar senha</h1>
 
 		<form name="formAlterarSenha" method="post">
-			<input type="email" name="email" class="form-control formPadrao" placeholder="email" ng-model="email" required>
+			<input type="email" name="email" class="form-control formPadrao" placeholder="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" ng-model="email" required>
 
 			<input type="password" name="senha" class="form-control formPadrao" placeholder="nova senha" ng-model="senha" required>
 
