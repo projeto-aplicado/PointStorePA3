@@ -14,6 +14,9 @@ app.controller('perfilController', function($scope, $http) {
             document.formAtualizarPerfil.cpf.value == "" || document.formAtualizarPerfil.email.value == "" ||
             document.formAtualizarPerfil.login.value == "" || document.formAtualizarPerfil.email.value == ""){
             alert("preencha os campos que estiverem vazio!");
+            document.formAtualizarPerfil.cpf.focus();
+            $(".formPadraoCpf").addClass("formPadraoFocus");
+            return false;
         }else{
             $http.put('http://localhost/pointstorePA3/index.php/login/usuario', usuario)
             .success(function(retorno){
