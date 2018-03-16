@@ -23,9 +23,6 @@
         <activity android:name=".util.CadastrarVendas" />
         <activity android:name=".util.FinalizarCompra" />
         <activity android:name=".util.ListarPontos" />
-
-
-
         <activity android:name=".MainActivity" />
         <activity android:name=".util.CadastrarUsuario" />
         <activity
@@ -35,7 +32,7 @@
         <activity
             android:name=".util.Perfil"
             android:label="@string/title_activity_perfil"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

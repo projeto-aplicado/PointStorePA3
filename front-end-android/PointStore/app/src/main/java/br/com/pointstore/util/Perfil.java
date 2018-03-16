@@ -19,6 +19,8 @@ import javax.inject.Inject;*/
 
 import br.com.pointstore.Adapter.Menssagem;
 import br.com.pointstore.Adapter.UsuarioCadastro;
+import br.com.pointstore.DAO.DataAccessObject;
+import br.com.pointstore.ListarAnunciosActivity;
 import br.com.pointstore.R;
 import br.com.pointstore.model.MeusPontos;
 import br.com.pointstore.model.Usuario;
@@ -45,6 +47,7 @@ public class Perfil extends AppCompatActivity implements View.OnClickListener{
     private Button btnAtualizar;
     private UsuarioService mUsuarioService;
     private Usuario usuario;
+    final DataAccessObject dataAccessObject = new DataAccessObject(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,6 +136,13 @@ public class Perfil extends AppCompatActivity implements View.OnClickListener{
                         Context context = getApplicationContext();
                         Toast toast = Toast.makeText(context, " : "+menssagem.getMensagem(), Toast.LENGTH_SHORT);
                         toast.show();
+                        Intent listarAnuncios = new Intent(Perfil.this, ListarAnunciosActivity.class);
+
+
+                        /*Aqui vai ser chamado a função para atualizar a senha do usuario logado*/
+                        dataAccessObject.atualizarSenhaDoUsuarioLogado(usuario);
+
+                        startActivity(listarAnuncios);
                     }
 
                     @Override

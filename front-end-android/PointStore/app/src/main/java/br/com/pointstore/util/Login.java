@@ -11,15 +11,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import br.com.pointstore.Adapter.UsuarioLogin;
+import br.com.pointstore.DAO.DataAccessObject;
 import br.com.pointstore.ListarAnunciosActivity;
 import br.com.pointstore.R;
 import br.com.pointstore.model.Usuario;
 import rest.LoginService;
-import rest.UsuarioService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -47,13 +46,21 @@ public class Login extends AppCompatActivity {
 
     private String TAG_I;
 
+    final  DataAccessObject dataAccessObject = new DataAccessObject(this);
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         /*Configuracao para uso da genymtion como emulador android*/
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://10.0.3.2").addConverterFactory(JacksonConverterFactory.create()).build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://10.0.3.2").
+                addConverterFactory(JacksonConverterFactory.create()).build();
+
+        //dataAccessObject.deletar();
 
         mLoginService = retrofit.create(LoginService.class);
 
@@ -68,7 +75,7 @@ public class Login extends AppCompatActivity {
 
     public void logar(View v) {
 
-        UsuarioLogin usuarioLogin = new UsuarioLogin();
+        final UsuarioLogin usuarioLogin = new UsuarioLogin();
         usuarioLogin.setLogin(editTextLogin.getText().toString());
         usuarioLogin.setSenha(editTextSenha.getText().toString());
 
@@ -76,7 +83,7 @@ public class Login extends AppCompatActivity {
         if ((editTextLogin.getText().length() > 0) && ((editTextSenha.getText().length() > 0))) {
 
 
-                //Call<Usuario> userLoginCall = mLoginService.loginUser(usuarioLogin);
+
                 Call<Usuario> userLoginCall = mLoginService.loginUser(usuarioLogin);
                 userLoginCall.enqueue(new Callback<Usuario>() {
 
@@ -92,11 +99,15 @@ public class Login extends AppCompatActivity {
 
 
                             Intent listarAnuncios = new Intent(Login.this, ListarAnunciosActivity.class);
-                            listarAnuncios.putExtra("user", user);
+
+
+                            dataAccessObject.inserirUsuarioLogado(usuarioLogin);
 
                             Context context = getApplicationContext();
-                            Toast toast = Toast.makeText(context, "Bem vindo (a)"+user.getNome(), Toast.LENGTH_SHORT);
+
+                            Toast toast = Toast.makeText(context, "Usuario logado", Toast.LENGTH_SHORT);
                             toast.show();
+                            onBackPressed();
                             startActivity(listarAnuncios);
 
 
@@ -106,13 +117,14 @@ public class Login extends AppCompatActivity {
                         }else {
 
                             Context context = getApplicationContext();
-                            //Toast toast = Toast.makeText(context, "Dados inválidos", Toast.LENGTH_SHORT);
-                            //toast.show();
+                            Toast toast = Toast.makeText(context, "Dados inválidos", Toast.LENGTH_SHORT);
+                            toast.show();
                             Snackbar.make(findViewById(R.id.buttonLogin), "Dados inválidos", Snackbar.LENGTH_SHORT).show();
 
                         }
 
                     }
+
 
                     @Override
                     public void onFailure(Call<Usuario> call, Throwable t) {
@@ -121,6 +133,7 @@ public class Login extends AppCompatActivity {
                         t.printStackTrace();
                     }
                 });
+
 
         }else {
 
@@ -133,6 +146,13 @@ public class Login extends AppCompatActivity {
 
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
+
     public void cadastrarUsuario (View v) {
         Intent cadastrarUsuario = new Intent(this, CadastrarUsuario.class);
         startActivity(cadastrarUsuario);

@@ -1,5 +1,6 @@
 package br.com.pointstore;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -15,7 +16,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import br.com.pointstore.Adapter.UsuarioLogin;
+import br.com.pointstore.DAO.DataAccessObject;
 import br.com.pointstore.model.MeusPontos;
 import br.com.pointstore.model.Usuario;
 import br.com.pointstore.util.CadastrarPontos;
@@ -24,12 +28,21 @@ import br.com.pointstore.util.FinalizarCompra;
 import br.com.pointstore.util.ListarPontos;
 import br.com.pointstore.util.Login;
 import br.com.pointstore.util.Perfil;
+import rest.LoginService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.jackson.JacksonConverterFactory;
 
 public class ListarAnunciosActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Usuario user;
     private TextView userLogin;
+    UsuarioLogin usuarioLogin = new UsuarioLogin();
+    private LoginService mLoginService;
+    final DataAccessObject dataAccessObject = new DataAccessObject(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +51,14 @@ public class ListarAnunciosActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://10.0.3.2").
+                addConverterFactory(JacksonConverterFactory.create()).build();
 
-        //this.userLogin = (TextView) findViewById(R.id.textViewLogin);
-        //this.userLogin.setText(user.getLogin());
+        mLoginService = retrofit.create(LoginService.class);
 
+
+
+        /*AREA DE NAVEGAÇÃO*/
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -50,7 +67,32 @@ public class ListarAnunciosActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        /*Area de navegação*/
 
+        /*Carregando usuariologin do banco sqlite*/
+
+        usuarioLogin = dataAccessObject.procurarLoginSalvoSQLlite();
+
+        Call<Usuario> userLoginCall = mLoginService.loginUser(usuarioLogin);
+        /*Aqui recebe via intenter um objeto do tipo usuario*/
+
+        userLoginCall.enqueue(new Callback<Usuario>() {
+
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                user = response.body();
+
+
+                Context context = getApplicationContext();
+
+
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+
+            }
+        });
 
 
 
@@ -88,26 +130,63 @@ public class ListarAnunciosActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
-        user = (Usuario) getIntent().getSerializableExtra("user");
+        /*Aqui vai ser carregado o login que foi salvo na atividade de login*/
+        usuarioLogin = dataAccessObject.procurarLoginSalvoSQLlite();
 
+        int id = item.getItemId();
+        //user = (Usuario) getIntent().getSerializableExtra("user");
+
+        Call<Usuario> userLoginCall = mLoginService.loginUser(usuarioLogin);
+
+
+        userLoginCall.enqueue(new Callback<Usuario>() {
+
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                user = response.body();
+
+                Context context = getApplicationContext();
+
+                /*
+                Toast toast = Toast.makeText(context, " Nome : " +user.getNome()+" sobrenome : "+user.getSobrenome()
+                        +" email : " +user.getEmail()+" login : "+user.getLogin() +" senha : "+user.getSenha(), Toast.LENGTH_SHORT);
+                toast.show();*/
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+
+            }
+        });
+
+
+        /*-----------------------------------------*/
         if (id == R.id.nav_meuperfil) {
             Intent meuPerfil = new Intent(this, Perfil.class);
             meuPerfil.putExtra("user", user);
+
             startActivity(meuPerfil);
+
+
         } else if (id == R.id.nav_meuspontos) {
             //Intent listarPontos = new Intent(this, ListarPontos.class);
             Intent listarPontos = new Intent(this, Listar_pontos_cadastradros.class);
             startActivity(listarPontos);
+
         }else if (id == R.id.nav_cadastrarvendas) {
             Intent cadastrarVendas = new Intent(this, CadastrarVendas.class);
             startActivity(cadastrarVendas);
+
         } else if (id == R.id.nav_sair) {
             Intent sair = new Intent(this, Login.class);
+            dataAccessObject.deletar();
+            this.finish();
             startActivity(sair);
+
         }else if (id == R.id.nav_home){
             Intent home = new Intent(this, ListarAnunciosActivity.class);
             startActivity(home);
+
         } else if (id == R.id.nav_cadastrarpontos) {
             Intent cadastrarPontos = new Intent(this, CadastrarSeusPontos.class);
             startActivity(cadastrarPontos);
