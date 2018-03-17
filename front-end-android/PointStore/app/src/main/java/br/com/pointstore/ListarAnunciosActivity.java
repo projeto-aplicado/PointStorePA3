@@ -173,6 +173,10 @@ public class ListarAnunciosActivity extends AppCompatActivity
             Intent listarPontos = new Intent(this, Listar_pontos_cadastradros.class);
             startActivity(listarPontos);
 
+        } else if (id == R.id.nav_cadastrarpontos) {
+            Intent cadastrarPontos = new Intent(this, CadastrarSeusPontos.class);
+            startActivity(cadastrarPontos);
+
 
         } else if (id == R.id.nav_sair) {
             Intent sair = new Intent(this, Login.class);

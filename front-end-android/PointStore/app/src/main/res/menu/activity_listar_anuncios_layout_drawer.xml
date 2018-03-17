@@ -12,22 +12,18 @@
             android:id="@+id/nav_meuperfil"
             android:icon="@drawable/ic_menu_camera"
             android:title="Meu Perfil" />
-<!--
-        <item
-            android:id="@+id/nav_cadastrarpontos"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Cadastrar Pontos" />
--->
+
         <item
             android:id="@+id/nav_meuspontos"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Meus Pontos" />
-<!--
+
         <item
-            android:id="@+id/nav_cadastrarvendas"
+            android:id="@+id/nav_cadastrarpontos"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Cadastrar Vendas" />
--->
+            android:title="Cadastrar Pontos" />
+
+
         <item
             android:id="@+id/nav_sair"
             android:icon="@drawable/ic_menu_send"
