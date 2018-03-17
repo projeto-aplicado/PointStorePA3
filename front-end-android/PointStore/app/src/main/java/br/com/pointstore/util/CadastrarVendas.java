@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
+import br.com.pointstore.CadastrarSeusPontos;
 import br.com.pointstore.ListarAnunciosActivity;
 import br.com.pointstore.R;
 import br.com.pointstore.model.Usuario;
@@ -48,12 +49,11 @@ public class CadastrarVendas extends AppCompatActivity {
         editTextValorPontos = (EditText) findViewById(R.id.editTextValorPontos);
     }
 
-    public void cadastrarPontos (View v) {
-
-        //usuario = new Usuario(editTextTipoPontos.getText().toString(),editTextQtdPontos.getText().toString(),editTextValorPontos.getText().toString());
+    public void cadastrarVendas (View v) {
 
         if ((editTextTipoPontos.getText().length() > 0) && (editTextQtdPontos.getText().length() > 0) && (editTextValorPontos.getText().length() > 0)){
-
+            Intent cadastrarVendas = new Intent(this, ListarAnunciosActivity.class);
+            startActivity(cadastrarVendas);
             Call<Usuario> userCall = mUsuarioService.createUser(usuario);
             userCall.enqueue(new Callback<Usuario>() {
                 @Override
@@ -94,5 +94,10 @@ public class CadastrarVendas extends AppCompatActivity {
     public void finalizarCompra(View view) {
         Intent finalizarcompra = new Intent(this, FinalizarCompra.class);
         startActivity(finalizarcompra);
+    }
+
+    public void cadastrarSeusPontos(View view) {
+        Intent cadastrarseuspontos = new Intent (this, CadastrarSeusPontos.class);
+        startActivity(cadastrarseuspontos);
     }
 }

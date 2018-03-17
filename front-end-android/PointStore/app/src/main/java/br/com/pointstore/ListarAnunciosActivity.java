@@ -173,9 +173,6 @@ public class ListarAnunciosActivity extends AppCompatActivity
             Intent listarPontos = new Intent(this, Listar_pontos_cadastradros.class);
             startActivity(listarPontos);
 
-        }else if (id == R.id.nav_cadastrarvendas) {
-            Intent cadastrarVendas = new Intent(this, CadastrarVendas.class);
-            startActivity(cadastrarVendas);
 
         } else if (id == R.id.nav_sair) {
             Intent sair = new Intent(this, Login.class);
@@ -187,9 +184,7 @@ public class ListarAnunciosActivity extends AppCompatActivity
             Intent home = new Intent(this, ListarAnunciosActivity.class);
             startActivity(home);
 
-        } else if (id == R.id.nav_cadastrarpontos) {
-            Intent cadastrarPontos = new Intent(this, CadastrarSeusPontos.class);
-            startActivity(cadastrarPontos);
+
         }
 
 
@@ -204,7 +199,6 @@ public class ListarAnunciosActivity extends AppCompatActivity
     }
 
     public void cadastrarPontos(View view) {
-        //Intent cadastrarPontos = new Intent (this, CadastrarPontos.class);
         Intent cadastrarPontos = new Intent (this, CadastrarSeusPontos.class);
         startActivity(cadastrarPontos);
     }
@@ -212,5 +206,10 @@ public class ListarAnunciosActivity extends AppCompatActivity
     public void listarPontos(View view) {
         Intent listarpontos = new Intent (this, Listar_pontos_cadastradros.class);
         startActivity(listarpontos);
+    }
+
+    public void cadastrarVendas (View view) {
+        Intent cadastrarvendas = new Intent(this, CadastrarVendas.class);
+        startActivity(cadastrarvendas);
     }
 }

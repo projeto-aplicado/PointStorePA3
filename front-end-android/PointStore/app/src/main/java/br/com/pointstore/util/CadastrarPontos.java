@@ -58,9 +58,6 @@ public class CadastrarPontos extends AppCompatActivity {
 
         usuario = (Usuario) getIntent().getSerializableExtra("user");
 
-        //loja = (Loja)this.editTextTipoPontos.getText().toString();
-
-        //meusPontos = new MeusPontos(editTextTipoPontos.getText().toString(),editTextQtdPontos.getText().toString());
 
         if ((editTextTipoPontos.getText().length() > 0) && (editTextQtdPontos.getText().length() > 0) ){
             Intent cadastrarPontos = new Intent(this, ListarAnunciosActivity.class);
@@ -104,5 +101,10 @@ public class CadastrarPontos extends AppCompatActivity {
     public void finalizarCompra(View view) {
         Intent finalizarcompra = new Intent(this, FinalizarCompra.class);
         startActivity(finalizarcompra);
+    }
+
+    public void cadastrarVendas (View view) {
+        Intent cadastrarvendas = new Intent(this, CadastrarVendas.class);
+        startActivity(cadastrarvendas);
     }
 }

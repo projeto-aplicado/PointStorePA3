@@ -6,7 +6,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/pointstorelogo"
+        android:icon="@drawable/point_store_icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -23,6 +23,11 @@
         <activity android:name=".util.CadastrarVendas" />
         <activity android:name=".util.FinalizarCompra" />
         <activity android:name=".util.ListarPontos" />
+        <activity android:name=".Listar_pontos_cadastradros" />
+        <activity android:name=".CadastrarSeusPontos" />
+
+
+
         <activity android:name=".MainActivity" />
         <activity android:name=".util.CadastrarUsuario" />
         <activity
@@ -32,7 +37,7 @@
         <activity
             android:name=".util.Perfil"
             android:label="@string/title_activity_perfil"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

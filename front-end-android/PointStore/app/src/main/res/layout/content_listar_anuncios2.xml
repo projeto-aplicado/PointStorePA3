@@ -164,25 +164,25 @@
         fab:menu_showShadow="true">
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/cadastrar_pontos"
+            android:id="@+id/cadastrar_vendas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/if_insert"
-            android:onClick="cadastrarPontos"
+            android:onClick="cadastrarVendas"
             app:fab_colorNormal="@color/colorAccent"
             app:fab_colorPressed="@color/colorAccentDark"
-            fab:fab_label="Cadastrar  pontos"
+            fab:fab_label="Cadastrar Vendas"
             fab:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/listar_pontos"
+            android:id="@+id/realizar_compra"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/if_buy"
-            android:onClick="listarPontos"
+            android:onClick="finalizarCompra"
             app:fab_colorNormal="@color/colorAccent"
             app:fab_colorPressed="@color/colorAccentDark"
-            fab:fab_label="Meus Pontos"
+            fab:fab_label="Realizar Compra"
             fab:fab_size="mini" />
 
     </com.github.clans.fab.FloatingActionMenu>

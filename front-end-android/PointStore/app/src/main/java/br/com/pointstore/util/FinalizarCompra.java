@@ -41,7 +41,7 @@ public class FinalizarCompra extends Activity {
 
         //Adicionando Nomes no ArrayList
         //nomes.add("Cartao de Crédito");
-        nomes.add("Boleto");
+        nomes.add("Credito");
 
 
         //Identifica o Spinner no layout
