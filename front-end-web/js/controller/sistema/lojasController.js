@@ -1,30 +1,43 @@
 app.controller('lojasController', function($scope, $http, $route, $routeParams, $location) {
 
+    $scope.lista = {};
+    $scope.listarPontos = [];
+    $scope.pontos;
+    $scope.usuario = usuario;
 
-	alert('teste fora da funcao');
-	$scope.lista = {};
-	$scope.listarPontos = [
-    	{tipoDoPonto: 'TAM', quantidadePonto: '0'}
-    	,{tipoDoPonto: 'GOL', quantidadePonto: '0'}
-    	,{tipoDoPonto: 'DOTS', quantidadePonto: '0'}
-    ];
-
-
-	/*$scope.cadastrarTiposDePontos = function(tipoDePontos, quantidadePonto){
-        var meusPontosDAO = new Object();
-        var tipoDePontosDAO = new Loja();
-
-        meusPontosDAO.quantidadePonto = quantidadePonto;
-        tipoDePontosDAO.tipoDePontos = tipoDePontos;
-        meusPontosDAO.loja = tipoDePontosDAO;
-
-        var tipoDePontosUsuario = angular.toJson(meusPontosDAO);
-        $http.post('http://localhost:8080/PointStoreWeb/rest/meuspontos', tipoDePontosUsuario)
+    $http.get('http://localhost/pointstorePA3/index.php/meuspontos/'+$scope.usuario.id,{})
         .success(function(retorno){
-            alert(retorno);
+          $scope.listarPontos = retorno;
         }).error(function(){
-            erroMessage = "O ponto "+tipoDePontosDAO.tipoDePontos+" não foi salvo!";
+        alert("Erro ao cerregar tabela");
+    });
+
+    $scope.cadastrarTiposDePontos = function(){
+        var meusPontosDAO = new Object();
+        meusPontosDAO.tipoDePontos = $scope.pontos.tipoDePontos;
+        meusPontosDAO.quantidadePonto = $scope.pontos.quantidadePonto;
+        meusPontosDAO.id = $scope.pontos.id;
+        var tipoDePontosUsuario = angular.toJson(meusPontosDAO);
+
+        $http.put('http://localhost/pointstorePA3/index.php/meuspontos/atualizar', tipoDePontosUsuario)
+            .success(function(retorno){
+                alert("ponto cadastrado com sucesso!");
+            }).error(function(){
+            alert("erro no cadastro do ponto");
         });
-    }*/
+    }
+
+    $scope.pesquisarPontos = function(tipoDePonto){
+        $http.get('http://localhost/pointstorePA3/index.php/meuspontos/'+$scope.usuario.id,{'tipoDePonto':tipoDePonto})
+            .success(function(retorno){
+                $(retorno).each(function(k,v){
+                    if($("#meus-pontos_tipoDePonto").val() == v.tipoDePonto){
+                       $scope.pontos = v;
+                    }
+                });
+            }).error(function(){
+                alert("erro ao listar pontos, por favor tente novamente!");
+        });
+    }
 
 });
