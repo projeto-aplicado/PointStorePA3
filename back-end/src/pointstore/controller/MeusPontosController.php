@@ -15,18 +15,23 @@ class MeusPontosController extends AbstractController{
 
 	public function insert($json){}
 
-	public function update($json){}
+	public function update($json){
+		$meusPontosDetached = $this->getDao()->entityManager->find('\pointstore\entity\MeusPontos', $json->id);
+        $meusPontosDetached->setQuantidadePonto($json->quantidadePonto);
+        $this->getDao()->update($meusPontosDetached);
+        return ["mensagem" => "Ponto atualizada com sucesso"];
+	}
 
 	public function listarPontoUsuario($id){
-		if($id == null){
-			$meusPontosDetached = $this->getDao()->entityManager->createQuery('SELECT meusPontos FROM pointstore\entity\MeusPontos meusPontos');
-			$queryResult = $meusPontosDetached->getArrayResult();
-		} else{
-			$meusPontosDetached = $this->getDao()->entityManager->createQuery('SELECT meusPontos FROM \pointstore\entity\MeusPontos meusPontos WHERE meusPontos.usuario_id = :usuario_id');
-			$meusPontosDetached->setParameter('usuario_id', $id);
-			$queryResult = $meusPontosDetached->getResult()[0];
-		}
-		return $queryResult;
+		if ($id == null) {
+            $meusPontosDetached = $this->getDao()->entityManager->createQuery('SELECT meusPontos FROM pointstore\entity\MeusPontos meusPontos');
+            $queryResult = $meusPontosDetached->getArrayResult();
+        } else {
+            $meusPontosDetached = $this->getDao()->entityManager->createQuery('SELECT meusPontos FROM \pointstore\entity\MeusPontos meusPontos WHERE meusPontos.id_usuario = :id_usuario');
+            $meusPontosDetached->setParameter('id_usuario', $id);
+            $queryResult = $meusPontosDetached->getArrayResult();
+        }
+        return $queryResult;
 
 	}
 
