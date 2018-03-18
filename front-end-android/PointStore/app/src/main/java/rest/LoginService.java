@@ -20,28 +20,12 @@ import retrofit2.http.Path;
 
 public interface LoginService {
 
-    /*
-    @POST("pointstorePA3/index.php/login")
-    Call<Usuario> loginUser(@Body Usuario usuario);*/
 
-/*    @POST("pointstorePA3/index.php/login")
-    Call<Usuario> loginUser(@Body UsuarioLogin usuarioLogin);
-*/
-/*
-    @POST("pointstorePA3/index.php/login")
-    Call<Usuario> loginUser(@Body  String login,@Body String senha);*/
 
     @POST("pointstorePA3/index.php/login")
     Call<Usuario> loginUser(@Body UsuarioLogin usuarioLogin);
 
 
-
-
-    @GET("/PointStoreWeb/rest/usuarioLogin")
-    Call<Collection<Usuario>> logar();
-
-   /* @PUT("/PointStoreWeb/rest/usuarioLogin/{email}")
-    Call<Usuario> atualizaSenha(@Body Usuario usuario, @Path("email") String email);*/
 
 
     @PUT("pointstorePA3/index.php/usuario/senha")

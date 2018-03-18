@@ -3,6 +3,8 @@ package br.com.pointstore.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Created by Arley on 12/12/2017.
  * esse objeto é para lista de pontos generica.
@@ -10,23 +12,35 @@ import android.os.Parcelable;
 
 public class Pontos {
 
-    private String nome;
-    private String quantidade;
+    @JsonProperty("id")
+    private String id;
 
+    @JsonProperty("tipoDePonto")
+    private String tipoDePonto;
 
+    @JsonProperty("quantidadePonto")
+    private String quantidadePonto;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public Pontos(){}
 
     public Pontos(Parcel in){ readFromParcelable(in);}
 
     private void readFromParcelable (Parcel in){
-        nome = in.readString();
-        quantidade = in.readString();
+        tipoDePonto = in.readString();
+        quantidadePonto = in.readString();
     }
 
     private void writeToParcel (Parcel out, int flags){
-        out.writeString(nome);
-        out.writeString(quantidade);
+        out.writeString(tipoDePonto);
+        out.writeString(quantidadePonto);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator(){
@@ -41,7 +55,7 @@ public class Pontos {
     };
 
     public String toString(){
-        return "Ponto: " + this.nome;
+        return "Ponto: " + this.tipoDePonto;
     }
 
     public int describeContents(){
@@ -49,19 +63,19 @@ public class Pontos {
         return 0;
     }
 
-    public String getNome() {
-        return nome;
+    public String gettipoDePonto() {
+        return tipoDePonto;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void settipoDePonto(String tipoDePonto) {
+        this.tipoDePonto = tipoDePonto;
     }
 
-    public String getQuantidade() {
-        return quantidade;
+    public String getquantidadePonto() {
+        return quantidadePonto;
     }
 
-    public void setQuantidade(String quantidade) {
-        this.quantidade = quantidade;
+    public void setquantidadePonto(String quantidadePonto) {
+        this.quantidadePonto = quantidadePonto;
     }
 }

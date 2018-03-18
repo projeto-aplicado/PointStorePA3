@@ -9,22 +9,21 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import br.com.pointstore.model.PontosUsuario;
+import br.com.pointstore.model.Pontos;
 import br.com.pointstore.model.Usuario;
 
 public class Listar_pontos_cadastradros extends AppCompatActivity {
 
     private ListView listViewPontosCadastrados;
 
-    private ArrayList<PontosUsuario> listaDePontos = new ArrayList<PontosUsuario>();
-    //private ArrayList<PontosUsuario> listaDePontos = new ArrayList<PontosUsuario>();
-    private ArrayAdapter<PontosUsuario> adaptadorLista;
+    private ArrayList<Pontos> listaDePontos = new ArrayList<Pontos>();
+    //private ArrayList<Pontos> listaDePontos = new ArrayList<Pontos>();
+    private ArrayAdapter<Pontos> adaptadorLista;
 
-    private  PontosUsuario pontosSelecionado= new PontosUsuario();
+    private  Pontos pontosSelecionado= new Pontos();
 
     private int adaptadorLayout = android.R.layout.simple_list_item_1;
 
@@ -34,7 +33,7 @@ public class Listar_pontos_cadastradros extends AppCompatActivity {
 
     private Usuario user;
 
-    private ArrayList<PontosUsuario> listDePontosRecebida = new ArrayList<PontosUsuario>();
+    private ArrayList<Pontos> listDePontosRecebida = new ArrayList<Pontos>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,39 +46,39 @@ public class Listar_pontos_cadastradros extends AppCompatActivity {
 
         button = (Button)findViewById(R.id.buttonGravarDados);
 
-        //listaDePontos = (ArrayList<PontosUsuario>) getIntent().getSerializableExtra("listaDePontos");
+        //listaDePontos = (ArrayList<Pontos>) getIntent().getSerializableExtra("listaDePontos");
 
-
-        final PontosUsuario pontos = new PontosUsuario();
+        /*
+        final Pontos pontos = new Pontos();
         pontos.setNome("Prêmia"); pontos.setQuantidade("50");
 
-        final PontosUsuario pontos1 = new PontosUsuario();
+        final Pontos pontos1 = new Pontos();
         pontos1.setNome("Avianca"); pontos1.setQuantidade("25");
 
-        final PontosUsuario pontos2 = new PontosUsuario();
+        final Pontos pontos2 = new Pontos();
         pontos2.setNome("Milhas da Gol"); pontos2.setQuantidade("60");
 
-        final PontosUsuario pontos3 = new PontosUsuario();
+        final Pontos pontos3 = new Pontos();
         pontos3.setNome("Varig"); pontos3.setQuantidade("75");
 
-        final PontosUsuario pontos4 = new PontosUsuario();
+        final Pontos pontos4 = new Pontos();
         pontos4.setNome("Tudo Azul"); pontos4.setQuantidade("55");
 
-        final PontosUsuario pontos5 = new PontosUsuario();
-        pontos5.setNome("Latam"); pontos5.setQuantidade("25");
+        final Pontos pontos5 = new Pontos();
+        pontos5.setNome("Latam"); pontos5.setQuantidade("25");*/
 
 
         /*
         Toast.makeText(getApplication(), "Ponto : "
                 + pontos.getNome(), Toast.LENGTH_LONG).show();*/
 
-        listaDePontos .add(pontos);listaDePontos .add(pontos1);listaDePontos .add(pontos2);listaDePontos .add(pontos3);listaDePontos .add(pontos4);listaDePontos .add(pontos5);
+       // listaDePontos .add(pontos);listaDePontos .add(pontos1);listaDePontos .add(pontos2);listaDePontos .add(pontos3);listaDePontos .add(pontos4);listaDePontos .add(pontos5);
 
-        adaptadorLista = new ArrayAdapter<PontosUsuario>(this, adaptadorLayout, listaDePontos);
+        adaptadorLista = new ArrayAdapter<Pontos>(this, adaptadorLayout, listaDePontos);
 
         listViewPontosCadastrados.setAdapter(adaptadorLista);
 
-        pontosSelecionado.setNome("");
+       // pontosSelecionado.setNome("");
         listViewPontosCadastrados.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -87,10 +86,10 @@ public class Listar_pontos_cadastradros extends AppCompatActivity {
 
                 //Toast.makeText(getApplication(), "Ponto selecionado : "
                         //+ pontosSelecionado.getNome(), Toast.LENGTH_LONG).show();
-
+                /*
                 Snackbar.make(findViewById(R.id.btRetorna), "Ponto selecionado : "
-                        + pontosSelecionado.getNome(), Snackbar.LENGTH_SHORT).show();
-                NomeSelecionadotextView.setText(pontosSelecionado.getNome());
+                        + pontosSelecionado.getNome(), Snackbar.LENGTH_SHORT).show();*/
+                //NomeSelecionadotextView.setText(pontosSelecionado.getNome());
             }
 
 

@@ -22,7 +22,6 @@ import br.com.pointstore.Adapter.UsuarioLogin;
 import br.com.pointstore.DAO.DataAccessObject;
 import br.com.pointstore.model.MeusPontos;
 import br.com.pointstore.model.Usuario;
-import br.com.pointstore.util.CadastrarPontos;
 import br.com.pointstore.util.CadastrarVendas;
 import br.com.pointstore.util.FinalizarCompra;
 import br.com.pointstore.util.ListarPontos;
@@ -175,6 +174,9 @@ public class ListarAnunciosActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_cadastrarpontos) {
             Intent cadastrarPontos = new Intent(this, CadastrarSeusPontos.class);
+            String idToString = user.getIdUsuario().toString();
+            //cadastrarPontos.putExtra("id_usuario",user.getIdUsuario());
+            cadastrarPontos.putExtra("id_usuario",idToString);
             startActivity(cadastrarPontos);
 
 

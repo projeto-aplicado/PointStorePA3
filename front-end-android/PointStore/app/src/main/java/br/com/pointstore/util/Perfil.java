@@ -56,6 +56,8 @@ public class Perfil extends AppCompatActivity implements View.OnClickListener{
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        /* desative pois quando clicava no perfil ele quebrava
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +65,7 @@ public class Perfil extends AppCompatActivity implements View.OnClickListener{
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://10.0.3.2")
