@@ -2,7 +2,7 @@
     <div class="row perfil-header">
         <div class="perfil-header-sub">
             <h1 class="title titulo">Meus Pontos</h1>
-        
+
             <div class="col-md-3 box-menu">
                 <a href="#/perfil">
                     <img src="img/icone-perfil.PNG" alt="icone perfil usuário">
@@ -24,19 +24,42 @@
 
 
 <div class="conteudoPage col-md-6">
-    <form name="meusPontos" onSubmit="return validarMeusPontos();">
+    <form name="meusPontos">
         <p>
-            <select name="tipoDePontos" class="form-control" ng-model="tipoDePontos">
-                <option value="listarPontos.tipoDoPontos" ng-selected="tipoDePontos==listarPontos.tipoDoPontos" ng-repeat="listaDePontos in listarPontos">{{listaDePontos.tipoDoPontos}}</option>
+            <select name="tipoDePonto" id="meus-pontos_tipoDePonto" ng-model="pontos.tipoDePonto"
+                    ng-change="pesquisarPontos(tipoDePonto)">
+                <option value="">Tipo</option>
+                <option value="Tam">TAM</option>
+                <option value="Gol">GOL</option>
             </select>
         </p>
 
         <p>
-            <input type="text" name="quantidadePonto" class="form-control formPadrao" placeholder="quantidade de pontos" ng-model="quantidadePonto">
+            <input type="text" name="quantidadePonto" id="meus-pontos_quantidadePonto" class="form-control formPadrao"
+                   placeholder="quantidade de pontos" ng-model="pontos.quantidadePonto">
+        </p>
+        <p>
+            <input type="hidden" name="codigo" id="meus-pontos_id" class="form-control formPadrao" placeholder="Codigo"
+                   ng-model="pontos.codigo">
         </p>
 
-        <input type="submit" ngClick="cadastrarMeusPontos(tipoDePontos, quantidadePonto)" name="enviar" value="cadastrar" class="botaoPadrao">
+        <button type="button" ng-click="cadastrarTiposDePontos()" class="botaoPadrao">cadastrar</button>
 
     </form>
-
+</div>
+<div class="conteudoPage col-md-12">
+    <div ng-controller="lojasController">
+        <table class="table table-hover table-condensed">
+            <tr>
+                <th>#</th>
+                <th>Tipo</th>
+                <th>Quantidade</th>
+            </tr>
+            <tr ng-repeat="x in listarPontos">
+                <td>{{ $index + 1 }}</td>
+                <td>{{ x.tipoDePonto }}</td>
+                <td>{{ x.quantidadePonto }}</td>
+            </tr>
+        </table>
+    </div>
 </div>

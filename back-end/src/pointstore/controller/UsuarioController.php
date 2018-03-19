@@ -21,22 +21,24 @@ class UsuarioController extends AbstractController {
     	$user->setLogin($json->login);
     	$user->setSenha($json->senha);
 
-    	
-    	$pontos = $this->getMeusPontosDefault();
-    	$user->setMeusPontos($pontos);
-
+    	$user->setCredito("100");
 
     	$this->getDao()->insert($user);
+    	$pontos = $this->getMeusPontosDefault($user);
+    	$this->getDao()->insert($pontos[0]);
+        $this->getDao()->insert($pontos[1]);
     	return ["mensagem"=>"Usuario inserido com sucesso"];
 	}
 
 	public function getMeusPontosDefault(){
 		$tam = new MeusPontos();
     	$tam->setTipoDePonto("Tam");
+    	$tam->setUsuario($user);
     	$tam->setQuantidadePonto(0);
 
     	$gol = new MeusPontos();
     	$gol->setTipoDePonto("Gol");
+        $gol->setUsuario($user);
     	$gol->setQuantidadePonto(0);
 
     	return array($tam, $gol);
