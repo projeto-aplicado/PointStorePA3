@@ -168,14 +168,16 @@ public class ListarAnunciosActivity extends AppCompatActivity
 
 
         } else if (id == R.id.nav_meuspontos) {
-            //Intent listarPontos = new Intent(this, ListarPontos.class);
+
+            String idToString = user.getIdUsuario().toString();
             Intent listarPontos = new Intent(this, Listar_pontos_cadastradros.class);
+            listarPontos.putExtra("id_usuario",idToString);
             startActivity(listarPontos);
 
         } else if (id == R.id.nav_cadastrarpontos) {
             Intent cadastrarPontos = new Intent(this, CadastrarSeusPontos.class);
             String idToString = user.getIdUsuario().toString();
-            //cadastrarPontos.putExtra("id_usuario",user.getIdUsuario());
+
             cadastrarPontos.putExtra("id_usuario",idToString);
             startActivity(cadastrarPontos);
 

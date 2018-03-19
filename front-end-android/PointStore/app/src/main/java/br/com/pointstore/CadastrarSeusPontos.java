@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.pointstore.Adapter.Menssagem;
 import br.com.pointstore.model.Pontos;
 import rest.PontosService;
 import retrofit2.Call;
@@ -32,7 +34,8 @@ public class CadastrarSeusPontos extends AppCompatActivity {
     private  Pontos pontosSelecionado= new Pontos();
     private int adaptadorLayout = android.R.layout.simple_list_item_1;
     private TextView NomeSelecionadotextView;
-    private Button button;
+    private Button BT_GRAVAR_DADOS;
+    private EditText Ed_quantidade;
     private PontosService mPontosService;
     private String idUsuario;
 
@@ -46,7 +49,9 @@ public class CadastrarSeusPontos extends AppCompatActivity {
 
         NomeSelecionadotextView = (TextView) findViewById(R.id.pontoSelecionado);
 
-        button = (Button)findViewById(R.id.buttonGravarDados);
+        BT_GRAVAR_DADOS = (Button)findViewById(R.id.buttonGravarDados);
+
+        Ed_quantidade = (EditText) findViewById(R.id.ed_quantidade);
 
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -65,7 +70,10 @@ public class CadastrarSeusPontos extends AppCompatActivity {
 
 
 
-
+        /*
+        * Faz uma solicitação pelo mPontosService,passando como parametro "idUsuario"
+        * e recebe uma List de Objeto Pontos  para jogar dentro de um listview
+        * */
         Call<List<Pontos>> pontosCall = mPontosService.meusPontos(idUsuario);
         pontosCall.enqueue(new Callback<List<Pontos>>() {
             @Override
@@ -78,7 +86,8 @@ public class CadastrarSeusPontos extends AppCompatActivity {
                 *
                 * Evento de botão dentre outros serão implementados dentro desse onresponse
                 * */
-                final ArrayAdapter adaptadorListaResponse = new ArrayAdapter(CadastrarSeusPontos.this,adaptadorLayout,novalistaDePontos);
+                final ArrayAdapter adaptadorListaResponse = new ArrayAdapter(CadastrarSeusPontos.this,
+                        adaptadorLayout,novalistaDePontos);
 
                 listViewPontos.setAdapter(adaptadorListaResponse);
 
@@ -90,15 +99,48 @@ public class CadastrarSeusPontos extends AppCompatActivity {
                         pontosSelecionado = (Pontos) adaptadorListaResponse.getItem(i);
 
                         Toast.makeText(getApplication(), "Ponto selecionado : "
-                        + pontosSelecionado.gettipoDePonto(), Toast.LENGTH_SHORT).show();
-
-                /*Snackbar.make(findViewById(R.id.buttonGravarDados), pontosSelecionado.getNome(), Snackbar.LENGTH_SHORT).show();*/
-
-                NomeSelecionadotextView.setText(pontosSelecionado.gettipoDePonto());
-
-                    }
+                        + pontosSelecionado.gettipoDePonto()+" id do ponto selecionado : "+pontosSelecionado.getId(),
+                                Toast.LENGTH_SHORT).show();
 
 
+
+                        NomeSelecionadotextView.setText(pontosSelecionado.gettipoDePonto());
+
+
+                        BT_GRAVAR_DADOS.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                /*Captura a quantidade de pontos indicada no campo,depois seta o valor
+                                no objeto "pontosSelecionado" e depois envia para ser atualizado
+                                * */
+                                String quantidade = Ed_quantidade.getText().toString();
+
+                                pontosSelecionado.setquantidadePonto(quantidade);
+
+                                final Call<Menssagem> menssagemCall = mPontosService.atualizarMeusPontos(pontosSelecionado);
+
+                                menssagemCall.enqueue(new Callback<Menssagem>() {
+                                    @Override
+                                    public void onResponse(Call<Menssagem> call, Response<Menssagem> response) {
+
+                                        Menssagem menssagem = response.body();
+
+
+                                        Toast.makeText(getApplication(), menssagem.getMensagem(),
+                                                Toast.LENGTH_SHORT).show();
+
+                                        Intent intent = new Intent(CadastrarSeusPontos.this,ListarAnunciosActivity.class);
+
+                                        startActivity(intent);
+
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<Menssagem> call, Throwable t) {   } });
+
+                                    }
+                                    });
+                        }
 
 
                 });
@@ -115,16 +157,7 @@ public class CadastrarSeusPontos extends AppCompatActivity {
 
 
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(CadastrarSeusPontos.this,ListarAnunciosActivity.class);
-
-                startActivity(intent);
-
-            }
-        });
+        
 
 
 

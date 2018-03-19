@@ -48,7 +48,7 @@
         android:text="Quantidade :" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/ed_quantidade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView3"

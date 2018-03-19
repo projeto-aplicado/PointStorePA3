@@ -1,8 +1,10 @@
 package br.com.pointstore;
 
+import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,13 +13,21 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import br.com.pointstore.Adapter.PontosMeusPontos;
 import br.com.pointstore.model.Pontos;
 import br.com.pointstore.model.Usuario;
+import rest.PontosService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.jackson.JacksonConverterFactory;
 
 public class Listar_pontos_cadastradros extends AppCompatActivity {
 
-    private ListView listViewPontosCadastrados;
+    private ListView listViewPontos;
 
     private ArrayList<Pontos> listaDePontos = new ArrayList<Pontos>();
     //private ArrayList<Pontos> listaDePontos = new ArrayList<Pontos>();
@@ -31,7 +41,9 @@ public class Listar_pontos_cadastradros extends AppCompatActivity {
 
     private Button button;
 
-    private Usuario user;
+    private PontosService mPontosService;
+
+    private String idUsuario;
 
     private ArrayList<Pontos> listDePontosRecebida = new ArrayList<Pontos>();
     @Override
@@ -40,62 +52,52 @@ public class Listar_pontos_cadastradros extends AppCompatActivity {
         setContentView(R.layout.activity_listar_pontos_cadastradros);
 
 
-        listViewPontosCadastrados =  (ListView) findViewById(R.id.listViewPontosCadastros);
+        listViewPontos =  (ListView) findViewById(R.id.listViewPontosCadastros);
 
         NomeSelecionadotextView = (TextView) findViewById(R.id.pontoSelecionado);
 
         button = (Button)findViewById(R.id.buttonGravarDados);
 
-        //listaDePontos = (ArrayList<Pontos>) getIntent().getSerializableExtra("listaDePontos");
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://10.0.3.2")
+                .addConverterFactory(JacksonConverterFactory.create())
+                .build();
+        this.mPontosService = retrofit.create(PontosService.class);
+        Bundle bundle = getIntent().getExtras();
 
+        /*Recebendo por intent o ide de usuário  para fazer busca*/
+        idUsuario = (String) bundle.getString("id_usuario");
+
+        Log.d("CREATION","id do usuário seleciona é : "+idUsuario);
+
+        Call<List<PontosMeusPontos>> pontosMeusPontosCall = mPontosService.TodosmeusPontos(idUsuario);
+
+       pontosMeusPontosCall.enqueue(new Callback<List<PontosMeusPontos>>() {
+           @Override
+           public void onResponse(Call<List<PontosMeusPontos>> call, Response<List<PontosMeusPontos>> response) {
+               List<PontosMeusPontos>novalistaDePontos = response.body();
+               final ArrayAdapter adaptadorListaResponse = new ArrayAdapter(Listar_pontos_cadastradros.this,
+                       adaptadorLayout,novalistaDePontos);
+               listViewPontos.setAdapter(adaptadorListaResponse);
+
+               
+
+           }
+
+           @Override
+           public void onFailure(Call<List<PontosMeusPontos>> call, Throwable t) {
+
+           }
+       });
         /*
-        final Pontos pontos = new Pontos();
-        pontos.setNome("Prêmia"); pontos.setQuantidade("50");
-
-        final Pontos pontos1 = new Pontos();
-        pontos1.setNome("Avianca"); pontos1.setQuantidade("25");
-
-        final Pontos pontos2 = new Pontos();
-        pontos2.setNome("Milhas da Gol"); pontos2.setQuantidade("60");
-
-        final Pontos pontos3 = new Pontos();
-        pontos3.setNome("Varig"); pontos3.setQuantidade("75");
-
-        final Pontos pontos4 = new Pontos();
-        pontos4.setNome("Tudo Azul"); pontos4.setQuantidade("55");
-
-        final Pontos pontos5 = new Pontos();
-        pontos5.setNome("Latam"); pontos5.setQuantidade("25");*/
-
-
-        /*
-        Toast.makeText(getApplication(), "Ponto : "
-                + pontos.getNome(), Toast.LENGTH_LONG).show();*/
-
-       // listaDePontos .add(pontos);listaDePontos .add(pontos1);listaDePontos .add(pontos2);listaDePontos .add(pontos3);listaDePontos .add(pontos4);listaDePontos .add(pontos5);
-
-        adaptadorLista = new ArrayAdapter<Pontos>(this, adaptadorLayout, listaDePontos);
-
-        listViewPontosCadastrados.setAdapter(adaptadorLista);
-
-       // pontosSelecionado.setNome("");
-        listViewPontosCadastrados.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                pontosSelecionado = adaptadorLista.getItem(i);
-
-                //Toast.makeText(getApplication(), "Ponto selecionado : "
-                        //+ pontosSelecionado.getNome(), Toast.LENGTH_LONG).show();
-                /*
-                Snackbar.make(findViewById(R.id.btRetorna), "Ponto selecionado : "
-                        + pontosSelecionado.getNome(), Snackbar.LENGTH_SHORT).show();*/
-                //NomeSelecionadotextView.setText(pontosSelecionado.getNome());
+            public void onClick(View view) {
+                Intent home = new Intent(Listar_pontos_cadastradros.this, ListarAnunciosActivity.class);
+                startActivity(home);
             }
+        });*/
 
-
-
-
-        });
 
 
 
