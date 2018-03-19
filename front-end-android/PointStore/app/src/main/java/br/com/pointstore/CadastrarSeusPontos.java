@@ -28,27 +28,12 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 public class CadastrarSeusPontos extends AppCompatActivity {
 
     private ListView listViewPontos;
-
-    private ArrayList<Pontos> listaDePontos = new ArrayList<Pontos>();
-
-    /*
-    * Arraylist de pontos para receber da chamada pontos2
-    * */
-
     private List<Pontos>  receberPontosDoUsuario;
-
-    private ArrayAdapter<Pontos> adaptadorLista;
-
     private  Pontos pontosSelecionado= new Pontos();
-
     private int adaptadorLayout = android.R.layout.simple_list_item_1;
-
     private TextView NomeSelecionadotextView;
-
     private Button button;
-
     private PontosService mPontosService;
-
     private String idUsuario;
 
     @Override
@@ -78,22 +63,48 @@ public class CadastrarSeusPontos extends AppCompatActivity {
 
 
 
-        /*------------------------------------------------------------------*/
+
+
 
         Call<List<Pontos>> pontosCall = mPontosService.meusPontos(idUsuario);
-
-
         pontosCall.enqueue(new Callback<List<Pontos>>() {
             @Override
             public void onResponse(Call<List<Pontos>> call, Response<List<Pontos>> response) {
-                List<Pontos> meusPontosBanco = response.body();
+                List<Pontos>novalistaDePontos = response.body();
+                //if ((!response.isSuccessful())){ return;}
+                /*
+                É preciso saber que toda operação feita dentro do metodo  on response, precisa ter continuidade aqui
+                * como por exemplo, tratar evento de click, evento de cadastrar qualquer dado qu seja exbido ou carregao pelo retrofit
+                *
+                * Evento de botão dentre outros serão implementados dentro desse onresponse
+                * */
+                final ArrayAdapter adaptadorListaResponse = new ArrayAdapter(CadastrarSeusPontos.this,adaptadorLayout,novalistaDePontos);
+
+                listViewPontos.setAdapter(adaptadorListaResponse);
+
+
+                listViewPontos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                        pontosSelecionado = (Pontos) adaptadorListaResponse.getItem(i);
+
+                        Toast.makeText(getApplication(), "Ponto selecionado : "
+                        + pontosSelecionado.gettipoDePonto(), Toast.LENGTH_SHORT).show();
+
+                /*Snackbar.make(findViewById(R.id.buttonGravarDados), pontosSelecionado.getNome(), Snackbar.LENGTH_SHORT).show();*/
+
+                NomeSelecionadotextView.setText(pontosSelecionado.gettipoDePonto());
+
+                    }
 
 
 
-                Log.d("CREATION"," Ponto selecionado : "+meusPontosBanco.get(1).gettipoDePonto());
-                Log.d("CREATION"," Tamanho da List de Pontos : "+meusPontosBanco.size());
+
+                });
 
             }
+
 
             @Override
             public void onFailure(Call<List<Pontos>> call, Throwable t) {
@@ -101,30 +112,8 @@ public class CadastrarSeusPontos extends AppCompatActivity {
             }
         });
 
-        /*-------------------------------------------------------------------------*/
-
-        adaptadorLista = new ArrayAdapter<Pontos>(this, adaptadorLayout, listaDePontos);
-
-        listViewPontos.setAdapter(adaptadorLista);
 
 
-        listViewPontos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                pontosSelecionado = adaptadorLista.getItem(i);
-
-               // Toast.makeText(getApplication(), "Ponto selecionado : "
-                       // + pontosSelecionado.getNome(), Toast.LENGTH_LONG).show();
-
-                /*Snackbar.make(findViewById(R.id.buttonGravarDados), pontosSelecionado.getNome(), Snackbar.LENGTH_SHORT).show();
-
-                NomeSelecionadotextView.setText(pontosSelecionado.getNome());*/
-            }
-
-
-
-
-        });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,5 +125,12 @@ public class CadastrarSeusPontos extends AppCompatActivity {
 
             }
         });
+
+
+
+
     }
+
+
+
 }
