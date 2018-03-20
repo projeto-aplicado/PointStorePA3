@@ -166,6 +166,12 @@ public class ListarAnunciosActivity extends AppCompatActivity
 
             startActivity(meuPerfil);
 
+        } else if (id == R.id.nav_cadastrarvendas) {
+            Intent cadastrarvendas = new Intent(this, CadastrarVendas.class);
+            cadastrarvendas.putExtra("user", user);
+
+            startActivity(cadastrarvendas);
+
 
         } else if (id == R.id.nav_meuspontos) {
 
@@ -180,6 +186,7 @@ public class ListarAnunciosActivity extends AppCompatActivity
 
             cadastrarPontos.putExtra("id_usuario",idToString);
             startActivity(cadastrarPontos);
+
 
 
         } else if (id == R.id.nav_sair) {
