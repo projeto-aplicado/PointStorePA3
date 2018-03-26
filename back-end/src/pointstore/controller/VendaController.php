@@ -72,7 +72,14 @@ class VendaController extends AbstractController
 
     public function listar($id)
     {
-        
+        if ($id == null) {
+            $qb = $this->getDao()->entityManager->getConnection();
+            return $qb->query('select *,v.id as venda_id from venda v inner join usuario u on u.id = v.id_usuario_vendedor where status = 1')->fetchAll();
+        } else {
+            $qb = $this->getDao()->entityManager->getConnection();
+            return $qb->query('select *,v.id as venda_id from venda v inner join usuario u on u.id = v.id_usuario_vendedor where v.id = '.$id)->fetch();
+        }
+        return $queryResult;
 
     }
 
