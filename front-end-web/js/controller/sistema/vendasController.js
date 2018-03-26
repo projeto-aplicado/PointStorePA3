@@ -1,37 +1,36 @@
-app.controller('vendasController', function($scope, $http, $route, $routeParams, $location) {
+app.controller('vendasController', function ($scope, $http, $route, $routeParams, $location) {
 
-$scope.sucessMessage;
-$scope.erroMessage;
-$scope.isEditing = false;
-
-    $scope.cadastrarVenda = function(tipopontos, quantidade, valor) {
-
-        var vendaDAO = new Object();
-        vendaDAO.tipopontos = tipopontos;
-        vendaDAO.quantidade = quantidade;
-        vendaDAO.valor = valor;
-
-        var venda = angular.toJson(vendaDAO);
-        $http.post('http://localhost:8080/PointStoreWeb/rest/venda', venda)
-        .success(function(retorno){
-            alert(retorno);
-        }).error(function(){
-            $scope.erroMessage = "Venda "+$scope.venda.nome+" não foi salva!";
-        });
-    }
-
-    $scope.listarVenda = function() {
-        $http.get('http://localhost:8080/PointStore/rest/listar')
-        .success(function(dados){
-            $scope.lista = {};
-            $scope.listaVendas = [];
-            $scope.listaVendas = dados.lista;
-           
-        }).error(function(){
-            $scope.erroMessage = "pontos não encontradas!"
-        });
+        $scope.sucessMessage;
+        $scope.erroMessage;
         $scope.isEditing = false;
-    }
-}
-  
-);
+        $scope.usuario = usuario;
+        $scope.venda = []
+
+        $scope.cadastrarVenda = function () {
+
+            var vendaDAO = new Object();
+            vendaDAO.tipoDePontos = $scope.venda.tipoDePontos;
+            vendaDAO.quantidade = $scope.venda.quantidade;
+            vendaDAO.valor = $scope.venda.valor;
+            vendaDAO.id_usuario = $scope.usuario.id;
+
+            var venda = angular.toJson(vendaDAO);
+
+            if(!$scope.venda.tipoDePontos){
+                alert('Por favor, escolha o tipo de ponto');
+                return false;
+            }
+
+            if(!$scope.venda.quantidade){
+                alert('Por favor, digite a quantidade');
+                return false;
+            }
+
+            if(!$scope.venda.valor){
+                alert('Por favor, digite o valor!');
+                return false;
+            }
+
+        }
+
+});
