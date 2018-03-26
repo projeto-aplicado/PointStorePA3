@@ -59,4 +59,14 @@ $app->get( '/meuspontos(/(:id))', function($id = null) use ($meusPontosCtrl){
 	echo json_encode($meusPontosCtrl->listarPontoUsuario($id));
 });
 
+$app->post( '/venda(/)', function() use ($vendaCtrl){
+    $app = \Slim\Slim::getInstance();
+    $json = json_decode($app->request()->getBody());
+    echo json_encode($vendaCtrl->insert($json));
+} );
+
+$app->get( '/venda(/(:id))', function($id = null) use ($vendaCtrl){
+    echo json_encode($vendaCtrl->listar($id));
+});
+
 $app->run();
