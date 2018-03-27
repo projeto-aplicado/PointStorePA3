@@ -9,4 +9,8 @@
     <string name="title_activity_perfil">Perfil</string>
 
     <string name="textView">Bem-Vindo!</string>
+
+    <string name="instrucao_de_uso">Click sobre o item da tabela,em seguida
+    insira a quantidade de pontos que gostaria de cadastrar,ou atualizar, logo depois
+    click em GRAVAR DADOS</string>
 </resources>
