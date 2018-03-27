@@ -18,6 +18,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.pointstore.Adapter.ListaDePontosAdapter;
 import br.com.pointstore.Adapter.Menssagem;
 import br.com.pointstore.model.Pontos;
 import rest.PontosService;
@@ -38,6 +39,11 @@ public class CadastrarSeusPontos extends AppCompatActivity {
     private EditText Ed_quantidade;
     private PontosService mPontosService;
     private String idUsuario;
+
+    public void restartActivity(){
+        Intent mIntent = getIntent();
+        finish(); startActivity(mIntent); }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +85,8 @@ public class CadastrarSeusPontos extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Pontos>> call, Response<List<Pontos>> response) {
                 List<Pontos>novalistaDePontos = response.body();
+                ArrayList<Pontos> arrayListPontos = new ArrayList<>();
+                arrayListPontos = (ArrayList<Pontos>) response.body();
                 //if ((!response.isSuccessful())){ return;}
                 /*
                 É preciso saber que toda operação feita dentro do metodo  on response, precisa ter continuidade aqui
@@ -86,8 +94,13 @@ public class CadastrarSeusPontos extends AppCompatActivity {
                 *
                 * Evento de botão dentre outros serão implementados dentro desse onresponse
                 * */
+                /*
                 final ArrayAdapter adaptadorListaResponse = new ArrayAdapter(CadastrarSeusPontos.this,
-                        adaptadorLayout,novalistaDePontos);
+                        adaptadorLayout,novalistaDePontos); */
+
+                final ListaDePontosAdapter adaptadorListaResponse =
+                        new ListaDePontosAdapter(CadastrarSeusPontos.this,
+                                R.layout.adapter_view_pontos_layout,arrayListPontos);
 
                 listViewPontos.setAdapter(adaptadorListaResponse);
 
@@ -98,6 +111,8 @@ public class CadastrarSeusPontos extends AppCompatActivity {
 
                         pontosSelecionado = (Pontos) adaptadorListaResponse.getItem(i);
 
+
+
                         Toast.makeText(getApplication(), "Ponto selecionado : "
                         + pontosSelecionado.gettipoDePonto()+" id do ponto selecionado : "+pontosSelecionado.getId(),
                                 Toast.LENGTH_SHORT).show();
@@ -105,14 +120,16 @@ public class CadastrarSeusPontos extends AppCompatActivity {
 
 
                         NomeSelecionadotextView.setText(pontosSelecionado.gettipoDePonto());
+                        //
 
 
+                        //
                         BT_GRAVAR_DADOS.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                /*Captura a quantidade de pontos indicada no campo,depois seta o valor
-                                no objeto "pontosSelecionado" e depois envia para ser atualizado
-                                * */
+                                //Captura a quantidade de pontos indicada no campo,depois seta o valor
+                                //no objeto "pontosSelecionado" e depois envia para ser atualizado
+
                                 String quantidade = Ed_quantidade.getText().toString();
 
                                 pontosSelecionado.setquantidadePonto(quantidade);
@@ -129,9 +146,11 @@ public class CadastrarSeusPontos extends AppCompatActivity {
                                         Toast.makeText(getApplication(), menssagem.getMensagem(),
                                                 Toast.LENGTH_SHORT).show();
 
+                                        restartActivity();
+                                        /*
                                         Intent intent = new Intent(CadastrarSeusPontos.this,ListarAnunciosActivity.class);
 
-                                        startActivity(intent);
+                                        startActivity(intent);*/
 
                                     }
 
@@ -140,6 +159,7 @@ public class CadastrarSeusPontos extends AppCompatActivity {
 
                                     }
                                     });
+
                         }
 
 
