@@ -1,5 +1,7 @@
 package br.com.pointstore.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 
 /**
@@ -10,10 +12,16 @@ public class Vendas implements Serializable {
 
 
 	private Integer idVendas;
+
 	private String titulo;
+
+
 	private String valor;
+
 	private Loja loja;
+
 	private MeusPontos meusPontos;
+
 	private String status;
 	
 	

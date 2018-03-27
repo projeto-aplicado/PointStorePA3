@@ -66,10 +66,6 @@ public class CadastrarSeusPontos extends AppCompatActivity {
 
         Log.d("CREATION","id do usuário seleciona é : "+idUsuario);
 
-
-
-
-
         /*
         * Faz uma solicitação pelo mPontosService,passando como parametro "idUsuario"
         * e recebe uma List de Objeto Pontos  para jogar dentro de um listview
@@ -129,6 +125,7 @@ public class CadastrarSeusPontos extends AppCompatActivity {
                                         Toast.makeText(getApplication(), menssagem.getMensagem(),
                                                 Toast.LENGTH_SHORT).show();
 
+
                                         Intent intent = new Intent(CadastrarSeusPontos.this,ListarAnunciosActivity.class);
 
                                         startActivity(intent);
@@ -140,6 +137,8 @@ public class CadastrarSeusPontos extends AppCompatActivity {
 
                                     }
                                     });
+
+
                         }
 
 
@@ -154,10 +153,6 @@ public class CadastrarSeusPontos extends AppCompatActivity {
             }
         });
 
-
-
-
-        
 
 
 
