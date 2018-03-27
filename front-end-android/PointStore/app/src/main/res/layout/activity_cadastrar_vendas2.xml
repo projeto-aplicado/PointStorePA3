@@ -5,129 +5,68 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"  >
 
-<!--
-    <ListView
-        android:id="@+id/listViewPontosCadastros"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="245dp" /> -->
-
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:id="@+id/textViewTitulo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="175dp"
-        android:layout_marginLeft="77dp"
-        android:layout_marginStart="77dp"
-        android:text="Tipo de ponto" />
+        android:layout_alignParentTop="true"
+        android:text="ANUNCIE SEUS PONTOS"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp" />
 
     <Spinner
         android:id="@+id/spinnervenda"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_toRightOf="@+id/textView" />
-
-    <!--
-    <TextView
-        android:id="@+id/pontoSelecionadovenda"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_toRightOf="@+id/textView" /> -->
-
-    <!--
-    <EditText
-        android:id="@+id/editTextTipoPontos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_toRightOf="@+id/textView"
-        android:ems="10"
-        android:inputType="text" /> -->
-
-    <TextView
-        android:id="@+id/pontoSelecionado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_toRightOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView"
-        android:layout_below="@+id/pontoSelecionado"
-        android:layout_marginTop="13dp"
-        android:text="Quantidade :" />
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/textViewTitulo" />
 
     <EditText
         android:id="@+id/editTextQtdPontos"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_toEndOf="@+id/textView3"
-        android:layout_toRightOf="@+id/textView3"
+        android:layout_below="@+id/spinnervenda"
+        android:hint="Quantidade: "
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:ems="10"
         android:inputType="number" />
 
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView"
-        android:layout_below="@+id/textView3"
-        android:layout_marginTop="13dp"
-        android:text="Valor :" />
 
     <EditText
         android:id="@+id/editTextValorPontos"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView4"
-        android:layout_toEndOf="@+id/textView4"
-        android:layout_toRightOf="@+id/textView4"
+        android:hint="Valor: "
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/editTextQtdPontos"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:ems="10"
         android:inputType="number" />
 
 
-
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="251dp"
         android:id="@+id/buttonAnunciarVenda"
-        android:onClick="cadastrarVendas"
-        android:textColor="#fff"
-        android:textColorHint="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editTextValorPontos"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="79dp"
         android:background="@drawable/screen_border"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/textView3"
-        android:layout_marginBottom="43dp"
-        android:layout_marginLeft="57dp"
-        android:layout_marginStart="57dp"
-        android:text="Anunciar Venda" />
+        android:onClick="cadastrarVendas"
+        android:text="Anunciar Venda"
+        android:textColor="#fff"
+        android:textColorHint="@color/colorPrimary" />
 
 
 </RelativeLayout>
