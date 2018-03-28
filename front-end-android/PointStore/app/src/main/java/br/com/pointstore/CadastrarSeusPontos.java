@@ -142,12 +142,9 @@ public class CadastrarSeusPontos extends AppCompatActivity {
                                         Toast.makeText(getApplication(), menssagem.getMensagem(),
                                                 Toast.LENGTH_SHORT).show();
 
-<<<<<<< HEAD
-
-=======
                                         restartActivity();
                                         /*
->>>>>>> f2aaaed92eb5de50e8e10516b279f48756421eeb
+
                                         Intent intent = new Intent(CadastrarSeusPontos.this,ListarAnunciosActivity.class);
 
                                         startActivity(intent);*/
@@ -160,10 +157,7 @@ public class CadastrarSeusPontos extends AppCompatActivity {
                                     }
                                     });
 
-<<<<<<< HEAD
 
-=======
->>>>>>> f2aaaed92eb5de50e8e10516b279f48756421eeb
                         }
 
 

@@ -96,6 +96,8 @@ public class AlterarSenha extends AppCompatActivity {
                         Toast toast = Toast.makeText(context, "EMAIL não cadastrado", Toast.LENGTH_SHORT);
                         toast.show();
 
+
+
                     }
                 }
 
