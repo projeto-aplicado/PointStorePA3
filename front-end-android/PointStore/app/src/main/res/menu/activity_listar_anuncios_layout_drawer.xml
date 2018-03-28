@@ -21,7 +21,7 @@
         <item
             android:id="@+id/nav_cadastrarvendas"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Cadastrar Vendas" />
+            android:title="Minhas Vendas" />
 
 
         <item
