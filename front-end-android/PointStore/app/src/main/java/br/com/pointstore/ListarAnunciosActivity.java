@@ -15,10 +15,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.pointstore.Adapter.ListaDeVendasAdapter;
 import br.com.pointstore.Adapter.UsuarioLogin;
+import br.com.pointstore.Adapter.Vendas3;
 import br.com.pointstore.DAO.DataAccessObject;
 import br.com.pointstore.model.MeusPontos;
 import br.com.pointstore.model.Usuario;
@@ -28,6 +34,7 @@ import br.com.pointstore.util.ListarPontos;
 import br.com.pointstore.util.Login;
 import br.com.pointstore.util.Perfil;
 import rest.LoginService;
+import rest.VendasService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,10 +44,12 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 public class ListarAnunciosActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private ListView listViewVendas;
     private Usuario user;
     private TextView userLogin;
     UsuarioLogin usuarioLogin = new UsuarioLogin();
     private LoginService mLoginService;
+    private VendasService mVendasService;
     final DataAccessObject dataAccessObject = new DataAccessObject(this);
 
     @Override
@@ -54,7 +63,8 @@ public class ListarAnunciosActivity extends AppCompatActivity
                 addConverterFactory(JacksonConverterFactory.create()).build();
 
         mLoginService = retrofit.create(LoginService.class);
-
+        /*Arley*/
+        mVendasService  = retrofit.create(VendasService.class);
 
 
         /*AREA DE NAVEGAÇÃO*/
@@ -92,6 +102,35 @@ public class ListarAnunciosActivity extends AppCompatActivity
 
             }
         });
+
+        /*Area de listview de vendas*/
+        listViewVendas =  (ListView) findViewById(R.id.listViewVendas);
+
+        Call<List<Vendas3>> listarTodasVendas = mVendasService.listarTodasVendas();
+
+        listarTodasVendas.enqueue(new Callback<List<Vendas3>>() {
+            @Override
+            public void onResponse(Call<List<Vendas3>> call, Response<List<Vendas3>> response) {
+                List<Vendas3>novalistaDePontos = response.body();
+
+                ArrayList<Vendas3> arrayListVendas = new ArrayList<>();
+
+                arrayListVendas = (ArrayList<Vendas3>) response.body();
+
+                final ListaDeVendasAdapter adaptadorListaResponse =
+                        new ListaDeVendasAdapter(ListarAnunciosActivity.this,
+                                R.layout.adapter_view_listar_anuncios,arrayListVendas);
+
+                listViewVendas.setAdapter(adaptadorListaResponse);
+            }
+
+            @Override
+            public void onFailure(Call<List<Vendas3>> call, Throwable t) {
+
+            }
+        });
+
+
 
 
 

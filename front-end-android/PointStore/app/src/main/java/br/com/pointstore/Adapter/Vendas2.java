@@ -13,6 +13,8 @@ import br.com.pointstore.model.MeusPontos;
 
 public class Vendas2 {
 
+
+
     @JsonProperty("id_usuario")
     private Integer idUsuario;
 
@@ -24,6 +26,8 @@ public class Vendas2 {
 
     @JsonProperty("quantidade")
     private String quantidade;
+
+
 
 
     public Integer getIdUsuario() {

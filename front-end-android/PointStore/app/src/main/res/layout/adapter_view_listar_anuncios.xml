@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ListViewAtividade"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.pointstore.CadastrarSeusPontos">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="146dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/appImagem"
+            android:layout_width="86dp"
+            android:layout_height="89dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tituloTextPonto"
+            android:layout_marginLeft="0dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="-17dp"
+            android:background="@drawable/pointstorelogo"
+            android:scaleType="centerCrop"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tituloTextPonto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/emailText"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/emailText"
+            android:paddingLeft="16sp"
+            android:paddingRight="16dp"
+            android:text="HotMilhas"
+            android:textColor="#000"
+            android:textSize="18sp"
+            tools:ignore="RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/emailText"
+            style="@style/Base.TextAppearance.AppCompat.Subhead"
+            android:layout_width="296dp"
+            android:layout_height="22dp"
+            android:layout_below="@+id/tituloTextPonto"
+            android:layout_toRightOf="@+id/appImagem"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="Michele Santos"
+            android:textColor="#000"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/ValorText"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:gravity="left"
+            android:lines="5"
+            android:maxLines="5"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:text="Pontos por R$ :"
+            android:textColor="#737078"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/quantidade_pontos"
+            android:layout_width="51dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/appImagem"
+            android:gravity="left"
+            android:lines="5"
+            android:maxLines="5"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:text="qtd"
+            android:textColor="#737078"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/valor_venda"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/ValorText"
+            android:gravity="left"
+            android:lines="5"
+            android:maxLines="5"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:text="valor"
+            android:textColor="#737078"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/BtnComprar"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ValorText"
+            android:background="@color/colorAccent"
+            android:text="Pressione para Comprar"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

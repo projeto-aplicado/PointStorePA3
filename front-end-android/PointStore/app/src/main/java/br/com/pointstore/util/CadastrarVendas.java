@@ -1,6 +1,5 @@
 package br.com.pointstore.util;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,21 +16,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.pointstore.Adapter.Menssagem;
-import br.com.pointstore.Adapter.PontosMeusPontos;
 import br.com.pointstore.Adapter.Vendas2;
 import br.com.pointstore.CadastrarSeusPontos;
 import br.com.pointstore.ListarAnunciosActivity;
-import br.com.pointstore.Listar_pontos_cadastradros;
 import br.com.pointstore.R;
 import br.com.pointstore.model.Pontos;
 import br.com.pointstore.model.Usuario;
-import br.com.pointstore.model.Vendas;
-import okio.Buffer;
 import rest.PontosService;
 import rest.UsuarioService;
 import rest.VendasService;
@@ -132,8 +126,7 @@ public class CadastrarVendas extends AppCompatActivity {
 
         Intent cadastrarVendas = new Intent(this, ListarAnunciosActivity.class);
         startActivity(cadastrarVendas);
-        Call<Vendas> vendasCall = mVendasService.cadastrarVendas(vendas2);
-
+        //Call<Vendas3> vendasCall = mVendasService.cadastrarVendas(vendas2);
         Call<Menssagem> menssagemCall = mVendasService.msgvenda(vendas2);
 
         menssagemCall.enqueue(new Callback<Menssagem>() {
@@ -157,6 +150,28 @@ public class CadastrarVendas extends AppCompatActivity {
 
             }
         });
+
+        /*vendasCall.enqueue(new Callback<Vendas3>() {
+            @Override
+            public void onResponse(Call<Vendas3> call, Response<Vendas3> response) {
+                Vendas3 vendas = response.body();
+
+
+
+                Intent intent = new Intent(CadastrarVendas.this,ListarAnunciosActivity.class);
+
+                startActivity(intent);
+            }
+
+            @Override
+            public void onFailure(Call<Vendas3> call, Throwable t) {
+                Log.d("ERRO"," erro : " +t);
+            }
+        });*/
+
+
+
+
 
     }
 
