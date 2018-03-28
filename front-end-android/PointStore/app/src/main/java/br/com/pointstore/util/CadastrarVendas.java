@@ -1,6 +1,7 @@
 package br.com.pointstore.util;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -82,6 +83,7 @@ public class CadastrarVendas extends AppCompatActivity {
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
 
+        pontos.add("Tipo de Ponto");
         pontos.add("tam");
         pontos.add("gol");
 
@@ -116,37 +118,62 @@ public class CadastrarVendas extends AppCompatActivity {
         editTextQtdPontos = (EditText) findViewById(R.id.editTextQtdPontos);
         editTextValorPontos = (EditText) findViewById(R.id.editTextValorPontos);
 
+
     }
 
     public void cadastrarVendas (View v) {
 
-            Vendas2 vendas2 = new Vendas2();
+        Vendas2 vendas2 = new Vendas2();
 
-            vendas2.setQuantidade(editTextQtdPontos.getText().toString());
-            vendas2.setValor(editTextValorPontos.getText().toString());
-            vendas2.setTipoDePontos(ponto);
-            vendas2.setIdUsuario(this.usuario.getIdUsuario());
+        vendas2.setQuantidade(editTextQtdPontos.getText().toString());
+        vendas2.setValor(editTextValorPontos.getText().toString());
+        vendas2.setTipoDePontos(ponto);
+        vendas2.setIdUsuario(this.usuario.getIdUsuario());
 
-                Intent cadastrarVendas = new Intent(this, ListarAnunciosActivity.class);
-                startActivity(cadastrarVendas);
-                Call<Vendas> vendasCall = mVendasService.cadastrarVendas(vendas2);
+        Intent cadastrarVendas = new Intent(this, ListarAnunciosActivity.class);
+        startActivity(cadastrarVendas);
+        Call<Vendas> vendasCall = mVendasService.cadastrarVendas(vendas2);
+        Call<Menssagem> menssagemCall = mVendasService.msgvenda(vendas2);
 
-                vendasCall.enqueue(new Callback<Vendas>() {
-                    @Override
-                    public void onResponse(Call<Vendas> call, Response<Vendas> response) {
-                        Vendas vendas = response.body();
+        menssagemCall.enqueue(new Callback<Menssagem>() {
+            @Override
+            public void onResponse(Call<Menssagem> call, Response<Menssagem> response) {
+                Menssagem menssagem = response.body();
+                if (menssagem != null ) {
+                    Context context = getApplicationContext();
+                    Toast toast = Toast.makeText(context, " : "+menssagem.getMensagem(), Toast.LENGTH_SHORT);
+                    toast.show();
+                } else {
+                    Context context = getApplicationContext();
+                    Toast toast = Toast.makeText(context, "Venda não cadastrada", Toast.LENGTH_SHORT);
+                    toast.show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Menssagem> call, Throwable t) {
+
+            }
+        });
+
+        vendasCall.enqueue(new Callback<Vendas>() {
+            @Override
+            public void onResponse(Call<Vendas> call, Response<Vendas> response) {
+                Vendas vendas = response.body();
 
 
-                        Intent intent = new Intent(CadastrarVendas.this,ListarAnunciosActivity.class);
 
-                        startActivity(intent);
-                    }
+                Intent intent = new Intent(CadastrarVendas.this,ListarAnunciosActivity.class);
 
-                    @Override
-                    public void onFailure(Call<Vendas> call, Throwable t) {
-                        Log.d("ERRO"," erro : " +t);
-                    }
-                });
+                startActivity(intent);
+            }
+
+            @Override
+            public void onFailure(Call<Vendas> call, Throwable t) {
+                Log.d("ERRO"," erro : " +t);
+            }
+        });
 
 
 
