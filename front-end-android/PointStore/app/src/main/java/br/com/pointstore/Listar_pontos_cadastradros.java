@@ -56,7 +56,7 @@ public class Listar_pontos_cadastradros extends AppCompatActivity {
 
         NomeSelecionadotextView = (TextView) findViewById(R.id.pontoSelecionado);
 
-        button = (Button)findViewById(R.id.buttonGravarDados);
+        //button = (Button)findViewById(R.id.buttonGravarDados);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://10.0.3.2")
@@ -80,7 +80,7 @@ public class Listar_pontos_cadastradros extends AppCompatActivity {
                        adaptadorLayout,novalistaDePontos);
                listViewPontos.setAdapter(adaptadorListaResponse);
 
-               
+
 
            }
 

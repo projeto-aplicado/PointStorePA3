@@ -27,6 +27,8 @@ public interface VendasService {
     @POST("/pointstorePA3/index.php/venda")
     Call<Vendas> cadastrarVendas(@Body Vendas2 vendas);
 
+    
+
     @GET("/pointstorePA3/index.php/venda/{id}")
     Call<List<Vendas>> listarVendas (@Path("id") String id);
 }

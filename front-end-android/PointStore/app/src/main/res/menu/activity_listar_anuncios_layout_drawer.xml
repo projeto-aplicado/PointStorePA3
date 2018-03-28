@@ -14,14 +14,9 @@
             android:title="Meu Perfil" />
 
         <item
-            android:id="@+id/nav_meuspontos"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Meus Pontos" />
-
-        <item
             android:id="@+id/nav_cadastrarpontos"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Cadastrar Pontos" />
+            android:title="Meus Pontos" />
 
         <item
             android:id="@+id/nav_cadastrarvendas"

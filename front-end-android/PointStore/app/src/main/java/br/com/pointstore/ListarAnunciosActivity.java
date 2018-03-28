@@ -173,13 +173,6 @@ public class ListarAnunciosActivity extends AppCompatActivity
             startActivity(cadastrarvendas);
 
 
-        } else if (id == R.id.nav_meuspontos) {
-
-            String idToString = user.getIdUsuario().toString();
-            Intent listarPontos = new Intent(this, Listar_pontos_cadastradros.class);
-            listarPontos.putExtra("id_usuario",idToString);
-            startActivity(listarPontos);
-
         } else if (id == R.id.nav_cadastrarpontos) {
             Intent cadastrarPontos = new Intent(this, CadastrarSeusPontos.class);
             String idToString = user.getIdUsuario().toString();
