@@ -133,6 +133,7 @@ public class CadastrarVendas extends AppCompatActivity {
         Intent cadastrarVendas = new Intent(this, ListarAnunciosActivity.class);
         startActivity(cadastrarVendas);
         Call<Vendas> vendasCall = mVendasService.cadastrarVendas(vendas2);
+
         Call<Menssagem> menssagemCall = mVendasService.msgvenda(vendas2);
 
         menssagemCall.enqueue(new Callback<Menssagem>() {
@@ -156,26 +157,6 @@ public class CadastrarVendas extends AppCompatActivity {
 
             }
         });
-
-        vendasCall.enqueue(new Callback<Vendas>() {
-            @Override
-            public void onResponse(Call<Vendas> call, Response<Vendas> response) {
-                Vendas vendas = response.body();
-
-
-
-                Intent intent = new Intent(CadastrarVendas.this,ListarAnunciosActivity.class);
-
-                startActivity(intent);
-            }
-
-            @Override
-            public void onFailure(Call<Vendas> call, Throwable t) {
-                Log.d("ERRO"," erro : " +t);
-            }
-        });
-
-
 
     }
 
