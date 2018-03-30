@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -80,11 +81,29 @@ public class ListaDeVendasAdapter extends ArrayAdapter<Vendas3> {
         TextView tituloTextPonto = (TextView) convertView.findViewById(R.id.tituloTextPonto);
         TextView quantidade_pontos = (TextView) convertView.findViewById(R.id.quantidade_pontos);
         TextView valor_venda = (TextView) convertView.findViewById(R.id.valor_venda);
+        TextView vendedor = (TextView) convertView.findViewById(R.id.emailText);
+
+        ImageView imagem = (ImageView) convertView.findViewById(R.id.appImagem);
+
+
+        if (titulo.equals("tam")|| titulo.equals("TAM")){
+            imagem.setImageResource(R.drawable.multiplus_tam_logo);
+        }
+        else {
+            imagem.setImageResource(R.drawable.smiles_gol_logo);
+        }
+        if (titulo.equals("tam")|| titulo.equals("TAM")){
+            tituloTextPonto.setText("Tam");
+
+        }
+        else {
+            tituloTextPonto.setText("Gol");
+        }
 
 
 
-
-        tituloTextPonto.setText(titulo);
+        vendedor.setText(login);
+        //tituloTextPonto.setText(titulo);
         quantidade_pontos.setText(qtd_pontos);
         valor_venda.setText(valor);
 
