@@ -6,21 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/cardView"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        card_view:cardBackgroundColor="#fff"
-        card_view:cardCornerRadius="5dp"
-        card_view:cardElevation="10dp"
-        card_view:cardUseCompatPadding="true"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
-        android:layout_marginTop="2dp" />
-
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
@@ -30,126 +15,298 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
 
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardView"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            xmlns:fab="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            card_view:cardBackgroundColor="#fff"
+            card_view:cardCornerRadius="5dp"
+            card_view:cardElevation="4dp"
+
+            card_view:cardUseCompatPadding="true"
+            xmlns:tools="http://schemas.android.com/tools">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFFFFF">
+
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/ValorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/appImagem"
+            android:layout_centerHorizontal="true"
+            android:text="  Pontos por R$:"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/quantidade_pontos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ValorText"
+            android:layout_toLeftOf="@+id/ValorText"
+            android:text="qtd"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/valor_venda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ValorText"
+            android:layout_alignBottom="@+id/ValorText"
+            android:layout_toEndOf="@+id/ValorText"
+            android:layout_toRightOf="@+id/ValorText"
+            android:text="valor"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/emailText"
             style="@style/Base.TextAppearance.AppCompat.Subhead"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:text="michele@email.com"
-            android:textColor="#FFF"
-            android:textSize="15sp"
-            android:layout_below="@+id/textView7"
-            android:layout_alignLeft="@+id/textView7"
-            android:layout_alignStart="@+id/textView7" />
-
-        <TextView
-            android:id="@+id/textView8"
-            style="@style/Base.TextAppearance.AppCompat.Subhead"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginTop="21dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:text="70 pontos por 50 reais"
-            android:textColor="#FFF"
-            android:textSize="15sp"
-            android:layout_below="@+id/tituloTextPonto"
-            android:layout_alignLeft="@+id/tituloTextPonto"
-            android:layout_alignStart="@+id/tituloTextPonto" />
-
-        <TextView
-            android:id="@+id/textView7"
-            style="@style/Base.TextAppearance.AppCompat.Subhead"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginTop="11dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
+            android:layout_alignBaseline="@+id/textView6"
+            android:layout_alignBottom="@+id/textView6"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp"
+            android:layout_toEndOf="@+id/textView6"
+            android:layout_toRightOf="@+id/textView6"
             android:text="Michele Santos"
-            android:textColor="#FFF"
-            android:textSize="18sp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
 
-        <ImageView
-            android:id="@+id/appImagem"
-            android:layout_width="72dp"
-            android:layout_height="100dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/textView9"
-            android:layout_toStartOf="@+id/textView9"
-            android:adjustViewBounds="true"
-            android:background="@drawable/pointstorelogo"
-            android:cropToPadding="true"
-            android:scaleType="centerCrop"
-            tools:ignore="ContentDescription" />
+            <ImageView
+                android:id="@+id/appImagem"
+                android:layout_width="72dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="0dp"
+                android:layout_marginStart="0dp"
+                android:layout_toLeftOf="@+id/quantidade_pontos"
+                android:layout_toStartOf="@+id/quantidade_pontos"
+                android:background="@drawable/pointstorelogo"
+                android:scaleType="centerCrop"
+                tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tituloTextPonto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/textView4"
+
             android:paddingLeft="16sp"
             android:paddingRight="16dp"
             android:text="HotMilhas"
-            android:textColor="#FFF"
-            android:textSize="20sp"
-            tools:ignore="RtlHardcoded"
-            android:layout_alignBottom="@+id/appImagem"
+            android:layout_below="@id/textView2"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/appImagem"
             android:layout_toRightOf="@+id/appImagem"
-            android:layout_toEndOf="@+id/appImagem" />
+            android:text="Dados da Compra:"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tituloTextPonto"
+            android:layout_alignBottom="@+id/tituloTextPonto"
+            android:layout_alignLeft="@+id/quantidade_pontos"
+            android:layout_alignStart="@+id/quantidade_pontos"
+            android:text="Tipo de Ponto:"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView4"
+            android:layout_toEndOf="@+id/appImagem"
+            android:layout_toRightOf="@+id/appImagem"
+            android:text="Vendedor:"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/ValorText"
+            android:layout_toEndOf="@+id/valor_venda"
+            android:layout_toRightOf="@+id/valor_venda"
+            android:text=",00"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
+
+
+        </RelativeLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardView2"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            xmlns:fab="http://schemas.android.com/apk/res-auto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:layout_below="@id/cardView"
+            card_view:cardBackgroundColor="#fff"
+            card_view:cardCornerRadius="5dp"
+            card_view:cardElevation="4dp"
+            xmlns:tools="http://schemas.android.com/tools">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#FFFFFF">
+
+                <TextView
+                    android:id="@+id/textViewCredito"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/textView8"
+                    android:layout_alignBottom="@+id/textView8"
+                    android:layout_toEndOf="@+id/textView8"
+                    android:layout_toRightOf="@+id/textView8"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/textViewCredito"
+                    android:layout_alignBottom="@+id/textViewCredito"
+                    android:layout_toEndOf="@+id/textViewCredito"
+                    android:layout_toRightOf="@+id/textViewCredito"
+                    android:text=",00"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_below="@+id/textView9"
+                    android:layout_marginLeft="101dp"
+                    android:layout_marginStart="101dp"
+                    android:text="  Credito: "
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/textView8"
+                    android:layout_alignStart="@+id/textView8"
+                    android:layout_below="@+id/textViewDados"
+                    android:text="  Nome: "
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/textView8"
+                    android:layout_centerHorizontal="true"
+                    android:layout_toRightOf="@id/textView9"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textViewDados"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_toEndOf="@+id/contato"
+                    android:layout_toRightOf="@+id/contato"
+                    android:text="  Dados do Comprador:"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/contato"
+                    android:layout_width="72dp"
+                    android:layout_height="100dp"
+
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/textView9"
+                    android:layout_toStartOf="@+id/textView9"
+                    android:background="@drawable/if_contact_20284" />
+
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewPagamento"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/textViewPagamento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/cardView2"
+                android:layout_marginTop="23dp"
+                android:text="Formas de Pagamento:"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewPagamento"
+            android:layout_marginTop="54dp"
+            android:background="@drawable/screen_border"
+            android:onClick="paginainicial"
+            android:text="Finalizar"
+            android:textColor="@android:color/white" />
 
 
     </RelativeLayout>
-
-
-    <TextView
-        android:id="@+id/textViewPagamento"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/cardView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="142dp"
-        android:text="Formas de Pagamento:"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="19dp"
-        android:background="@drawable/screen_border"
-        android:text="Finalizar"
-        android:onClick="paginainicial"
-        android:textColor="@android:color/white"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/cardView"
-        android:layout_alignStart="@+id/cardView" />
-
-
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:visibility="visible"
-        android:layout_below="@+id/textViewPagamento"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-
-
 
 
 </RelativeLayout>

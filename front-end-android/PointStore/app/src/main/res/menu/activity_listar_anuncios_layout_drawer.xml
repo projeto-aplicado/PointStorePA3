@@ -5,28 +5,28 @@
 
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/point_store_icon"
+            android:icon="@drawable/ic_home_white_36dp"
             android:title="Início" />
 
         <item
             android:id="@+id/nav_meuperfil"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_account_circle_white_36dp"
             android:title="Meu Perfil" />
 
         <item
             android:id="@+id/nav_cadastrarpontos"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/if_insert"
             android:title="Meus Pontos" />
 
         <item
             android:id="@+id/nav_cadastrarvendas"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/if_buy"
             android:title="Minhas Vendas" />
 
 
         <item
             android:id="@+id/nav_sair"
-            android:icon="@drawable/ic_menu_send"
+            android:icon="@drawable/ic_exit_to_app_white_36dp"
             android:title="Sair" />
 
 

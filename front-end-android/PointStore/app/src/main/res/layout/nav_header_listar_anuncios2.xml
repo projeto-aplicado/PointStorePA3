@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -19,17 +19,70 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:visibility="visible"
         app:srcCompat="@drawable/pointstorelogo1" />
 
     <TextView
-        android:id="@+id/textViewLogin"
+        android:id="@+id/textViewWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.02"
-        android:textColor="@color/colorAccent"
-        android:visibility="visible"
-        android:text="@string/textView" />
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="39dp"
+        android:textSize="18sp"
+        android:layout_toEndOf="@+id/imageView"
+        android:layout_toRightOf="@+id/imageView"
+        android:text="@string/textView"
+        android:visibility="invisible"
+        android:textColor="@color/colorAccent" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/textViewLogin2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewWelcome"
+        android:layout_alignBottom="@+id/textViewWelcome"
+        android:layout_toEndOf="@+id/imageView"
+        android:layout_toRightOf="@+id/imageView"
+        android:text="Fulano de tal"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textViewRS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewWelcome"
+        android:layout_toEndOf="@+id/imageView"
+        android:layout_toRightOf="@+id/imageView"
+        android:text="R$:"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textViewCredito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewWelcome"
+        android:layout_toEndOf="@+id/textViewRS"
+        android:layout_toRightOf="@+id/textViewRS"
+        android:text="Credito"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textView00"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewWelcome"
+        android:layout_toEndOf="@+id/textViewCredito"
+        android:layout_toRightOf="@+id/textViewCredito"
+        android:text=",00"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp" />
+
+</RelativeLayout>

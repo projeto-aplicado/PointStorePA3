@@ -2,11 +2,13 @@ package br.com.pointstore.Adapter;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * Created by Arley on 28/03/2018.
  */
 
-public class Vendas3 {
+public class Vendas3 implements Serializable {
 
     @JsonProperty("id")
     private  String id;

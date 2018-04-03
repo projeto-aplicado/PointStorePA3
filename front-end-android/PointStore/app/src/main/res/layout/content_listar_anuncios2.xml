@@ -22,10 +22,9 @@
 
     <ListView
         android:id="@+id/listViewVendas"
-        android:layout_width="340dp"
+        android:layout_width="match_parent"
         android:layout_height="450dp"
-        android:layout_alignLeft="@+id/linearLayout"
-        android:layout_alignStart="@+id/linearLayout"
+        android:layout_alignParentBottom="true"
         android:layout_below="@+id/linearLayout"
         android:layout_marginTop="60dp" />
 

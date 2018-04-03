@@ -93,7 +93,6 @@ public class CadastrarVendas extends AppCompatActivity {
                 //pega nome pela posição
                 ponto = parent.getItemAtPosition(posicao).toString();
                 //imprime um Toast na tela com o nome que foi selecionado
-                //Toast.makeText(FinalizarCompra.this, nome + " Selecionado", Toast.LENGTH_SHORT).show();
                 Snackbar.make(findViewById(R.id.buttonAnunciarVenda), ponto + " Selecionado", Snackbar.LENGTH_SHORT).show();
 
             }
@@ -137,12 +136,20 @@ public class CadastrarVendas extends AppCompatActivity {
                     Context context = getApplicationContext();
                     Toast toast = Toast.makeText(context, " : "+menssagem.getMensagem(), Toast.LENGTH_SHORT);
                     toast.show();
+                    Intent listaranuncio = new Intent(CadastrarVendas.this, ListarAnunciosActivity.class);
+                    startActivity(listaranuncio);
+                    this.finish();
                 } else {
                     Context context = getApplicationContext();
                     Toast toast = Toast.makeText(context, "Venda não cadastrada", Toast.LENGTH_SHORT);
                     toast.show();
 
                 }
+
+
+            }
+
+            private void finish() {
             }
 
             @Override
@@ -151,40 +158,10 @@ public class CadastrarVendas extends AppCompatActivity {
             }
         });
 
-        /*vendasCall.enqueue(new Callback<Vendas3>() {
-            @Override
-            public void onResponse(Call<Vendas3> call, Response<Vendas3> response) {
-                Vendas3 vendas = response.body();
-
-
-
-                Intent intent = new Intent(CadastrarVendas.this,ListarAnunciosActivity.class);
-
-                startActivity(intent);
-            }
-
-            @Override
-            public void onFailure(Call<Vendas3> call, Throwable t) {
-                Log.d("ERRO"," erro : " +t);
-            }
-        });*/
-
-
-
-
 
     }
 
-    public void listarAnuncio (View view){
-        Intent listaranuncio = new Intent(this, ListarAnunciosActivity.class);
-        startActivity(listaranuncio);
-    }
 
-
-    public void finalizarCompra(View view) {
-        Intent finalizarcompra = new Intent(this, FinalizarCompra.class);
-        startActivity(finalizarcompra);
-    }
 
     public void cadastrarSeusPontos(View view) {
         Intent cadastrarseuspontos = new Intent (this, CadastrarSeusPontos.class);

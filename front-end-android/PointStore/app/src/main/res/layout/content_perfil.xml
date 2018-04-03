@@ -9,6 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#FFF"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="br.com.pointstore.util.Perfil"
     tools:showIn="@layout/layout_activity_perfil">
@@ -22,7 +23,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="#000"
         android:textSize="20sp"
         />
 
@@ -37,7 +38,7 @@
         android:background="@drawable/screen_border"
         android:text="Atualizar"
         android:textColor="#fff"
-        android:textColorHint="@color/colorPrimary" />
+        android:textColorHint="#000" />
 
     <EditText
         android:id="@+id/editTextNome"
@@ -51,7 +52,10 @@
         android:layout_marginTop="17dp"
         android:ems="3"
         android:hint="Nome"
-        android:inputType="textPersonName" />
+        android:textColor="#000"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:inputType="textPersonName"
+        android:textColorHint="#000"/>
 
     <EditText
         android:id="@+id/editTextSobrenome"
@@ -61,7 +65,10 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/editTextNome"
         android:layout_marginTop="15dp"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:hint="Sobrenome"
+        android:textColorHint="#000"
+        android:textColor="#000"
         android:inputType="textPersonName" />
 
 
@@ -74,14 +81,18 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/editTextSobrenome"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:layout_marginTop="19dp"
         android:hint="Email"
+        android:textColor="#000"
+        android:textColorHint="#000"
         android:inputType="textWebEmailAddress" />
 
     <EditText
         android:id="@+id/editTextAttUsuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
@@ -89,6 +100,8 @@
         android:layout_below="@+id/editTextAttEmail"
         android:layout_marginTop="15dp"
         android:hint="Usuario"
+        android:textColor="#000"
+        android:textColorHint="#000"
         android:inputType="textPersonName" />
 
     <EditText
@@ -97,11 +110,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/editTextAttEmail"
         android:layout_marginTop="73dp"
         android:hint="Senha"
+        android:textColor="#000"
+        android:textColorHint="#000"
         android:inputType="textPassword" />
 
 
@@ -110,6 +126,7 @@
         android:id="@+id/editTextAttCPF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
@@ -117,6 +134,8 @@
         android:layout_below="@+id/editTextAttSenha"
         android:layout_marginTop="18dp"
         android:hint="CPF"
+        android:textColorHint="#000"
+        android:textColor="#000"
         android:inputType="textPersonName" />
 
 

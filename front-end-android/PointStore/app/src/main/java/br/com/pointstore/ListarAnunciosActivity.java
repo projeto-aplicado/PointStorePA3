@@ -1,10 +1,10 @@
 package br.com.pointstore;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,11 +14,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
 
+import org.w3c.dom.Text;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,11 +30,9 @@ import br.com.pointstore.Adapter.ListaDeVendasAdapter;
 import br.com.pointstore.Adapter.UsuarioLogin;
 import br.com.pointstore.Adapter.Vendas3;
 import br.com.pointstore.DAO.DataAccessObject;
-import br.com.pointstore.model.MeusPontos;
 import br.com.pointstore.model.Usuario;
 import br.com.pointstore.util.CadastrarVendas;
 import br.com.pointstore.util.FinalizarCompra;
-import br.com.pointstore.util.ListarPontos;
 import br.com.pointstore.util.Login;
 import br.com.pointstore.util.Perfil;
 import rest.LoginService;
@@ -52,6 +54,19 @@ public class ListarAnunciosActivity extends AppCompatActivity
     private VendasService mVendasService;
     final DataAccessObject dataAccessObject = new DataAccessObject(this);
 
+    TextView quantidade_pontos;
+    TextView valor_venda;
+    TextView tituloTextPonto;
+    TextView emailText;
+    TextView textViewLogin;//nome do usuário atualmente logado
+    TextView textViewCredito;
+    private Vendas3 vendasSelecionado= new Vendas3();
+    //NavigationView navigationView;
+
+    public void restartActivity(){
+        Intent mIntent = getIntent();
+        finish(); startActivity(mIntent); }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,8 +79,14 @@ public class ListarAnunciosActivity extends AppCompatActivity
 
         mLoginService = retrofit.create(LoginService.class);
         /*Arley*/
-        mVendasService  = retrofit.create(VendasService.class);
+        mVendasService = retrofit.create(VendasService.class);
 
+        emailText = (TextView) findViewById(R.id.emailText);
+        valor_venda = (TextView) findViewById(R.id.valor_venda);
+        quantidade_pontos = (TextView) findViewById(R.id.quantidade_pontos);
+        tituloTextPonto = (TextView) findViewById(R.id.tituloTextPonto);
+
+        //restartActivity();
 
         /*AREA DE NAVEGAÇÃO*/
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -74,9 +95,10 @@ public class ListarAnunciosActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+
         /*Area de navegação*/
+
+
 
         /*Carregando usuariologin do banco sqlite*/
 
@@ -90,10 +112,19 @@ public class ListarAnunciosActivity extends AppCompatActivity
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 user = response.body();
-
-
                 Context context = getApplicationContext();
 
+                //Propriedade pra setar o nome no Drawler
+                NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+                navigationView.setNavigationItemSelectedListener(ListarAnunciosActivity.this);
+                View header=navigationView.getHeaderView(0);
+                textViewLogin = (TextView)header.findViewById(R.id.textViewLogin2);
+                textViewLogin.setText(user.getLogin());
+                textViewCredito = (TextView)header.findViewById(R.id.textViewCredito);
+                textViewCredito.setText(user.getCredito());
+
+                navigationView = (NavigationView) findViewById(R.id.nav_view);
+                navigationView.setNavigationItemSelectedListener(ListarAnunciosActivity.this);
 
             }
 
@@ -104,14 +135,14 @@ public class ListarAnunciosActivity extends AppCompatActivity
         });
 
         /*Area de listview de vendas*/
-        listViewVendas =  (ListView) findViewById(R.id.listViewVendas);
+        listViewVendas = (ListView) findViewById(R.id.listViewVendas);
 
-        Call<List<Vendas3>> listarTodasVendas = mVendasService.listarTodasVendas();
+        final Call<List<Vendas3>> listarTodasVendas = mVendasService.listarTodasVendas();
 
         listarTodasVendas.enqueue(new Callback<List<Vendas3>>() {
             @Override
             public void onResponse(Call<List<Vendas3>> call, Response<List<Vendas3>> response) {
-                List<Vendas3>novalistaDePontos = response.body();
+                List<Vendas3> novalistaDePontos = response.body();
 
                 ArrayList<Vendas3> arrayListVendas = new ArrayList<>();
 
@@ -119,19 +150,61 @@ public class ListarAnunciosActivity extends AppCompatActivity
 
                 final ListaDeVendasAdapter adaptadorListaResponse =
                         new ListaDeVendasAdapter(ListarAnunciosActivity.this,
-                                R.layout.adapter_view_listar_anuncios,arrayListVendas);
+                                R.layout.adapter_view_listar_anuncios, arrayListVendas);
 
                 listViewVendas.setAdapter(adaptadorListaResponse);
+
+                listViewVendas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> parent, View view, int i, long id) {
+
+                        vendasSelecionado = adaptadorListaResponse.getItem(i);
+
+                        Toast.makeText(getApplication(), "nome do ponto selecionado : "
+                                        + vendasSelecionado.getTitulo() + " valor da venda : " + vendasSelecionado.getValor(),
+                                Toast.LENGTH_LONG).show();
+
+                        Usuario usuario = new Usuario();
+
+                        Call<Usuario> userLoginCall = mLoginService.loginUser(usuarioLogin);
+                        userLoginCall.enqueue(new Callback<Usuario>() {
+
+                            @Override
+                            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                                user = response.body();
+                                Context context = getApplicationContext();
+
+                                Intent finalizarCompra = new Intent(ListarAnunciosActivity.this, FinalizarCompra.class);
+                                finalizarCompra.putExtra("vendas", vendasSelecionado);
+                                finalizarCompra.putExtra("user", user);
+                                startActivity(finalizarCompra);
+                                this.finish();
+
+
+                            }
+
+                            private void finish() {
+                            }
+
+                            @Override
+                            public void onFailure(Call<Usuario> call, Throwable t) {
+
+                            }
+                        });
+
+                        Log.v("long clicked", "pos: " + i);
+
+                        return false;
+                    }
+                });
+
             }
 
             @Override
             public void onFailure(Call<List<Vendas3>> call, Throwable t) {
-
+                Log.d("ERRO", " erro : " + t);
             }
         });
-
-
-
 
 
     }
@@ -230,9 +303,8 @@ public class ListarAnunciosActivity extends AppCompatActivity
         }else if (id == R.id.nav_home){
             Intent home = new Intent(this, ListarAnunciosActivity.class);
             startActivity(home);
-
-
         }
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -242,6 +314,7 @@ public class ListarAnunciosActivity extends AppCompatActivity
 
     public void finalizarCompra (View view) {
         Intent finalizarcompra = new Intent(this, FinalizarCompra.class);
+        //finalizarcompra.putExtra("view", (Serializable) view);
         startActivity(finalizarcompra);
     }
 

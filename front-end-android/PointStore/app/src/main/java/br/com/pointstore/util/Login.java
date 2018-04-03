@@ -56,11 +56,12 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        dataAccessObject.deletar();
+
         /*Configuracao para uso da genymtion como emulador android*/
         Retrofit retrofit = new Retrofit.Builder().baseUrl("http://10.0.3.2").
                 addConverterFactory(JacksonConverterFactory.create()).build();
 
-        //dataAccessObject.deletar();
 
         mLoginService = retrofit.create(LoginService.class);
 
