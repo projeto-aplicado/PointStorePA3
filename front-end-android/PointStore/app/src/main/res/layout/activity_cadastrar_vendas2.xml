@@ -5,13 +5,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"  >
 
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="340dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#607D8B"
+        android:weightSum="100"
+        android:id="@+id/linearLayout">
+
+
+        <TextView
+            android:id="@+id/textview4"
+            android:layout_width="171dp"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="33"
+            android:gravity="center"
+            android:text="Ponto"
+            android:textAlignment="center"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:id="@+id/textview5"
+            android:layout_width="191dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="33"
+            android:gravity="center"
+            android:text="Quantidade"
+            android:textAlignment="center"
+            android:textSize="24sp"/>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listViewDePontos"
+        android:layout_width="340dp"
+        android:layout_height="110dp"
+        android:layout_alignLeft="@+id/linearLayout"
+        android:layout_alignStart="@+id/linearLayout"
+        android:layout_below="@+id/linearLayout" />
+
     <TextView
         android:id="@+id/textViewTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="145dp"
         android:text="ANUNCIE SEUS PONTOS"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
@@ -38,7 +79,7 @@
         android:inputType="number"
 
         android:ems="10"
-         />
+        />
 
 
     <EditText
@@ -52,7 +93,7 @@
         android:layout_marginRight="20dp"
         android:inputType ="numberDecimal"
         android:ems="10"
-         />
+        />
 
 
     <Button
@@ -64,7 +105,7 @@
         android:layout_below="@+id/editTextValorPontos"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="79dp"
+        android:layout_marginTop="38dp"
         android:background="@drawable/screen_border"
         android:onClick="cadastrarVendas"
         android:text="Anunciar Venda"

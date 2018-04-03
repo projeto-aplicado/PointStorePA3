@@ -19,6 +19,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.pointstore.Adapter.ListaDePontosAdapter;
 import br.com.pointstore.Adapter.Menssagem;
 import br.com.pointstore.Adapter.Vendas2;
 import br.com.pointstore.CadastrarSeusPontos;
@@ -52,7 +53,7 @@ public class CadastrarVendas extends AppCompatActivity {
     private Vendas2 vendas2;
     private String idUsuario;
 
-    private ListView listViewPontos;
+
     private ArrayList<Pontos> listaDePontos = new ArrayList<Pontos>();
     private Pontos pontosSelecionado= new Pontos();
     private int adaptadorLayout = android.R.layout.simple_list_item_1;
@@ -63,14 +64,21 @@ public class CadastrarVendas extends AppCompatActivity {
     private List<String> pontos = new ArrayList<String>();
     private String ponto;
 
+    /**/
+    private ListView listViewPontos;
+    /**/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_vendas2);
 
-        listViewPontos =  (ListView) findViewById(R.id.listViewPontosCadastros);
+        listViewPontos =  (ListView) findViewById(R.id.listViewDePontos);
         //NomeSelecionadotextView = (TextView) findViewById(R.id.pontoSelecionadovenda);
         BT_ANUNCIAR_VENDAS = (Button)findViewById(R.id.buttonAnunciarVenda);
+
+
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://10.0.3.2")
@@ -106,6 +114,45 @@ public class CadastrarVendas extends AppCompatActivity {
         mVendasService = retrofit.create(VendasService.class);
         this.usuario = (Usuario) getIntent().getSerializableExtra("user");
 
+        this.mPontosService = retrofit.create(PontosService.class);
+        /*Recebendo por intent o ide de usuário  para fazer busca*/
+        idUsuario = this.usuario.getIdUsuario().toString();
+
+        Call<List<Pontos>> pontosCall = mPontosService.meusPontos(idUsuario);
+
+        pontosCall.enqueue(new Callback<List<Pontos>>() {
+            @Override
+            public void onResponse(Call<List<Pontos>> call, Response<List<Pontos>> response) {
+
+
+                List<Pontos>novalistaDePontos = response.body();
+                ArrayList<Pontos> arrayListPontos = new ArrayList<>();
+                arrayListPontos = (ArrayList<Pontos>) response.body();
+                //if ((!response.isSuccessful())){ return;}
+                /*
+                É preciso saber que toda operação feita dentro do metodo  on response, precisa ter continuidade aqui
+                * como por exemplo, tratar evento de click, evento de cadastrar qualquer dado qu seja exbido ou carregao pelo retrofit
+                *
+                * Evento de botão dentre outros serão implementados dentro desse onresponse
+                * */
+                /*
+                final ArrayAdapter adaptadorListaResponse = new ArrayAdapter(CadastrarSeusPontos.this,
+                        adaptadorLayout,novalistaDePontos); */
+
+                final ListaDePontosAdapter adaptadorListaResponse =
+                        new ListaDePontosAdapter(CadastrarVendas.this,
+                                R.layout.adapter_view_pontos_layout,arrayListPontos);
+                listViewPontos.setAdapter(adaptadorListaResponse);
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Pontos>> call, Throwable t) {
+
+            }
+        });
+
 
         //editTextTipoPontos = (EditText) findViewById(R.id.editTextTipoPontos);
         editTextQtdPontos = (EditText) findViewById(R.id.editTextQtdPontos);
@@ -116,7 +163,7 @@ public class CadastrarVendas extends AppCompatActivity {
 
     public void cadastrarVendas (View v) {
 
-        Vendas2 vendas2 = new Vendas2();
+        final Vendas2 vendas2 = new Vendas2();
 
         vendas2.setQuantidade(editTextQtdPontos.getText().toString());
         vendas2.setValor(editTextValorPontos.getText().toString());
@@ -138,10 +185,14 @@ public class CadastrarVendas extends AppCompatActivity {
                     toast.show();
                     Intent listaranuncio = new Intent(CadastrarVendas.this, ListarAnunciosActivity.class);
                     startActivity(listaranuncio);
+
+                    Context context1 = getApplicationContext();
+                    Toast toast1 = Toast.makeText(context1, "Quantidade de pontos : "+ vendas2.getQuantidade(), Toast.LENGTH_SHORT);
+                    toast.show();
                     this.finish();
                 } else {
                     Context context = getApplicationContext();
-                    Toast toast = Toast.makeText(context, "Venda não cadastrada", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(context, "Venda não cadastrada" +"Quantidade de pontos : "+ vendas2.getQuantidade(), Toast.LENGTH_SHORT);
                     toast.show();
 
                 }
