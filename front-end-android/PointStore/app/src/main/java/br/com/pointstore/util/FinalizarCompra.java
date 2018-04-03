@@ -147,8 +147,10 @@ public class FinalizarCompra extends Activity {
                         Menssagem menssagem = new Menssagem();
                         menssagem = response.body();
                         Context context = getApplicationContext();
+                        /*
                         Toast toast = Toast.makeText(context, " : "+menssagem.getMensagem(), Toast.LENGTH_SHORT);
                         toast.show();
+                        */
                         Intent paginainicial = new Intent(FinalizarCompra.this, ListarAnunciosActivity.class);
                         startActivity(paginainicial);
                         this.finish();

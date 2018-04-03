@@ -107,13 +107,12 @@ public class CadastrarSeusPontos extends AppCompatActivity {
 
                         pontosSelecionado = (Pontos) adaptadorListaResponse.getItem(i);
 
-
+                        /*
 
                         Toast.makeText(getApplication(), "Ponto selecionado : "
                         + pontosSelecionado.gettipoDePonto()+" id do ponto selecionado : "+pontosSelecionado.getId(),
                                 Toast.LENGTH_SHORT).show();
-
-
+                        */
 
                         NomeSelecionadotextView.setText(pontosSelecionado.gettipoDePonto());
                         //
@@ -138,9 +137,10 @@ public class CadastrarSeusPontos extends AppCompatActivity {
 
                                         Menssagem menssagem = response.body();
 
-
+                                        /*
                                         Toast.makeText(getApplication(), menssagem.getMensagem(),
                                                 Toast.LENGTH_SHORT).show();
+                                        */
 
                                         restartActivity();
                                         /*

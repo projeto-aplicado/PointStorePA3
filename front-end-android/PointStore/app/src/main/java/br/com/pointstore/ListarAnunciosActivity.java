@@ -159,10 +159,11 @@ public class ListarAnunciosActivity extends AppCompatActivity
                     public boolean onItemLongClick(AdapterView<?> parent, View view, int i, long id) {
 
                         vendasSelecionado = adaptadorListaResponse.getItem(i);
-
+                        /*
                         Toast.makeText(getApplication(), "nome do ponto selecionado : "
                                         + vendasSelecionado.getTitulo() + " valor da venda : " + vendasSelecionado.getValor(),
                                 Toast.LENGTH_LONG).show();
+                        */
 
                         Usuario usuario = new Usuario();
 

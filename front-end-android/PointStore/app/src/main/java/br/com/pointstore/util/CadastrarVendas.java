@@ -181,19 +181,24 @@ public class CadastrarVendas extends AppCompatActivity {
                 Menssagem menssagem = response.body();
                 if (menssagem != null ) {
                     Context context = getApplicationContext();
+                    /*
                     Toast toast = Toast.makeText(context, " : "+menssagem.getMensagem(), Toast.LENGTH_SHORT);
                     toast.show();
+                    */
                     Intent listaranuncio = new Intent(CadastrarVendas.this, ListarAnunciosActivity.class);
                     startActivity(listaranuncio);
-
+                    /*
                     Context context1 = getApplicationContext();
                     Toast toast1 = Toast.makeText(context1, "Quantidade de pontos : "+ vendas2.getQuantidade(), Toast.LENGTH_SHORT);
                     toast.show();
+                    */
                     this.finish();
                 } else {
+                    /*
                     Context context = getApplicationContext();
                     Toast toast = Toast.makeText(context, "Venda não cadastrada" +"Quantidade de pontos : "+ vendas2.getQuantidade(), Toast.LENGTH_SHORT);
                     toast.show();
+                    */
 
                 }
 

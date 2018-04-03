@@ -102,6 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_alignLeft="@id/listViewDePontos"
         android:layout_below="@+id/editTextValorPontos"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
