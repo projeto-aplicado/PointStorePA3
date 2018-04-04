@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -165,7 +166,7 @@ public class ListarAnunciosActivity extends AppCompatActivity
                                 Toast.LENGTH_LONG).show();
                         */
 
-                        Usuario usuario = new Usuario();
+
 
                         Call<Usuario> userLoginCall = mLoginService.loginUser(usuarioLogin);
                         userLoginCall.enqueue(new Callback<Usuario>() {
@@ -175,11 +176,27 @@ public class ListarAnunciosActivity extends AppCompatActivity
                                 user = response.body();
                                 Context context = getApplicationContext();
 
-                                Intent finalizarCompra = new Intent(ListarAnunciosActivity.this, FinalizarCompra.class);
-                                finalizarCompra.putExtra("vendas", vendasSelecionado);
-                                finalizarCompra.putExtra("user", user);
-                                startActivity(finalizarCompra);
-                                this.finish();
+                                Usuario usuario = new Usuario();
+
+                              
+
+                                if(vendasSelecionado.getId_usuario_vendedor().equals(user.getIdUsuario().toString())){
+
+
+                                    AlertDialog.Builder adb = new AlertDialog.Builder(ListarAnunciosActivity.this);
+                                    adb.setTitle("ATENÇÃO !");
+                                    adb.setMessage("Você não pode comprar esse item, pois é uma venda sua!");
+                                    adb.show();
+                                }else {
+                                    Intent finalizarCompra = new Intent(ListarAnunciosActivity.this, FinalizarCompra.class);
+                                    finalizarCompra.putExtra("vendas", vendasSelecionado);
+                                    finalizarCompra.putExtra("user", user);
+                                    startActivity(finalizarCompra);
+                                    this.finish();
+
+                                }
+
+
 
 
                             }
