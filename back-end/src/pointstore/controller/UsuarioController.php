@@ -14,6 +14,7 @@ class UsuarioController extends AbstractController {
 	}
 
 	public function insert($json){
+
     	$user = new Usuario();
     	$user->setNome($json->nome);
     	$user->setSobrenome($json->sobrenome);
@@ -23,6 +24,10 @@ class UsuarioController extends AbstractController {
 
     	$user->setCredito("100");
 
+//    	$pontos = $this->getMeusPontosDefault();
+//    	$user->setMeusPontos($pontos);
+
+
     	$this->getDao()->insert($user);
     	$pontos = $this->getMeusPontosDefault($user);
     	$this->getDao()->insert($pontos[0]);
@@ -30,7 +35,7 @@ class UsuarioController extends AbstractController {
     	return ["mensagem"=>"Usuario inserido com sucesso"];
 	}
 
-	public function getMeusPontosDefault(){
+	public function getMeusPontosDefault($user){
 		$tam = new MeusPontos();
     	$tam->setTipoDePonto("Tam");
     	$tam->setUsuario($user);
@@ -48,7 +53,7 @@ class UsuarioController extends AbstractController {
 		$usuarioDetached = $this->getDao()->entityManager->createQuery('SELECT user FROM \pointstore\entity\Usuario user WHERE user.email = :email');
 		$usuarioDetached->setParameter('email', $json->email);
 		$queryResult = $usuarioDetached->getResult()[0];
-    	$queryResult->setSenha($json->senha);
+    	$queryResult->setSenha(sha1($json->senha . $this->criptografia));
 		$this->getDao()->update($queryResult);
     	return ["mensagem"=>"Senha atualizada com sucesso"];
 	}

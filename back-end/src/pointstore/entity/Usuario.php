@@ -36,7 +36,7 @@ class Usuario{
 	
 	/**
 	*
-	* @var string @Column(type="string", length=255)
+	* @var integer @Column(type="integer", length=255)
 	*/
 	private $credito;
 	
@@ -57,17 +57,21 @@ class Usuario{
 	* @var string @Column(type="string", length=255)
 	*/
 	private $senha;
-	
-	/**
-	*
-	* @var integer @Column(type="integer", length=255)
-	*/
-	private $vendas;
 
 	/**
-	 * @OneToMany(targetEntity="\pointstore\entity\MeusPontos", mappedBy="usuario", cascade={"persist", "remove", "merge"}, orphanRemoval=true)
+	 * @OneToMany(targetEntity="\pointstore\entity\MeusPontos", mappedBy="IdUsuario", cascade={"persist", "remove", "merge"}, orphanRemoval=true)
 	 */
 	private $meusPontos;
+
+	/**
+	 * @OneToMany(targetEntity="\pointstore\entity\Venda", mappedBy="idUsuarioVendedor", cascade={"persist", "remove", "merge"}, orphanRemoval=true)
+	 */
+	private $idUsuarioVendedor;
+
+	/**
+	 * @OneToMany(targetEntity="\pointstore\entity\Venda", mappedBy="idUsuarioComprador", cascade={"persist", "remove", "merge"}, orphanRemoval=true)
+	 */
+	private $idUsuarioComprador;
 
 
 	
@@ -135,21 +139,29 @@ class Usuario{
 		$this->senha = $senha;
 	}
 
-	public function getVendas(){
-		return $this->vendas;
-	}
-
-	public function setVendas($vendas){
-		$this->vendas = $vendas;
-	}
-
 	public function getMeusPontos(){
 		return $this->meusPontos;
 	}
 
 	public function setMeusPontos($meusPontos){
 		$this->meusPontos = $meusPontos;
-	}	
+	}
+
+	public function getIdUsuarioVendedor(){
+		return $this->idUsuarioVendedor;
+	}
+
+	public function setIdUsuarioVendedor($idUsuarioVendedor){
+		$this->idUsuarioVendedor = $idUsuarioVendedor;
+	}
+
+	public function getIdUsuarioComprador(){
+		return $this->idUsuarioComprador;
+	}
+
+	public function setIdUsuarioComprador($idUsuarioComprador){
+		$this->idUsuarioComprador = $idUsuarioComprador;
+	}
 
 	public function __construct(){}
 

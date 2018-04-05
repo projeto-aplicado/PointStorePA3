@@ -29,10 +29,15 @@ class MeusPontos{
 	private $quantidadePonto;
 
 	/**
-	 * @ManyToOne(targetEntity="\pointstore\entity\Usuario")
-	 * @JoinColumn(name="usuario_id", referencedColumnName="id")
+	 * @ManyToOne(targetEntity="\pointstore\entity\Usuario",inversedBy="MeusPontos")
+	 * @JoinColumn(name="id_usuario", referencedColumnName="id")
 	 */
-	private $usuario;
+	private $id_usuario;
+
+	/**
+	 * @OneToMany(targetEntity="\pointstore\entity\Venda", mappedBy="idMeusPontos", cascade={"persist", "remove", "merge"}, orphanRemoval=true)
+	 */
+	private $venda;
 
 
 	public function __construct(){}
@@ -62,10 +67,18 @@ class MeusPontos{
 	}
 
 	public function getUsuario(){
-		return $this->usuario;
+		return $this->id_usuario;
 	}
 
 	public function setUsuario($usuario){
-		$this->usuario = $usuario;
+		$this->id_usuario = $usuario;
+	}
+
+	public function getVenda(){
+		return $this->venda;
+	}
+
+	public function setVenda($venda){
+		$this->venda = $venda;
 	}
 }

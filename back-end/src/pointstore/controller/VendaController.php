@@ -43,7 +43,7 @@ class VendaController extends AbstractController
         $venda->setIdUsuarioVendedor($json->id_usuario);
 
         if($queryResult[0]['quantidadePonto'] < $json->quantidade){
-            $mensagem = 'Você não pode vender '.$json->quantidade.' porque você só tem '.$queryResult[0]['quantidadePonto'].' pontos ';
+            $mensagem = 'Você não pode vender '.$json->quantidade.' porque você só tem '.$queryResult[0]['quantidadePonto'].' pontos';
         }else{
             //$qb = $this->getDao()->entityManager->getConnection();
             $this->getDao()->insert($venda);
@@ -83,5 +83,43 @@ class VendaController extends AbstractController
 
     }
 
+
+    public function listarVendaPublicado($id){
+        if ($id == null) {
+            return "nenhum registro de venda cadastrado encontrado";
+        }else{
+            $qb = $this->getDao()->entityManager->getConnection();
+            return $qb->query('select *,v.id as venda_id from venda v inner join usuario u on u.id = v.id_usuario_vendedor where status = 1 and v.id_usuario_vendedor = ' . $id)->fetchAll();
+        }
+    }
+
+    public function atualizarVendaPublicada($json){
+        $minhasVendas = $this->getDao()->entityManager->find('\pointstore\entity\Venda', $json->venda_id);
+        $minhasVendas->setValor($json->valor);
+        $this->getDao()->update($minhasVendas);
+        return ["mensagem" => "Venda atualizada com sucesso"];
+    }
+
+    public function excluirVendaPublicada($json){
+        $meusPontosDetached = $this->getDao()->entityManager->find('\pointstore\entity\MeusPontos', $json->id_meus_pontos);
+        $vendaDetached = $this->getDao()->entityManager->find('\pointstore\entity\Venda', $json->venda_id);
+        
+        $pontosVendedor = $meusPontosDetached->getQuantidadePonto() + $vendaDetached->getQtdPontos();
+
+        $meusPontosDetached->setQuantidadePonto($pontosVendedor);
+
+
+        $this->getDao()->update($meusPontosDetached);
+
+        $queryResultVenda = $this->getDao()->entityManager->createQuery('DELETE pointstore\entity\Venda venda
+        WHERE venda.id = :id');
+        $queryResultVenda->setParameter('id', $json->venda_id);
+        $queryResultVenda->execute();
+
+        $this->getDao()->entityManager->flush();
+
+        return ["mensagem" => "venda excluida com sucesso, seus pontos foram devolvidos com seguranca"];
+
+    }
 
 }
