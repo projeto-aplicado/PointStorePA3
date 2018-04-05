@@ -40,4 +40,12 @@ public interface VendasService {
     @GET("/pointstorePA3/index.php/compra/{id}")
     Call<List<Vendas4>> listarTodasComprasUsuario (@Path("id") String id);
 
+    /*Arley*/
+    @GET("/pointstorePA3/index.php/venda/gerenciarVendas/{id}")
+    Call<List<Vendas3>> listarTodasAsVendasDoUsuarioPorId (@Path("id") String i);
+
+    /*Arley*/
+    @PUT("/pointstorePA3/index.php/venda/excluirVenda")
+    Call<Menssagem> excluirVenda (@Body String venda_id, String id_meus_pontos );
+
 }

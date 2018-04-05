@@ -13,4 +13,6 @@
     <string name="instrucao_de_uso">Click sobre o item da tabela,em seguida
     insira a quantidade de pontos que gostaria de cadastrar,ou atualizar, logo depois
     click em GRAVAR </string>
+
+    <string name="instrucao_de_uso_gerenciar_venda">Para EXCLUIR uma venda, pressione o anuncio e confirme a exclusão, para ALTERAR PREÇO, der um click simples no anúncio, em seguida logo a baixo, insira o novo valor e click em GRAVAR</string>
 </resources>

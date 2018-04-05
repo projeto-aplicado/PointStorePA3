@@ -1,6 +1,5 @@
 package br.com.pointstore;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,12 +17,7 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
-import org.w3c.dom.Text;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -325,7 +319,9 @@ public class ListarAnunciosActivity extends AppCompatActivity
 
         }
         else if (id == R.id.nav_gerenciar_vendas){
-        Intent home = new Intent(this, ListarAnunciosActivity.class);
+        Intent home = new Intent(this, GerenciarVendas.class);
+        String idToString = user.getIdUsuario().toString();
+        home.putExtra("id_usuario",idToString);
         startActivity(home);
 
         }else if (id == R.id.nav_historico_compras){
