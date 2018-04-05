@@ -3,7 +3,12 @@ app.controller('perfilController', function($scope, $http) {
     $scope.lista = {};
     $scope.listaPontos = [];
     $scope.usuario = usuario;
-    
+
+
+    $(document).ready(function(){
+        $('#credito').attr("disabled", true);
+        $('#login').attr("disabled", true);
+    });
     
 
     $scope.atualizarPerfilUsuario = function(){
@@ -12,7 +17,7 @@ app.controller('perfilController', function($scope, $http) {
 
         if (document.formAtualizarPerfil.nome.value == "" || document.formAtualizarPerfil.sobrenome.value == "" ||
             document.formAtualizarPerfil.cpf.value == "" || document.formAtualizarPerfil.email.value == "" ||
-            document.formAtualizarPerfil.login.value == "" || document.formAtualizarPerfil.email.value == ""){
+            document.formAtualizarPerfil.email.value == "" || document.formAtualizarPerfil.login.value == ""){
             alert("preencha os campos que estiverem vazio!");
             document.formAtualizarPerfil.cpf.focus();
             $(".formPadraoCpf").addClass("formPadraoFocus");
@@ -22,6 +27,7 @@ app.controller('perfilController', function($scope, $http) {
             .success(function(retorno){
                 localStorage.usuario = JSON.stringify($scope.usuario); 
                 alert("perfil atualizado com sucesso!");
+                window.location.reload();
             }).error(function(){
                 alert("erro em atualizar seu perfil, favor, tente novamente mais tarde");
             });

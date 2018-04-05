@@ -27,7 +27,7 @@
     <form name="meusPontos">
         <p>
             <select name="tipoDePonto" id="meus-pontos_tipoDePonto" ng-model="pontos.tipoDePonto"
-                    ng-change="pesquisarPontos(tipoDePonto)">
+                    ng-change="pesquisarPontos(tipoDePonto)" required>
                 <option value="">Tipo</option>
                 <option value="Tam">TAM</option>
                 <option value="Gol">GOL</option>
@@ -36,7 +36,7 @@
 
         <p>
             <input type="text" name="quantidadePonto" id="meus-pontos_quantidadePonto" class="form-control formPadrao"
-                   placeholder="quantidade de pontos" ng-model="pontos.quantidadePonto">
+                   placeholder="quantidade de pontos" ng-model="pontos.quantidadePonto" required>
         </p>
         <p>
             <input type="hidden" name="codigo" id="meus-pontos_id" class="form-control formPadrao" placeholder="Codigo"

@@ -33,7 +33,9 @@
 
 		<input type="email" name="email" class="form-control formPadrao" placeholder="E-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" ng-model="usuario.email" required>
 
-		<input type="text" name="login" class="form-control formPadrao" placeholder="Login" ng-model="usuario.login" required>
+		<input type="text" id="credito" name="credito" class="form-control formPadrao" placeholder="R${{ usuario.credito }}">
+
+		<input type="text" id="login" name="login" class="form-control formPadrao" placeholder="Login" ng-model="usuario.login" required>
 
 		<input type="password" name="senha" class="form-control formPadrao" placeholder="Senha" ng-model="usuario.senha" required>
 		

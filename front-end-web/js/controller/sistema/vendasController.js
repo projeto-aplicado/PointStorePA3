@@ -5,6 +5,43 @@ app.controller('vendasController', function ($scope, $http, $route, $routeParams
         $scope.isEditing = false;
         $scope.usuario = usuario;
         $scope.venda = []
+        $scope.listarVendasPublicadas = [];
+
+        $http.get('http://localhost/pointstorePA3/index.php/venda/gerenciarVendas/'+$scope.usuario.id, {})
+        .success(function(retorno){
+            $scope.listarVendasPublicadas = retorno;
+        }).error(function(){
+            //alert("Erro ao cerregar");
+        });
+
+        $scope.atualizarVendaCadastrada = function(valor, venda_id){
+            var vendaDAO = new Object();
+            vendaDAO.valor = valor;
+            vendaDAO.venda_id = venda_id;
+
+            var minha_venda = angular.toJson(vendaDAO);
+
+            $http.put('http://localhost/pointstorePA3/index.php/venda/gerenciarVendas', minha_venda)
+                .success(function (retorno) {
+                    alert(retorno.mensagem);
+                    window.location.reload();
+                }).error(function () {
+                    alert("Venda não foi atualizada!");
+            });
+
+        }
+
+        $scope.excluirVendaCadastradaId = function(venda_id){
+
+            $http.delete('http://localhost/pointstorePA3/index.php/venda/excluirVendaId/'+venda_id, {})
+                .success(function (retorno) {
+                    alert(retorno.mensagem);
+                    window.location.reload();
+                }).error(function () {
+                    alert("Venda não foi excluida!");
+            });
+
+        }
 
         $scope.cadastrarVenda = function () {
 
@@ -34,6 +71,7 @@ app.controller('vendasController', function ($scope, $http, $route, $routeParams
             $http.post('http://localhost/pointstorePA3/index.php/venda', venda)
                 .success(function (retorno) {
                     alert(retorno.mensagem);
+                    window.location.reload();
                 }).error(function () {
                     alert("Venda não foi salva!");
             });
@@ -59,6 +97,7 @@ app.controller('vendasController', function ($scope, $http, $route, $routeParams
         $http.put('http://localhost/pointstorePA3/index.php/meuspontos/atualizar', tipoDePontosUsuario)
             .success(function(retorno){
                 alert("ponto cadastrado com sucesso!");
+                window.location.reload();
             }).error(function(){
             alert("erro no cadastro do ponto");
         });

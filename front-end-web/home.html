@@ -35,7 +35,7 @@
 	        </div> <!-- fim da div da logo -->
 
 	        <div class="nomeusuario col-xs-12 col-sm-6 col-md-6">
-	            <span id="nome_usuario">Nome do usuário</span> | <a href="#" onclick="deslogar()">deslogar</a>
+	            <span id="nome_usuario">Nome do usuário</span> R$<span id="creditoUsuario">seu credito</span>,00 | <a href="#" onclick="deslogar()">deslogar</a>
 	        </div>
 	    </div>
 	</header>
@@ -57,10 +57,10 @@
 			            <a href="#">minhas vendas</a>
 			            <ul class="nav-submenu">
 			                <li class="nav-submenu-item">
-			                    <a href="#/cadastrar_vendas">cadastrar vendas</a>
+			                    <a href="#/cadastrar_vendas">publicar anúncio</a>
 			                </li>
 			                <li class="nav-submenu-item">
-			                    <a href="#/listar_vendas">histórico de vendas</a>
+			                    <a href="#/listar_vendas">gerenciar vendas</a>
 			                </li>
 			            </ul>
 			        </li>
@@ -98,6 +98,7 @@
 	if(localStorage.usuario != undefined && localStorage.usuario != "" && localStorage.usuario != null){
 		usuario = JSON.parse(localStorage.usuario);
 		$("#nome_usuario").html(usuario.nome);
+		$("#creditoUsuario").html(usuario.credito);
 
 
 		$("#nomeUser").html((usuario.nome));

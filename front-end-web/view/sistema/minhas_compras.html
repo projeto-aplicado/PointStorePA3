@@ -4,43 +4,25 @@
 	</div>
  	<div class="row">
  		<div class="col-md-12 well">
- 			<table class="table tablepontos">
- 				<tr>
- 					<th>Tipo</th>
- 					<th>Comprador</th>
- 					<th>Quantidade</th>
- 					<th>Valor</th>
- 					<th>Data</th>
- 				</tr>
- 				<tr>
- 					<td>Multiplus</td>
- 					<td>Débora</td>
- 					<td>1000</td>
- 					<td>R$ 150,00</td>
- 					<td>20/08/2016</td>
- 				</tr>
- 				<tr>
- 					<td>Multiplus</td>
- 					<td>Débora</td>
- 					<td>1000</td>
- 					<td>R$ 150,00</td>
- 					<td>20/08/2016</td>
- 				</tr>
- 				<tr>
- 					<td>Multiplus</td>
- 					<td>Débora</td>
- 					<td>1000</td>
- 					<td>R$ 150,00</td>
- 					<td>20/08/2016</td>
- 				</tr>
- 				<tr>
- 					<td>Multiplus</td>
- 					<td>Débora</td>
- 					<td>1000</td>
- 					<td>R$ 150,00</td>
- 					<td>20/08/2016</td>
- 				</tr>
- 			</table>
+			<div ng-controller="lojasController">
+				<table class="table table-hover table-condensed">
+					<tr>
+						<th>#</th>
+						<th>Tipo</th>
+						<th>Vendedor</th>
+						<th>Quantidade</th>
+						<th>Valor</th>
+					</tr>
+					<tr ng-repeat="x in listaCompras">
+						<td>{{ $index + 1 }}</td>
+						<td>{{ x.titulo }}</td>
+						<td>{{ x.vendedor }}</td>
+						<td>{{ x.qtd_pontos }}</td>
+						<td>{{x.valor | currency:'R$'}}<br></td>
+					</tr>
+				</table>
+
+			</div>
  		</div>
  	</div>
 </div>

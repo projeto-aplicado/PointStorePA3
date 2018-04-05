@@ -1,8 +1,8 @@
 app.controller('usuarioController', function($scope, $http, $route, $routeParams, $location) {
 
-	$scope.cadastrarUsuario = function (nome, sobrenome, email, login, senha) {
-		
-		var usuarioDAO = new Object();
+    $scope.cadastrarUsuario = function (nome, sobrenome, email, login, senha) {
+        
+        var usuarioDAO = new Object();
         usuarioDAO.nome = nome;
         usuarioDAO.sobrenome = sobrenome;
         usuarioDAO.email = email;
@@ -23,9 +23,7 @@ app.controller('usuarioController', function($scope, $http, $route, $routeParams
                  alert("erro ao cadastrar o usuario, favor, tente novamente mais tarde");
             });
         }
-
-        
-	}
+    }
 
 
     $scope.recuperarSenhaUsuario = function(email, senha){
@@ -45,10 +43,6 @@ app.controller('usuarioController', function($scope, $http, $route, $routeParams
                 alert("erro ao atualizar a senha!");
             });
         }
-
-        
-
     }
 
 });
-
