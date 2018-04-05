@@ -100,10 +100,10 @@ class VendaController extends AbstractController
         return ["mensagem" => "Venda atualizada com sucesso"];
     }
 
-    public function excluirVendaPublicada($json){
-        $meusPontosDetached = $this->getDao()->entityManager->find('\pointstore\entity\MeusPontos', $json->id_meus_pontos);
-        $vendaDetached = $this->getDao()->entityManager->find('\pointstore\entity\Venda', $json->venda_id);
-        
+    public function excluirVendaPublicadaId($id){
+        $vendaDetached = $this->getDao()->entityManager->find('\pointstore\entity\Venda', $id);
+        $meusPontosDetached = $this->getDao()->entityManager->find('\pointstore\entity\MeusPontos', $vendaDetached->getIdMeusPontos());
+
         $pontosVendedor = $meusPontosDetached->getQuantidadePonto() + $vendaDetached->getQtdPontos();
 
         $meusPontosDetached->setQuantidadePonto($pontosVendedor);
@@ -113,7 +113,7 @@ class VendaController extends AbstractController
 
         $queryResultVenda = $this->getDao()->entityManager->createQuery('DELETE pointstore\entity\Venda venda
         WHERE venda.id = :id');
-        $queryResultVenda->setParameter('id', $json->venda_id);
+        $queryResultVenda->setParameter('id', $id);
         $queryResultVenda->execute();
 
         $this->getDao()->entityManager->flush();

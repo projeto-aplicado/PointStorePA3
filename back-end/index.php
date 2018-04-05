@@ -95,6 +95,10 @@ $app->delete( '/venda/excluirVenda(/(:id))', function() use ($vendaCtrl){
     echo json_encode($vendaCtrl->excluirVendaPublicada($json));
 });
 
+$app->delete( '/venda/excluirVendaId(/(:id))', function($id = null) use ($vendaCtrl){
+    echo json_encode($vendaCtrl->excluirVendaPublicadaId($id));
+});
+
 $app->get( '/compra(/(:id))', function($id = null) use ($compraCtrl){
     echo json_encode($compraCtrl->listar($id));
 });
