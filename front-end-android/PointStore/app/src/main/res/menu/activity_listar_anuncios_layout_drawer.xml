@@ -20,8 +20,20 @@
 
         <item
             android:id="@+id/nav_cadastrarvendas"
-            android:icon="@drawable/if_buy"
-            android:title="Cadastrar Vendas" />
+            android:icon="@drawable/if_anuciar_item_para_venda"
+            android:title="Anunciar Venda" />
+
+        <item
+            android:id="@+id/nav_gerenciar_vendas"
+            android:icon="@drawable/if_gerenciar_vendas"
+            android:title="Gerenciar Vendas" />
+
+
+        <item
+            android:id="@+id/nav_historico_compras"
+            android:icon="@drawable/ic_minhas_compras"
+            android:title="Histórico de Compras" />
+
 
 
         <item

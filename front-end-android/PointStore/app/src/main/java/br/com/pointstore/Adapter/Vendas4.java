@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Created by Arley on 28/03/2018.
  */
 
-public class Vendas3 implements Serializable {
+public class Vendas4 implements Serializable {
 
 
     @JsonProperty("id")
@@ -56,7 +56,7 @@ public class Vendas3 implements Serializable {
     @JsonProperty("senha")
     private  String senha;
 
-    @JsonProperty("venda_id")
+    @JsonProperty("vendedor")
     private  String venda_id;
 
     public String getId() {

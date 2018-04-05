@@ -5,6 +5,7 @@ import java.util.List;
 import br.com.pointstore.Adapter.Menssagem;
 import br.com.pointstore.Adapter.Vendas2;
 import br.com.pointstore.Adapter.Vendas3;
+import br.com.pointstore.Adapter.Vendas4;
 import br.com.pointstore.model.Compra;
 import br.com.pointstore.model.Vendas;
 import retrofit2.Call;
@@ -34,4 +35,9 @@ public interface VendasService {
     /*Arley*/
     @GET("/pointstorePA3/index.php/venda/")
     Call<List<Vendas3>> listarTodasVendas ();
+
+    /*Arley*/
+    @GET("/pointstorePA3/index.php/compra/{id}")
+    Call<List<Vendas4>> listarTodasComprasUsuario (@Path("id") String id);
+
 }

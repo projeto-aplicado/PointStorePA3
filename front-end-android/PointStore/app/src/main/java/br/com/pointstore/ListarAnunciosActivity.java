@@ -149,8 +149,7 @@ public class ListarAnunciosActivity extends AppCompatActivity
 
                 arrayListVendas = (ArrayList<Vendas3>) response.body();
 
-                final ListaDeVendasAdapter adaptadorListaResponse =
-                        new ListaDeVendasAdapter(ListarAnunciosActivity.this,
+                final ListaDeVendasAdapter adaptadorListaResponse =    new ListaDeVendasAdapter(ListarAnunciosActivity.this,
                                 R.layout.adapter_view_listar_anuncios, arrayListVendas);
 
                 listViewVendas.setAdapter(adaptadorListaResponse);
@@ -320,6 +319,20 @@ public class ListarAnunciosActivity extends AppCompatActivity
 
         }else if (id == R.id.nav_home){
             Intent home = new Intent(this, ListarAnunciosActivity.class);
+            startActivity(home);
+
+
+
+        }
+        else if (id == R.id.nav_gerenciar_vendas){
+        Intent home = new Intent(this, ListarAnunciosActivity.class);
+        startActivity(home);
+
+        }else if (id == R.id.nav_historico_compras){
+
+            String idToString = user.getIdUsuario().toString();
+            Intent home = new Intent(this, HistoricoCompras.class);
+            home.putExtra("id_usuario",idToString);
             startActivity(home);
         }
 

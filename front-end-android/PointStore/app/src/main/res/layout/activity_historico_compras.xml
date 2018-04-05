@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HistoricoCompras">
+
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="#607D8B"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ponto"
+            android:textSize="18dp"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Quantidade"
+            android:textSize="18dp"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Preço"
+            android:textSize="18dp"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Vendedor"
+            android:textSize="18dp"
+            android:textAlignment="center"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listviewdecompras"
+        android:layout_width="match_parent"
+        android:layout_height="473dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout" />
+
+</RelativeLayout>

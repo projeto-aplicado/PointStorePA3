@@ -24,9 +24,6 @@
         <activity android:name=".util.ListarPontos" />
         <activity android:name=".Listar_pontos_cadastradros" />
         <activity android:name=".CadastrarSeusPontos" />
-
-
-
         <activity android:name=".MainActivity" />
         <activity android:name=".util.CadastrarUsuario" />
         <activity
@@ -36,7 +33,9 @@
         <activity
             android:name=".util.Perfil"
             android:label="@string/title_activity_perfil"
-            android:theme="@style/AppTheme.AppBarOverlay"></activity>
+            android:theme="@style/AppTheme.AppBarOverlay" />
+        <activity android:name=".GerenciarVendas" />
+        <activity android:name=".HistoricoCompras"></activity>
     </application>
 
 </manifest>
