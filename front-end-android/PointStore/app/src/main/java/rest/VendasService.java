@@ -10,6 +10,7 @@ import br.com.pointstore.model.Compra;
 import br.com.pointstore.model.Vendas;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -45,7 +46,7 @@ public interface VendasService {
     Call<List<Vendas3>> listarTodasAsVendasDoUsuarioPorId (@Path("id") String i);
 
     /*Arley*/
-    @PUT("/pointstorePA3/index.php/venda/excluirVenda")
-    Call<Menssagem> excluirVenda (@Body String venda_id, String id_meus_pontos );
+    @DELETE("/pointstorePA3/index.php/venda/excluirVendaId/{venda_id}")
+    Call<Menssagem> excluirVenda (@Path("venda_id") String venda_id );
 
 }

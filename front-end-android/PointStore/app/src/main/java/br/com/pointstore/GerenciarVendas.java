@@ -31,6 +31,10 @@ public class GerenciarVendas extends AppCompatActivity {
     private String idUsuario;
     private Vendas3 vendasSelecionado;
 
+    public void restartActivity(){
+        Intent mIntent = getIntent();
+        finish(); startActivity(mIntent); }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,16 +74,35 @@ public class GerenciarVendas extends AppCompatActivity {
                         adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface arg0, int arg1) {
                                 String venda_id = vendasSelecionado.getVenda_id();
-                                String id_meus_pontos = vendasSelecionado.getId_meus_pontos();
-
-                                Call<Menssagem> excluirVenda = mVendasService.excluirVenda(venda_id,id_meus_pontos);
+                                Call<Menssagem> excluirVenda = mVendasService.excluirVenda(venda_id);
 
                                 excluirVenda.enqueue(new Callback<Menssagem>() {
                                     @Override
                                     public void onResponse(Call<Menssagem> call, Response<Menssagem> response) {
-                                        AlertDialog.Builder adb = new AlertDialog.Builder(GerenciarVendas.this);
-                                        adb.setTitle("Sucesso !");
-                                        adb.setMessage("Anuncio excluido com exito!");
+                                        AlertDialog.Builder ok = new AlertDialog.Builder(GerenciarVendas.this);
+                                        ok.setTitle("Sucesso !");
+                                        Menssagem menssagem = response.body();
+                                        ok.setMessage(menssagem.getMensagem());
+                                        //ok.setMessage(""+response.body());
+                                        ok.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                restartActivity();
+                                                //this.finish();
+                                            }
+                                        });
+
+                                        ok.show();
+
+/*
+                                        Context context = getApplicationContext();
+
+
+                                        Toast toast = Toast.makeText(context,"Menssagem"+menssagem.getMensagem() , Toast.LENGTH_SHORT);
+                                        toast.show();*/
+                                    }
+
+                                    private void finish() {
                                     }
 
                                     @Override
