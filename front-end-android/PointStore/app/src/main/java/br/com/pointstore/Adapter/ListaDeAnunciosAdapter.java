@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,14 +18,14 @@ import br.com.pointstore.R;
  * Created by Arley on 26/03/2018.
  */
 
-public class ListaDeVendasAdapter extends ArrayAdapter<Vendas3> {
+public class ListaDeAnunciosAdapter extends ArrayAdapter<Vendas3> {
 
-    private static final String TAG ="ListaDeVendas";
+    private static final String TAG ="ListaDeAnunciosAdapter";
     private Context mContext;
     int mResource;
 
 
-    public ListaDeVendasAdapter(Context context, int resource, ArrayList<Vendas3> lista_de_vendas) {
+    public ListaDeAnunciosAdapter(Context context, int resource, ArrayList<Vendas3> lista_de_vendas) {
         super(context, resource, lista_de_vendas);
         mContext = context;
         mResource = resource;
@@ -79,20 +78,20 @@ public class ListaDeVendasAdapter extends ArrayAdapter<Vendas3> {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource,parent,false);
 
-        TextView tituloTextPonto = (TextView) convertView.findViewById(R.id.tituloTextPonto);
-        TextView quantidade_pontos = (TextView) convertView.findViewById(R.id.quantidade_pontos);
-        TextView valor_venda = (TextView) convertView.findViewById(R.id.valor_venda);
-        TextView vendedor = (TextView) convertView.findViewById(R.id.emailText);
-
-        ImageView imagem = (ImageView) convertView.findViewById(R.id.appImagem);
+        TextView tituloTextPonto = (TextView) convertView.findViewById(R.id.tipo_de_ponto_para_venda);
+        TextView quantidade_pontos = (TextView) convertView.findViewById(R.id.quantidade_de_pontos_para_venda);
+        TextView valor_venda = (TextView) convertView.findViewById(R.id.preco_da_venda_para_anuncio);
 
 
+        //ImageView imagem = (ImageView) convertView.findViewById(R.id.appImagem);
+
+        /*
         if (titulo.equals("tam")|| titulo.equals("TAM")){
             imagem.setImageResource(R.drawable.multiplus_tam_logo);
         }
         else {
             imagem.setImageResource(R.drawable.smiles_gol_logo);
-        }
+        }*/
         if (titulo.equals("tam")|| titulo.equals("TAM")){
             tituloTextPonto.setText("Tam");
 
@@ -103,8 +102,8 @@ public class ListaDeVendasAdapter extends ArrayAdapter<Vendas3> {
 
 
 
-        vendedor.setText(login);
-        //tituloTextPonto.setText(titulo);
+        //vendedor.setText(login);
+        tituloTextPonto.setText(titulo);
         quantidade_pontos.setText(qtd_pontos);
         valor_venda.setText(valor);
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/alterardados_anucio"
+        android:title="Alterar Dados" />
+
+
+
+    <item
+        android:id="@+id/excluir_anuncio"
+        android:title="Excluir Anuncio" />
+</menu>

@@ -2,6 +2,7 @@ package rest;
 
 import java.util.List;
 
+import br.com.pointstore.Adapter.AtualizadorDeVendas;
 import br.com.pointstore.Adapter.Menssagem;
 import br.com.pointstore.Adapter.Vendas2;
 import br.com.pointstore.Adapter.Vendas3;
@@ -11,9 +12,12 @@ import br.com.pointstore.model.Vendas;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 /**
@@ -44,6 +48,10 @@ public interface VendasService {
     /*Arley*/
     @GET("/pointstorePA3/index.php/venda/gerenciarVendas/{id}")
     Call<List<Vendas3>> listarTodasAsVendasDoUsuarioPorId (@Path("id") String i);
+
+    @PUT("/pointstorePA3/index.php/venda/gerenciarVendas/")
+    //Call<Menssagem> auterarPrecoDaVenda (@Body String valor, String venda_id);
+    Call<Menssagem> auterarPrecoDaVenda (@Body AtualizadorDeVendas atualizadorDeVendas);
 
     /*Arley*/
     @DELETE("/pointstorePA3/index.php/venda/excluirVendaId/{venda_id}")

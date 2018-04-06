@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -153,11 +154,11 @@ public class ListarAnunciosActivity extends AppCompatActivity
                     public boolean onItemLongClick(AdapterView<?> parent, View view, int i, long id) {
 
                         vendasSelecionado = adaptadorListaResponse.getItem(i);
-                        /*
+/*
                         Toast.makeText(getApplication(), "nome do ponto selecionado : "
                                         + vendasSelecionado.getTitulo() + " valor da venda : " + vendasSelecionado.getValor(),
-                                Toast.LENGTH_LONG).show();
-                        */
+                                Toast.LENGTH_LONG).show();*/
+
 
 
 
@@ -171,7 +172,7 @@ public class ListarAnunciosActivity extends AppCompatActivity
 
                                 Usuario usuario = new Usuario();
 
-                              
+
 
                                 if(vendasSelecionado.getId_usuario_vendedor().equals(user.getIdUsuario().toString())){
 
@@ -208,6 +209,18 @@ public class ListarAnunciosActivity extends AppCompatActivity
                         return false;
                     }
                 });
+
+                listViewVendas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        vendasSelecionado = adaptadorListaResponse.getItem(position);
+/*
+                        Toast.makeText(getApplication(), "nome do ponto selecionado : "
+                                        + vendasSelecionado.getTitulo() + " valor da venda : " + vendasSelecionado.getValor(),
+                                Toast.LENGTH_LONG).show();*/
+                    }
+                });
+
 
             }
 
@@ -322,7 +335,7 @@ public class ListarAnunciosActivity extends AppCompatActivity
         Intent home = new Intent(this, GerenciarVendas.class);
         String idToString = user.getIdUsuario().toString();
         home.putExtra("id_usuario",idToString);
-            this.finish();
+           // this.finish();
         startActivity(home);
 
         }else if (id == R.id.nav_historico_compras){
