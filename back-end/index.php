@@ -89,12 +89,6 @@ $app->put( '/venda/gerenciarVendas(/(:id))', function() use ($vendaCtrl){
     echo json_encode($vendaCtrl->atualizarVendaPublicada($json));
 });
 
-$app->delete( '/venda/excluirVenda(/(:id))', function() use ($vendaCtrl){
-	$app = \Slim\Slim::getInstance();
-    $json = json_decode($app->request()->getBody());
-    echo json_encode($vendaCtrl->excluirVendaPublicada($json));
-});
-
 $app->delete( '/venda/excluirVendaId(/(:id))', function($id = null) use ($vendaCtrl){
     echo json_encode($vendaCtrl->excluirVendaPublicadaId($id));
 });
