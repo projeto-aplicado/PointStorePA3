@@ -137,10 +137,10 @@ public class CadastrarSeusPontos extends AppCompatActivity {
 
                                         Menssagem menssagem = response.body();
 
-                                        /*
+
                                         Toast.makeText(getApplication(), menssagem.getMensagem(),
                                                 Toast.LENGTH_SHORT).show();
-                                        */
+
 
                                         restartActivity();
                                         /*

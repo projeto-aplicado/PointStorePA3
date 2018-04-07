@@ -87,6 +87,9 @@ public class ListaDeVendasAdapter extends ArrayAdapter<Vendas3> {
         ImageView imagem = (ImageView) convertView.findViewById(R.id.appImagem);
 
 
+
+
+
         if (titulo.equals("tam")|| titulo.equals("TAM")){
             imagem.setImageResource(R.drawable.multiplus_tam_logo);
         }
@@ -112,6 +115,7 @@ public class ListaDeVendasAdapter extends ArrayAdapter<Vendas3> {
 
 
     }
+
 
 
 }

@@ -46,17 +46,6 @@
         android:layout_alignStart="@+id/linearLayout"
         android:layout_below="@+id/linearLayout" />
 
-    <TextView
-        android:id="@+id/textViewTitulo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="145dp"
-        android:text="ANUNCIE SEUS PONTOS"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="20sp" />
 
     <Spinner
         android:id="@+id/spinnervenda"
@@ -65,7 +54,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_below="@+id/textViewTitulo" />
+        android:layout_below="@+id/listViewDePontos" />
 
     <EditText
         android:id="@+id/editTextQtdPontos"

@@ -11,17 +11,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="br.com.pointstore.util.CadastrarUsuario">
 
-    <TextView
-        android:text="CADASTRE-SE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewTituloLogin"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="20sp"
-        />
 
 
     <Button

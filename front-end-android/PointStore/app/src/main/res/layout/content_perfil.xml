@@ -15,19 +15,6 @@
     tools:showIn="@layout/layout_activity_perfil">
 
 
-    <TextView
-        android:text="MEU PERFIL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewTituloLogin"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:textColor="#000"
-        android:textSize="20sp"
-        />
-
-
     <Button
         android:id="@+id/buttonAtualizar"
         android:layout_width="match_parent"
@@ -36,7 +23,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="14dp"
         android:background="@drawable/screen_border"
-        android:text="Atualizar"
+        android:text="Alterar"
         android:textColor="#fff"
         android:textColorHint="#000" />
 

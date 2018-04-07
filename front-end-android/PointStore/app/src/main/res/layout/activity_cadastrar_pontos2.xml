@@ -7,36 +7,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="br.com.pointstore.CadastrarSeusPontos">
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="@string/instrucao_de_uso" />
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="340dp"
+        android:layout_marginTop="70dp"
         android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="#607D8B"
-        android:weightSum="100"
         android:id="@+id/linearLayout">
 
 
         <TextView
             android:id="@+id/textview4"
             android:layout_width="171dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
 
             android:layout_weight="33"
-            android:gravity="center"
             android:text="Ponto"
             android:textAlignment="center"
-            android:textSize="24sp"/>
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/textview5"
             android:layout_width="191dp"
             android:layout_height="wrap_content"
             android:layout_weight="33"
-            android:gravity="center"
             android:text="Quantidade"
             android:textAlignment="center"
-            android:textSize="24sp"/>
+            android:textSize="24sp" />
 
     </LinearLayout>
 
@@ -52,22 +60,21 @@
         android:id="@+id/buttonGravarDados"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ed_quantidade"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/screen_border"
-        android:textColor="#fff"
+        android:layout_marginBottom="73dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="47dp"
-        android:text="Gravar" />
+        android:background="@drawable/screen_border"
+        android:text="Salvar"
+        android:textColor="#fff" />
 
     <TextView
         android:id="@+id/pontoSelecionado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView5"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="19dp"
+        android:layout_centerVertical="true"
         android:text="Ponto"
         android:textSize="24sp" />
 
@@ -75,21 +82,14 @@
         android:id="@+id/ed_quantidade"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/pontoSelecionado"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="38dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:inputType="number" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/listViewDePontos"
-        android:layout_alignStart="@+id/listViewDePontos"
-        android:layout_below="@+id/listViewDePontos"
-        android:layout_marginTop="14dp"
-        android:text="@string/instrucao_de_uso" />
+
 
 </RelativeLayout>
