@@ -26,23 +26,29 @@ app.controller('usuarioController', function($scope, $http, $route, $routeParams
     }
 
 
-    $scope.recuperarSenhaUsuario = function(email, senha){
+    $scope.recuperarSenhaUsuario = function(email, senha, senha2){
         var usuarioDAO = new Object();
         usuarioDAO.email = email;
         usuarioDAO.senha = senha;
 
-        if(document.formAlterarSenha.email.value == "" || document.formAlterarSenha.senha.value == ""){
+        if (document.formAlterarSenha.senha.value == document.formAlterarSenha.senha2.value) {
+            if(document.formAlterarSenha.email.value == "" || document.formAlterarSenha.senha.value == ""){
             alert("preencha os campos que estiverem vazio!");
+            }else{
+                var usuario = angular.toJson(usuarioDAO);
+                $http.put('http://localhost/pointstorePA3/index.php/usuario/senha', usuario)
+                .success(function(retorno){
+                    alert("senha do usuario atualizada com sucesso!");
+                    window.location.href = "http://localhost/pointstorePA3/pointstore/index.html#/view/login/tela_login";
+                }).error(function(){
+                    alert("erro ao atualizar a senha!");
+                });
+            }
         }else{
-            var usuario = angular.toJson(usuarioDAO);
-            $http.put('http://localhost/pointstorePA3/index.php/usuario/senha', usuario)
-            .success(function(retorno){
-                alert("senha do usuario atualizada com sucesso!");
-                window.location.href = "http://localhost/pointstorePA3/pointstore/index.html#/view/login/tela_login";
-            }).error(function(){
-                alert("erro ao atualizar a senha!");
-            });
+            alert("as senhas sao diferente");
         }
+
+        
     }
 
 });

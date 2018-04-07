@@ -1,10 +1,15 @@
 <h1 class="titulo">Publicar anúncio</h1>
 
+
+<div class="col-xs-12">
+    <p>Selecione os pontos para publicar seus anúncio</p>
+</div>
+
 <div class="caixanuncio col-md-6">
 
     <p>
         <select class="form-control" ng-model="venda.tipoDePontos">
-            <option value="">Selecione</option>
+            <option value="">Escolha o tipo de ponto</option>
             <option value="Tam">TAM</option>
             <option value="Gol">GOL</option>
         </select>
@@ -16,4 +21,21 @@
 
     <button class="botaoPadrao" ng-click="cadastrarVenda()">Salvar</button>
 
+</div>
+
+<div class="col-xs-12 col-md-5 col-md-offset-1">
+    <div ng-controller="lojasController">
+        <table class="table table-hover table-condensed">
+            <tr>
+                <th>#</th>
+                <th>Tipo</th>
+                <th>Quantidade</th>
+            </tr>
+            <tr ng-repeat="x in listarPontos">
+                <td>{{ $index + 1 }}</td>
+                <td>{{ x.tipoDePonto }}</td>
+                <td>{{ x.quantidadePonto }}</td>
+            </tr>
+        </table>
+    </div>
 </div>

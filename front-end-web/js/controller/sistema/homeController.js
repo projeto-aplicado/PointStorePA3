@@ -13,5 +13,14 @@ app.controller('homeController', function ($scope, $http, $route, $routeParams, 
             alert("Erro ao cerregar");
         });
 
+
+        $scope.permitirComprar = function(id_usuario_vendedor, venda_id){
+            if (usuario.id == id_usuario_vendedor) {
+                alert("você não pode comprar seu próprio anúncio");
+            }else{
+                window.location.href = "#/finalizar_compra/"+venda_id;
+            }
+        }
+
     }
 );

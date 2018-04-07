@@ -4,7 +4,7 @@
 	</div>
 
  	<div class="row">
- 		<div class="col-md-12 well">
+ 		<div class="col-md-12 well gerenciarVenda">
 			<div ng-controller="vendasController">
 				<table class="table table-hover table-condensed">
 					<tr>
@@ -13,7 +13,6 @@
 						<th>Vendedor</th>
 						<th>Quantidade</th>
 						<th>Valor</th>
-						<th>Status</th>
 						<th></th>
 						<th></th>
 					</tr>
@@ -25,11 +24,10 @@
 						<td> 
 							<input class="form-control formPadrao" type="text" name="" value="{{ x.valor }}" placeholder="{{ x.valor }}" ng-model="valor" required>
 						</td>
-						<td>Publicado</td>
-						<td> <button class="botaoPadrao" ng-click="atualizarVendaCadastrada(valor, x.venda_id)">atualizar</button> </td>
+						<td> <button class="botaoPadrao" ng-click="atualizarVendaCadastrada(valor, x.venda_id)">Atualizar</button> </td>
 						<td> 
 							<button class="botaoPadrao btn-danger" ng-click="excluirVendaCadastradaId(x.venda_id)">
-							excluir
+							Excluir
 							</button>
 						</td>
 					</tr>

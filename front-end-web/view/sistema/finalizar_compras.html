@@ -9,27 +9,18 @@
 	<div class="infoCompra col-xs-12 col-md-10">
 
 		<p>
-			{{venda.nome}} {{venda.sobrenome}} <br />
-			<a href="mailto:{{venda.email}}">{{venda.email}}</a> <br />
-			{{venda.titulo}} <br />
-			{{venda.qtd_pontos}}  pts por {{venda.valor | currency:'R$'}}<br>
-			Formas de pagamentos
+			<span class="maiusculo">{{venda.nome}} {{venda.sobrenome}} </span> <br />
+			{{venda.qtd_pontos}} pontos da <strong>{{venda.titulo}}</strong> <br />
+			<strong>{{venda.valor | currency:'R$'}}</strong><br>
 		</p>
 		<input type="hidden" name="id" ng-model="compra.id" value="{{venda.id}}" />
 		<p>
 			<select class="form-control" name="formaPagamento" required ng-model="compra.formaPagamento">
-				<option value="">Forma de pagamento</option>
+				<option value="">Formas de pagamento</option>
 				<option value="P">PayPal</option>
 				<option value="B">Boleto</option>
+				<option value="C">Crédito</option>
 			</select>
-		</p>
-
-		<p>
-			<input type="text" name="numeroCartao" class="form-control formPadrao" placeholder="número do cartão" required ng-model="compra.numeroCartao" />
-		</p>
-
-		<p>
-			<input type="text" name="codigoSeguranca" class="form-control formPadrao" placeholder="código de segurança" required ng-model="compra.codigoSeguranca" />
 		</p>
 
 		<button class="botaoPadrao" ng-click="realizarCompra()">Finalizar</button>

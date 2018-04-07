@@ -25,9 +25,7 @@ app.controller('comprasController', function ($scope, $http, $route, $routeParam
         $scope.realizarCompra = function () {
 
             var compraDAO = new Object();
-            compraDAO.codigoSeguranca = $scope.compra.codigoSeguranca;
             compraDAO.formaPagamento = $scope.compra.formaPagamento;
-            compraDAO.numeroCartao = $scope.compra.numeroCartao;
             compraDAO.id_usuario = $scope.usuario.id;
             compraDAO.venda_id = $scope.venda.venda_id;
 
@@ -35,16 +33,6 @@ app.controller('comprasController', function ($scope, $http, $route, $routeParam
 
             if(!$scope.compra.formaPagamento){
                 alert('Por favor, escolha a forma de pagamento');
-                return false;
-            }
-
-            if(!$scope.compra.numeroCartao){
-                alert('Por favor, digite o numero do cartão');
-                return false;
-            }
-
-            if(!$scope.compra.codigoSeguranca){
-                alert('Por favor, digite o codigo de segurança');
                 return false;
             }
 

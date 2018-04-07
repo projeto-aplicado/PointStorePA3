@@ -42,6 +42,8 @@ header{background-color: #00888b; height: 80px; color: #ffffff; display: table;}
 .areaDoUsuario{text-align: left;}
 .areaDoUsuario a{color: #777777; transition: 0.4s all 0s;}
 .areaDoUsuario a:hover{color: #ff5f3f;}
+.areaDoUsuarioBtn button{color: #777777 !important; transition: 0.4s all 0s;}
+.areaDoUsuarioBtn button:hover{color: #ff5f3f !important; border-color: #ff5f3f !important;}
 .box-menu {
 	background: #00bdc1;
 	border-radius: 10px;
@@ -80,7 +82,11 @@ h4.titulo{margin: 30px 0 50px 0 !important;}
 .botaoPadraoLink:hover{color: #ffffff; background-color: #ff5f3f; border: 1px solid #ff5f3f; margin: 10px 0 0 0; 
 	padding: 10px 25px !important; border-radius: 15px; float: left;}
 
+span.maiusculo{text-transform: capitalize;}
+.containerPontosVendedor{border: 1px solid #00bdc1 !important;}
+
+
 /*Footer*/
-.footer{background-color: #00bdc1; height: 250px; color: #ffffff; border-top: 5px solid #ff5f3f;}
+.footer{background-color: #00bdc1; height: 150px; color: #ffffff; border-top: 5px solid #ff5f3f;}
 .contato{}
 .redesociais img{margin: 0 10px 0 0; float: left;}

@@ -1,53 +1,9 @@
-<div class="perfilTopo col-md-8">
-    <div class="row perfil-header">
-        <div class="perfil-header-sub">
-            <h1 class="title titulo">Meus Pontos</h1>
-
-            <div class="col-md-3 box-menu">
-                <a href="#/perfil">
-                    <img src="img/icone-perfil.PNG" alt="icone perfil usuário">
-                </a>
-
-                <a href="#/perfil">Perfil do usuário</a>
-            </div>
-
-            <div class="col-md-3 col-md-offset-1 box-menu">
-                <a href="#/meus_pontos">
-                    <img src="img/icone-meus-pontos.PNG" alt="Meus Pontos">
-                </a>
-
-                <a href="#/meus_pontos">Meus pontos </a>
-            </div>
-        </div>
-    </div>
+<div class="perfilTopo col-xs-12">
+    <h1 class="title titulo">Meus pontos</h1>
 </div>
 
 
-<div class="conteudoPage col-md-6">
-    <form name="meusPontos">
-        <p>
-            <select name="tipoDePonto" id="meus-pontos_tipoDePonto" ng-model="pontos.tipoDePonto"
-                    ng-change="pesquisarPontos(tipoDePonto)" required>
-                <option value="">Tipo</option>
-                <option value="Tam">TAM</option>
-                <option value="Gol">GOL</option>
-            </select>
-        </p>
-
-        <p>
-            <input type="text" name="quantidadePonto" id="meus-pontos_quantidadePonto" class="form-control formPadrao"
-                   placeholder="quantidade de pontos" ng-model="pontos.quantidadePonto" required>
-        </p>
-        <p>
-            <input type="hidden" name="codigo" id="meus-pontos_id" class="form-control formPadrao" placeholder="Codigo"
-                   ng-model="pontos.codigo">
-        </p>
-
-        <button type="button" ng-click="cadastrarTiposDePontos()" class="botaoPadrao">cadastrar</button>
-
-    </form>
-</div>
-<div class="conteudoPage col-md-12">
+<div class="col-xs-12 col-md-6">
     <div ng-controller="lojasController">
         <table class="table table-hover table-condensed">
             <tr>
@@ -62,4 +18,35 @@
             </tr>
         </table>
     </div>
+</div>
+
+
+<div class="col-xs-12">
+    <p>Selecione os pontos para realizar o cadastro dos seus pontos</p>
+</div>
+
+
+<div class="conteudoPage col-xs-12 col-md-6">
+    <form name="meusPontos">
+        <p>
+            <select name="tipoDePonto" id="meus-pontos_tipoDePonto" ng-model="pontos.tipoDePonto"
+                    ng-change="pesquisarPontos(tipoDePonto)" class="formSelect form-control" required>
+                <option value="">Escolha o tipo de ponto</option>
+                <option value="Tam">TAM</option>
+                <option value="Gol">GOL</option>
+            </select>
+        </p>
+
+        <p>
+            <input type="text" name="quantidadePonto" id="meus-pontos_quantidadePonto" class="form-control formPadrao"
+                   placeholder="quantidade de pontos" ng-model="pontos.quantidadePonto" required>
+        </p>
+        <p>
+            <input type="hidden" name="codigo" id="meus-pontos_id" class="form-control formPadrao" placeholder="Codigo"
+                   ng-model="pontos.codigo">
+        </p>
+
+        <button type="button" ng-click="cadastrarTiposDePontos()" class="botaoPadrao">Cadastrar</button>
+
+    </form>
 </div>
