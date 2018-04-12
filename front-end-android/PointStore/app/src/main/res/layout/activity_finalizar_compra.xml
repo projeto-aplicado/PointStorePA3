@@ -103,14 +103,11 @@
                 android:layout_height="100dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="0dp"
-                android:layout_marginStart="0dp"
+                android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/quantidade_pontos"
                 android:layout_toStartOf="@+id/quantidade_pontos"
                 android:background="@drawable/pointstorelogo"
-                android:scaleType="centerCrop"
-                tools:ignore="ContentDescription" />
+                android:scaleType="fitXY"/>
 
         <TextView
             android:id="@+id/tituloTextPonto"
@@ -125,17 +122,17 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="17sp" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/appImagem"
-            android:layout_toRightOf="@+id/appImagem"
-            android:text="Dados da Compra:"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView4"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/textView4"
+                android:text="Dados da Compra:"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView4"
@@ -149,16 +146,16 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="17sp" />
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView4"
-            android:layout_toEndOf="@+id/appImagem"
-            android:layout_toRightOf="@+id/appImagem"
-            android:text="Vendedor:"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="17sp" />
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView4"
+                android:layout_alignStart="@+id/textView4"
+                android:layout_below="@+id/textView4"
+                android:text="Vendedor:"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="17sp" />
 
         <TextView
             android:id="@+id/textView7"
