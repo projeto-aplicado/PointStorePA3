@@ -106,8 +106,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/quantidade_pontos"
                 android:layout_toStartOf="@+id/quantidade_pontos"
-                android:background="@drawable/pointstorelogo"
-                android:scaleType="fitXY"/>
+                android:background="@drawable/pointstorelogo" />
 
         <TextView
             android:id="@+id/tituloTextPonto"

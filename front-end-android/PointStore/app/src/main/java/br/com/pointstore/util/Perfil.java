@@ -11,7 +11,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.text.TextWatcher;
 
 /*import java.util.Collection;
 import javax.inject.Inject;*/
@@ -21,6 +23,7 @@ import br.com.pointstore.Adapter.Menssagem;
 import br.com.pointstore.Adapter.UsuarioCadastro;
 import br.com.pointstore.DAO.DataAccessObject;
 import br.com.pointstore.ListarAnunciosActivity;
+import br.com.pointstore.Mask;
 import br.com.pointstore.R;
 import br.com.pointstore.model.MeusPontos;
 import br.com.pointstore.model.Usuario;
@@ -40,13 +43,14 @@ public class Perfil extends AppCompatActivity implements View.OnClickListener{
 
     private EditText editTextNome;
     private EditText editTextSobrenome;
-    private EditText editTextEmail;
+    private TextView editTextEmail;
     private EditText editTextCPF;
-    private EditText editTextLogin;
+    private TextView editTextLogin;
     private EditText editTextSenha;
     private Button btnAtualizar;
     private UsuarioService mUsuarioService;
     private Usuario usuario;
+    private TextWatcher cpfMask;
     final DataAccessObject dataAccessObject = new DataAccessObject(this);
 
     @Override
@@ -75,9 +79,11 @@ public class Perfil extends AppCompatActivity implements View.OnClickListener{
 
         this.editTextNome = (EditText) findViewById(R.id.editTextNome);
         this.editTextSobrenome = (EditText) findViewById(R.id.editTextSobrenome);
-        this.editTextEmail = (EditText) findViewById(R.id.editTextAttEmail);
+        this.editTextEmail = (TextView) findViewById(R.id.editTextAttEmail);
         this.editTextCPF = (EditText) findViewById(R.id.editTextAttCPF);
-        this.editTextLogin = (EditText) findViewById(R.id.editTextAttUsuario);
+        cpfMask = Mask.insert("###.###.###-##", editTextCPF);
+        editTextCPF.addTextChangedListener(cpfMask);
+        this.editTextLogin = (TextView) findViewById(R.id.editTextAttUsuario);
         this.editTextSenha = (EditText) findViewById(R.id.editTextAttSenha);
 
         this.btnAtualizar = (Button) findViewById(R.id.buttonAtualizar);
@@ -109,6 +115,12 @@ public class Perfil extends AppCompatActivity implements View.OnClickListener{
 
     }
 
+    public boolean validaCpfExpressao(Usuario usuario){
+
+        String cpfParaVerificar = usuario.getCpf();
+        return cpfParaVerificar.matches("[0-9]{3}\\.?[0-9]{3}\\.?[0-9]{3}\\-?[0-9]{2}");
+    }
+
     @Override
     public void onClick(View v) {
 
@@ -127,7 +139,7 @@ public class Perfil extends AppCompatActivity implements View.OnClickListener{
 
                 (this.editTextCPF.getText().length() > 0)){
 
-            if(validaUsuarioExpressao(usuario)){
+            if(validaUsuarioExpressao(usuario) || (validaCpfExpressao(usuario)) ){
                 Call<Menssagem> userCall = mUsuarioService.updateUser(this.usuario);
                 userCall.enqueue(new Callback<Menssagem>() {
                     @Override
