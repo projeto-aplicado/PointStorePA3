@@ -81,9 +81,9 @@ public class CadastrarVendas extends AppCompatActivity {
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
 
-        pontos.add("Tipo de Ponto");
-        pontos.add("tam");
-        pontos.add("gol");
+        pontos.add("Programa de Fidelidade:");
+        pontos.add("Tam");
+        pontos.add("Gol");
 
         spinner = (Spinner) findViewById(R.id.spinnervenda);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, pontos);

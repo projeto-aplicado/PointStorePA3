@@ -48,6 +48,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="122dp"
+        android:hint="Digite o Novo Valor:"
         android:inputType="number"/>
 
     <TextView
@@ -67,7 +68,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="63dp"
         android:background="@drawable/screen_border"
-        android:text="Gravar"
+        android:text="Alterar"
         android:textColor="#fff"
         />
 
