@@ -322,7 +322,7 @@ public class ListarAnunciosActivity extends AppCompatActivity
         Intent home = new Intent(this, GerenciarVendas.class);
         String idToString = user.getIdUsuario().toString();
         home.putExtra("id_usuario",idToString);
-            this.finish();
+            //this.finish();
         startActivity(home);
 
         }else if (id == R.id.nav_historico_compras){

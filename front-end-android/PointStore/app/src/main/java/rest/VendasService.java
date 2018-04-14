@@ -2,6 +2,7 @@ package rest;
 
 import java.util.List;
 
+import br.com.pointstore.Adapter.AtualizadorDeVendas;
 import br.com.pointstore.Adapter.Menssagem;
 import br.com.pointstore.Adapter.Vendas2;
 import br.com.pointstore.Adapter.Vendas3;
@@ -48,5 +49,10 @@ public interface VendasService {
     /*Arley*/
     @DELETE("/pointstorePA3/index.php/venda/excluirVendaId/{venda_id}")
     Call<Menssagem> excluirVenda (@Path("venda_id") String venda_id );
+
+
+    @PUT("/pointstorePA3/index.php/venda/gerenciarVendas/")
+        //Call<Menssagem> auterarPrecoDaVenda (@Body String valor, String venda_id);
+    Call<Menssagem> auterarPrecoDaVenda (@Body AtualizadorDeVendas atualizadorDeVendas);
 
 }
