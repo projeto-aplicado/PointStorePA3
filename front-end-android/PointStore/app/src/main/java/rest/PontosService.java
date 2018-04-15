@@ -25,17 +25,17 @@ public interface PontosService {
     Call<MeusPontos> cadastrarPonto(@Body MeusPontos meusPontos);*/
 
     /*Faz uma busca de pontos com id do usuário,seleciona TODOS os pontos do usuário*/
-    @GET("/pointstorePA3/index.php/meuspontos/{id}")
+    @GET("http://pointstore.herokuapp.com/index.php/meuspontos/{id}")
     Call<List<Pontos>> meusPontos (@Path("id") String id);
 
     /*Faz uma busca de pontos com id do usuário,seleciona TODOS os pontos do usuário
     * para ser listado dentro da atividade MeusPontos,diferente do buscar pontos para cadastrar quantidade*/
-    @GET("/pointstorePA3/index.php/meuspontos/{id}")
+    @GET("http://pointstore.herokuapp.com/index.php/meuspontos/{id}")
     Call<List<PontosMeusPontos>> TodosmeusPontos (@Path("id") String id);
 
 
     /*Faz o envio do Objeto do tipo Ponto, carregando seu ID, e dados para serem alterados*/
-    @PUT("/pointstorePA3/index.php/meuspontos/atualizar")
+    @PUT("http://pointstore.herokuapp.com/index.php/meuspontos/atualizar")
     Call<Menssagem> atualizarMeusPontos (@Body Pontos pontos);
 
 

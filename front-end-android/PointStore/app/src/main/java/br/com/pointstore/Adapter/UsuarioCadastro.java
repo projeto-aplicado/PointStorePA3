@@ -11,6 +11,7 @@ public class UsuarioCadastro {
     private String email;
     private String login;
     private String senha;
+    private String cpf;
 
     public String getNome() {
         return nome;

@@ -123,12 +123,21 @@ public class FinalizarCompra extends Activity {
         vendasSelecionado.setId_usuario_vendedor(emailText.toString());
         vendasSelecionado.setValor(valor_venda.toString());
         vendasSelecionado.setTitulo(tituloTextPonto.toString());
-
+        /*
         if (tipoImagem.equals("tam")|| tipoImagem.equals("TAM")){
             appImagem.setImageResource(R.drawable.multiplus_tam_logo);
         }
         else {
             appImagem.setImageResource(R.drawable.smiles_gol_logo);
+        }*/
+
+        if (tipoImagem.equals("Tam")){
+            appImagem.setImageResource(R.drawable.multiplus_tam_logo);
+            tituloTextPonto.setText("Tam");
+        }
+        else {
+            appImagem.setImageResource(R.drawable.smiles_gol_logo);
+            tituloTextPonto.setText("Gol");
         }
 
 
