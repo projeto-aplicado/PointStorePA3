@@ -81,7 +81,7 @@ public class CadastrarVendas extends AppCompatActivity {
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
 
-        pontos.add("Programa de Fidelidade:");
+        pontos.add("Tipo de Ponto:");
         pontos.add("Tam");
         pontos.add("Gol");
 

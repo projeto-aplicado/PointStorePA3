@@ -32,18 +32,30 @@
 
         <TextView
             android:id="@+id/preco_da_compra_realizada"
-            android:layout_width="110dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Preço"
+            android:layout_marginLeft="35dp"
+            android:textAlignment="center"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/preco_zero"
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=",00"
+            android:layout_toRightOf="@+id/preco_da_compra_realizada"
             android:textSize="18dp"
-            android:textAlignment="center"/>
+            android:gravity="start" />
 
         <TextView
             android:id="@+id/nome_do_vendedor"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginLeft="30dp"
             android:text="Vendedor"
             android:textSize="18dp"
             android:textAlignment="center"/>

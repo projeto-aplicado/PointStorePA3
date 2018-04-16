@@ -22,7 +22,7 @@
 
             android:layout_weight="33"
             android:gravity="center"
-            android:text="Programa de Fidelidade"
+            android:text="Tipo"
             android:textAlignment="center"
             android:textSize="24sp"/>
 
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="33"
             android:gravity="center"
-            android:text="Quantidade de Pontos"
+            android:text="Quantidade"
             android:textAlignment="center"
             android:textSize="24sp"/>
 
@@ -110,7 +110,7 @@
         android:layout_alignRight="@+id/listViewDePontos"
         android:layout_alignStart="@+id/listViewDePontos"
         android:layout_below="@+id/listViewDePontos"
-        android:text="Escolha o Programa de Fidelidade: "
+        android:text="Escolha o Tipo de Ponto: "
         android:textAlignment="center"
         android:textColor="#000"
         android:textSize="18dp" />
