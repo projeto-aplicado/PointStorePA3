@@ -6,90 +6,120 @@
     android:id="@+id/ListViewAtividade"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context="br.com.pointstore.CadastrarSeusPontos">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="340dp"
-        android:layout_centerHorizontal="true"
+
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/cardView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#607D8B"
-        android:weightSum="100"
-        android:id="@+id/linearLayout">
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        card_view:cardBackgroundColor="#fff"
+        card_view:cardCornerRadius="5dp"
+        card_view:cardElevation="4dp"
+        card_view:cardUseCompatPadding="true"
+        android:layout_alignLeft="@+id/buttonGravarDados"
+        android:layout_alignRight="@+id/buttonGravarDados">
+
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/linearLayout"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="#607D8B"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/textview4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="33"
+                android:text="Tipo"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textview5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="33"
+                android:text="Quantidade"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/listViewDePontos"
+            android:layout_width="340dp"
+            android:layout_height="110dp"
+            android:layout_alignLeft="@+id/linearLayout"
+            android:layout_alignStart="@+id/linearLayout"
+            android:layout_below="@+id/linearLayout"
+            android:layout_marginTop="70dp" />
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        xmlns:fab="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/cardView2"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_below="@+id/cardView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="56dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        card_view:cardBackgroundColor="#fff"
+        card_view:cardCornerRadius="5dp"
+        card_view:cardElevation="4dp">
 
 
         <TextView
-            android:id="@+id/textview4"
-            android:layout_width="171dp"
+            android:id="@+id/pontoSelecionado"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:layout_weight="33"
-            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:text="Ponto"
             android:textAlignment="center"
-            android:textSize="24sp"/>
+            android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/textview5"
-            android:layout_width="191dp"
+        <EditText
+            android:id="@+id/ed_quantidade"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="33"
-            android:gravity="center"
-            android:text="Quantidade"
-            android:textAlignment="center"
-            android:textSize="24sp"/>
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/pontoSelecionado"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginTop="58dp"
+            android:hint="Quantos Pontos você tem atualmente ?"
+            android:inputType="number" />
 
-    </LinearLayout>
 
-    <ListView
-        android:id="@+id/listViewDePontos"
-        android:layout_width="340dp"
-        android:layout_height="110dp"
-        android:layout_alignLeft="@+id/linearLayout"
-        android:layout_alignStart="@+id/linearLayout"
-        android:layout_below="@+id/linearLayout" />
+    </android.support.v7.widget.CardView>
 
     <Button
         android:id="@+id/buttonGravarDados"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ed_quantidade"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="73dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:background="@drawable/screen_border"
-        android:textColor="#fff"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="47dp"
-        android:text="Gravar" />
-
-    <TextView
-        android:id="@+id/pontoSelecionado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView5"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="19dp"
-        android:text="Ponto"
-        android:textSize="24sp" />
-
-    <EditText
-        android:id="@+id/ed_quantidade"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/pontoSelecionado"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:inputType="number" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="340dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/listViewDePontos"
-        android:layout_alignStart="@+id/listViewDePontos"
-        android:layout_below="@+id/listViewDePontos"
-        android:layout_marginTop="14dp"
-        android:text="@string/instrucao_de_uso" />
+        android:text="Atualizar Pontos"
+        android:textColor="#fff" />
 
 </RelativeLayout>

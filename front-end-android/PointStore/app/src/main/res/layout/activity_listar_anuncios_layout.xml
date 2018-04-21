@@ -31,10 +31,11 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:menu="@menu/activity_listar_anuncios_layout_drawer"
-        android:background="?attr/colorPrimary"
+        android:background="#087577"
         app:headerLayout="@layout/nav_header_listar_anuncios2"
 
         />
+
 
 
 

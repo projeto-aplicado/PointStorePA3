@@ -87,19 +87,18 @@ public class ListaDeVendasAdapter extends ArrayAdapter<Vendas3> {
         ImageView imagem = (ImageView) convertView.findViewById(R.id.appImagem);
 
 
-        if (titulo.equals("tam")|| titulo.equals("TAM")){
+
+
+
+        if (titulo.equals("Tam")){
             imagem.setImageResource(R.drawable.multiplus_tam_logo);
+            tituloTextPonto.setText("Tam");
         }
         else {
             imagem.setImageResource(R.drawable.smiles_gol_logo);
-        }
-        if (titulo.equals("tam")|| titulo.equals("TAM")){
-            tituloTextPonto.setText("Tam");
-
-        }
-        else {
             tituloTextPonto.setText("Gol");
         }
+
 
 
 
@@ -112,6 +111,7 @@ public class ListaDeVendasAdapter extends ArrayAdapter<Vendas3> {
 
 
     }
+
 
 
 }

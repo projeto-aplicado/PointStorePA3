@@ -18,14 +18,24 @@
             </intent-filter>
         </activity>
         <activity android:name=".util.Login" />
-        <activity android:name=".util.AlterarSenha" />
-        <activity android:name=".util.CadastrarVendas" />
-        <activity android:name=".util.FinalizarCompra" />
+        <activity
+            android:name=".util.AlterarSenha"
+            android:label="Esqueceu sua Senha ?"/>
+        <activity
+            android:name=".util.CadastrarVendas"
+            android:label="Anunciar Vendas" />
+        <activity
+            android:name=".util.FinalizarCompra"
+            android:label="Finalizar Compra"/>
         <activity android:name=".util.ListarPontos" />
         <activity android:name=".Listar_pontos_cadastradros" />
-        <activity android:name=".CadastrarSeusPontos" />
+        <activity
+            android:name=".CadastrarSeusPontos"
+            android:label="Meus Pontos"/>
         <activity android:name=".MainActivity" />
-        <activity android:name=".util.CadastrarUsuario" />
+        <activity
+            android:name=".util.CadastrarUsuario"
+            android:label="Cadastre-Se"/>
         <activity
             android:name=".ListarAnunciosActivity"
             android:label="@string/title_activity_listar_anuncios"
@@ -34,8 +44,13 @@
             android:name=".util.Perfil"
             android:label="@string/title_activity_perfil"
             android:theme="@style/AppTheme.AppBarOverlay" />
-        <activity android:name=".GerenciarVendas" />
-        <activity android:name=".HistoricoCompras"></activity>
+        <activity
+            android:name=".GerenciarVendas"
+            android:label="Gerenciar Vendas"/>
+        <activity
+            android:name=".HistoricoCompras"
+            android:label="Histórico de Compras">
+        </activity>
     </application>
 
 </manifest>

@@ -19,10 +19,9 @@ import java.util.List;
 
 import br.com.pointstore.Adapter.AtualizadorDeVendas;
 import br.com.pointstore.Adapter.ListaDeAnunciosAdapter;
-import br.com.pointstore.Adapter.ListaDeVendasAdapter;
+import br.com.pointstore.Adapter.ListaDeComprasAdapter;
 import br.com.pointstore.Adapter.Menssagem;
 import br.com.pointstore.Adapter.Vendas3;
-import br.com.pointstore.model.Vendas;
 import rest.VendasService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -80,147 +79,171 @@ public class GerenciarVendas extends AppCompatActivity {
                 ArrayList<Vendas3> arrayList = new ArrayList<>();
                 arrayList = (ArrayList<Vendas3>) response.body();
 
-                final ListaDeAnunciosAdapter adaptadorListaResponse = new ListaDeAnunciosAdapter(GerenciarVendas.this, R.layout.adapter_view_listar_meus_anuncios2, arrayList);
 
-                listViewVendas.setAdapter(adaptadorListaResponse);
-                //listViewVendas.setAdapter(adaptadorLista);
+                if(arrayList.isEmpty()){
 
 
-                listViewVendas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    AlertDialog.Builder adb = new AlertDialog.Builder(GerenciarVendas.this);
+                    adb.setTitle("ATENÇÃO !");
+                    adb.setMessage("Você não possui anuncios de pontos!");
 
-                        vendasSelecionado = (Vendas3) adaptadorListaResponse.getItem(position);
+                    adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            //Toast.makeText(HistoricoCompras.this, "Você clicou no botão Ok", Toast.LENGTH_SHORT).show();
+                            Intent finalizarCompra = new Intent(GerenciarVendas.this, ListarAnunciosActivity.class);
+                            startActivity(finalizarCompra);
+                        }
+                    });
+                    adb.show();
 
-                        buttonGravarDados.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                if(ed_quantidade.getText().toString().isEmpty()){
-                                    Toast.makeText(getApplication(), "Favor digite o valor novo para alterarr : "+vendasSelecionado.getTitulo(),
-                                            Toast.LENGTH_LONG).show();}
-                                else {
-                                    String quantidade = ed_quantidade.getText().toString();
-                                    AtualizadorDeVendas atualizadorDeVendas = new AtualizadorDeVendas();
-                                    atualizadorDeVendas.setVenda_id(vendasSelecionado.getVenda_id());
-                                    atualizadorDeVendas.setValor(quantidade);
-                                    Call<Menssagem> alterarPreco = mVendasService.auterarPrecoDaVenda(atualizadorDeVendas);
 
-                                    alterarPreco.enqueue(new Callback<Menssagem>() {
-                                        @Override
-                                        public void onResponse(Call<Menssagem> call, Response<Menssagem> response) {
+                }else {
+
+                    final ListaDeAnunciosAdapter adaptadorListaResponse = new ListaDeAnunciosAdapter(GerenciarVendas.this, R.layout.adapter_view_listar_meus_anuncios2, arrayList);
+
+                    listViewVendas.setAdapter(adaptadorListaResponse);
+                    //listViewVendas.setAdapter(adaptadorLista);
+
+
+                    listViewVendas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            vendasSelecionado = (Vendas3) adaptadorListaResponse.getItem(position);
+
+                            buttonGravarDados.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    if(ed_quantidade.getText().toString().isEmpty()){
+                                        Toast.makeText(getApplication(), "Favor digite o valor novo para alterarr : "+vendasSelecionado.getTitulo(),
+                                                Toast.LENGTH_LONG).show();}
+                                    else {
+                                        String quantidade = ed_quantidade.getText().toString();
+                                        AtualizadorDeVendas atualizadorDeVendas = new AtualizadorDeVendas();
+                                        atualizadorDeVendas.setVenda_id(vendasSelecionado.getVenda_id());
+                                        atualizadorDeVendas.setValor(quantidade);
+                                        Call<Menssagem> alterarPreco = mVendasService.auterarPrecoDaVenda(atualizadorDeVendas);
+
+                                        alterarPreco.enqueue(new Callback<Menssagem>() {
+                                            @Override
+                                            public void onResponse(Call<Menssagem> call, Response<Menssagem> response) {
                                             /*Toast.makeText(getApplication(), "Tudo certo : "+vendasSelecionado.getTitulo(),
                                                     Toast.LENGTH_LONG).show();
-                                            
+
                                             */
 
-                                            AlertDialog.Builder adb = new AlertDialog.Builder(GerenciarVendas.this);
-                                            adb.setTitle("Sucesso !");
-                                            Menssagem menssagem = new Menssagem();
-                                            menssagem = response.body();
-                                            adb.setMessage(menssagem.getMensagem());
+                                                AlertDialog.Builder adb = new AlertDialog.Builder(GerenciarVendas.this);
+                                                adb.setTitle("Sucesso !");
+                                                Menssagem menssagem = new Menssagem();
+                                                menssagem = response.body();
+                                                adb.setMessage(menssagem.getMensagem());
 
-                                            adb.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                                adb.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        Intent home = new Intent(GerenciarVendas.this, ListarAnunciosActivity.class);
+                                                        startActivity(home);
+                                                    }});
+                                                adb.show();
+
+
+
+
+
+
+                                            }
+
+
+
+                                            @Override
+                                            public void onFailure(Call<Menssagem> call, Throwable t) {
+
+                                            }
+                                        });
+
+
+                                    }
+                                }
+                            });
+
+
+
+
+
+                        }
+                    });
+
+
+                    listViewVendas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                        @Override
+                        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                            vendasSelecionado = adaptadorListaResponse.getItem(position);
+                            AlertDialog.Builder adb = new AlertDialog.Builder(GerenciarVendas.this);
+                            adb.setTitle("ATENÇÃO !");
+                            adb.setMessage("Deseja realmente excluir este anuncio?!");
+
+                            adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface arg0, int arg1) {
+                                    String venda_id = vendasSelecionado.getVenda_id();
+                                    Call<Menssagem> excluirVenda = mVendasService.excluirVenda(venda_id);
+
+                                    excluirVenda.enqueue(new Callback<Menssagem>() {
+                                        @Override
+                                        public void onResponse(Call<Menssagem> call, Response<Menssagem> response) {
+                                            AlertDialog.Builder ok = new AlertDialog.Builder(GerenciarVendas.this);
+                                            ok.setTitle("Sucesso !");
+                                            Menssagem menssagem = response.body();
+                                            ok.setMessage(menssagem.getMensagem());
+                                            //ok.setMessage(""+response.body());
+                                            ok.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
                                                     Intent home = new Intent(GerenciarVendas.this, ListarAnunciosActivity.class);
                                                     startActivity(home);
                                                 }});
-                                            adb.show();
 
+                                            ok.show();
 
-                                            
-                                            
-                                            
-
-                                        }
-
-
-
-                                        @Override
-                                        public void onFailure(Call<Menssagem> call, Throwable t) {
-
-                                        }
-                                    });
-
-
-                                }
-                            }
-                        });
-
-
-
-
-
-                    }
-                });
-
-
-                listViewVendas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-                    @Override
-                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                        vendasSelecionado = adaptadorListaResponse.getItem(position);
-                        AlertDialog.Builder adb = new AlertDialog.Builder(GerenciarVendas.this);
-                        adb.setTitle("ATENÇÃO !");
-                        adb.setMessage("Deseja realmente excluir este anuncio?!");
-
-                        adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                String venda_id = vendasSelecionado.getVenda_id();
-                                Call<Menssagem> excluirVenda = mVendasService.excluirVenda(venda_id);
-
-                                excluirVenda.enqueue(new Callback<Menssagem>() {
-                                    @Override
-                                    public void onResponse(Call<Menssagem> call, Response<Menssagem> response) {
-                                        AlertDialog.Builder ok = new AlertDialog.Builder(GerenciarVendas.this);
-                                        ok.setTitle("Sucesso !");
-                                        Menssagem menssagem = response.body();
-                                        ok.setMessage(menssagem.getMensagem());
-                                        //ok.setMessage(""+response.body());
-                                        ok.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                Intent home = new Intent(GerenciarVendas.this, ListarAnunciosActivity.class);
-                                                startActivity(home);
-                                                }});
-
-                                        ok.show();
-                                        
 
 /*
                                         Context context = getApplicationContext();
                                         Toast toast = Toast.makeText(context,"Menssagem"+menssagem.getMensagem() , Toast.LENGTH_SHORT);
                                         toast.show();*/
-                                    }
+                                        }
 
-                                    private void finish() {
-                                    }
+                                        private void finish() {
+                                        }
 
-                                    @Override
-                                    public void onFailure(Call<Menssagem> call, Throwable t) {
-                                        AlertDialog.Builder adb = new AlertDialog.Builder(GerenciarVendas.this);
-                                        adb.setTitle("Erro !");
-                                        adb.setMessage("Não foi possível excluir o anuncio!");
+                                        @Override
+                                        public void onFailure(Call<Menssagem> call, Throwable t) {
+                                            AlertDialog.Builder adb = new AlertDialog.Builder(GerenciarVendas.this);
+                                            adb.setTitle("Erro !");
+                                            adb.setMessage("Não foi possível excluir o anuncio!");
 
-                                    }
-                                });
-
-
-
-                            }
-                        });
-                        adb.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
+                                        }
+                                    });
 
 
 
-                            }
-                        });
-                        adb.show();
+                                }
+                            });
+                            adb.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
 
-                        return false;
-                    }
-                });/*Fim do metodo de longclick*/
+
+
+                                }
+                            });
+                            adb.show();
+
+                            return false;
+                        }
+                    });/*Fim do metodo de longclick*/
+
+                }
+
+
 
             }
 
@@ -229,7 +252,7 @@ public class GerenciarVendas extends AppCompatActivity {
 
                 Context context = getApplicationContext();
 
-                        Toast toast = Toast.makeText(context,"Deu erro" , Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(context,"Deu erro" , Toast.LENGTH_SHORT);
                 toast.show();
 
             }

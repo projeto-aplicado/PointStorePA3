@@ -21,14 +21,14 @@ public interface UsuarioService {
     @POST("/pointstorePA3/index.php/usuario")   
     Call<Usuario> createUser(@Body Usuario usuario);*/
 
-    @POST("/pointstorePA3/index.php/usuario")
+    @POST("http://pointstore.herokuapp.com/index.php/usuario")
     Call<Usuario> createUser(@Body Usuario usuario);
 
     /*
     * By Arley: Criei essa chamada do serviço (createUserNoPoints)para cadastrar uma entidade Usuario do pacote adpater, levando em consideração que ela
     * carrega apenas informações simples do tipo nome,sobrenome,email,login e senha
     * */
-    @POST("/pointstorePA3/index.php/usuario")
+    @POST("http://pointstore.herokuapp.com/index.php/usuario")
     Call<Usuario> createUserNoPoints (@Body UsuarioCadastro usuarioCadastro);
 
     /* nao editar esse metodo ate testar tudo esse éo metodo padrao
@@ -36,6 +36,6 @@ public interface UsuarioService {
     Call<Usuario> updateUser(@Body Usuario usuario);*/
 
 
-    @PUT("/pointstorePA3/index.php/login/usuario")
+    @PUT("http://pointstore.herokuapp.com/index.php/login/usuario")
     Call<Menssagem> updateUser(@Body Usuario usuario);
 }

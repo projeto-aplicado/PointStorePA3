@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">PointStore</string>
-    <string name="title_activity_listar_anuncios">Listar Anúncios</string>
+    <string name="title_activity_listar_anuncios">Anúncios</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -13,6 +13,8 @@
     <string name="instrucao_de_uso">Click sobre o item da tabela,em seguida
     insira a quantidade de pontos que gostaria de cadastrar,ou atualizar, logo depois
     click em GRAVAR </string>
+
+    <string name="reais">R$ :</string>
 
     <string name="instrucao_de_uso_gerenciar_venda">Para EXCLUIR uma venda, pressione o anuncio e confirme a exclusão, para ALTERAR PREÇO, der um click simples no anúncio, em seguida logo a baixo, insira o novo valor e click em GRAVAR</string>
 </resources>

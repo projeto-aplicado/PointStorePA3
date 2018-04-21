@@ -12,12 +12,9 @@ import br.com.pointstore.model.Vendas;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
-import retrofit2.http.Field;
 import retrofit2.http.GET;
-import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
-import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 /**
@@ -25,36 +22,37 @@ import retrofit2.http.Path;
  */
 
 public interface VendasService {
-    @POST("/pointstorePA3/index.php/venda")
+    @POST("http://pointstore.herokuapp.com/index.php/venda")
     Call<Vendas> cadastrarVendas(@Body Vendas2 vendas);
 
-    @POST("/pointstorePA3/index.php/venda")
+    @POST("http://pointstore.herokuapp.com/index.php/venda")
     Call<Menssagem> msgvenda(@Body Vendas2 vendas);
 
-    @GET("/pointstorePA3/index.php/venda/{id}")
+    @GET("http://pointstore.herokuapp.com//index.php/venda/{id}")
     Call<List<Vendas>> listarVendas (@Path("id") String id);
 
-    @PUT("/pointstorePA3/index.php/compra")
+    @PUT("http://pointstore.herokuapp.com/index.php/compra")
     Call<Menssagem> finalizarcompra (@Body Compra compra);
 
     /*Arley*/
-    @GET("/pointstorePA3/index.php/venda/")
+    @GET("http://pointstore.herokuapp.com/index.php/venda/")
     Call<List<Vendas3>> listarTodasVendas ();
 
     /*Arley*/
-    @GET("/pointstorePA3/index.php/compra/{id}")
+    @GET("http://pointstore.herokuapp.com/index.php/compra/{id}")
     Call<List<Vendas4>> listarTodasComprasUsuario (@Path("id") String id);
 
     /*Arley*/
-    @GET("/pointstorePA3/index.php/venda/gerenciarVendas/{id}")
+    @GET("http://pointstore.herokuapp.com/index.php/venda/gerenciarVendas/{id}")
     Call<List<Vendas3>> listarTodasAsVendasDoUsuarioPorId (@Path("id") String i);
 
-    @PUT("/pointstorePA3/index.php/venda/gerenciarVendas/")
-    //Call<Menssagem> auterarPrecoDaVenda (@Body String valor, String venda_id);
-    Call<Menssagem> auterarPrecoDaVenda (@Body AtualizadorDeVendas atualizadorDeVendas);
-
     /*Arley*/
-    @DELETE("/pointstorePA3/index.php/venda/excluirVendaId/{venda_id}")
+    @DELETE("http://pointstore.herokuapp.com/index.php/venda/excluirVendaId/{venda_id}")
     Call<Menssagem> excluirVenda (@Path("venda_id") String venda_id );
+
+
+    @PUT("http://pointstore.herokuapp.com/index.php/venda/gerenciarVendas/")
+        //Call<Menssagem> auterarPrecoDaVenda (@Body String valor, String venda_id);
+    Call<Menssagem> auterarPrecoDaVenda (@Body AtualizadorDeVendas atualizadorDeVendas);
 
 }

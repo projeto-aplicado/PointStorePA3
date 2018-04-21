@@ -51,8 +51,7 @@
                 android:paddingLeft="16sp"
                 android:paddingRight="16dp"
                 android:scaleType="centerCrop"
-                tools:ignore="ContentDescription"
-                />
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/tituloTextPonto"
@@ -61,6 +60,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_toEndOf="@+id/appImagem"
                 android:layout_toRightOf="@+id/appImagem"
+                android:longClickable="true"
                 android:paddingLeft="16sp"
                 android:paddingRight="16dp"
                 android:text="HotMilhas"
@@ -76,6 +76,7 @@
                 android:layout_below="@+id/tituloTextPonto"
                 android:layout_toEndOf="@+id/appImagem"
                 android:layout_toRightOf="@+id/appImagem"
+                android:longClickable="true"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:text="Michele Santos"
@@ -89,7 +90,8 @@
                 android:layout_below="@+id/emailText"
                 android:layout_toEndOf="@+id/quantidade_pontos"
                 android:layout_toRightOf="@+id/quantidade_pontos"
-                android:text="Pontos por R$ :"
+                android:longClickable="true"
+                android:text="Pontos"
                 android:textColor="#737078"
                 android:textSize="14sp" />
 
@@ -103,20 +105,33 @@
                 android:layout_marginRight="5dp"
                 android:layout_toEndOf="@+id/appImagem"
                 android:layout_toRightOf="@+id/appImagem"
-
+                android:longClickable="true"
                 android:text="qtd"
                 android:textColor="#737078"
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/textView$"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/reais"
+                android:textColor="#737078"
+                android:layout_alignLeft="@id/quantidade_pontos"
+                android:textSize="14sp"
+                android:layout_below="@id/quantidade_pontos"
+                android:layout_toEndOf="@+id/appImagem"
+                android:layout_toRightOf="@+id/appImagem"/>
+
+            <TextView
                 android:id="@+id/valor_venda"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/ValorText"
-                android:layout_alignBottom="@+id/ValorText"
-                android:layout_toEndOf="@+id/ValorText"
-                android:layout_toRightOf="@+id/ValorText"
-                android:text="valor"
+                android:layout_alignBaseline="@+id/textView$"
+                android:layout_alignBottom="@+id/textView$"
+                android:layout_toEndOf="@+id/textView$"
+                android:layout_toRightOf="@+id/textView$"
+                android:longClickable="true"
+                android:text=" valor"
                 android:textColor="#737078"
                 android:textSize="14sp" />
 
@@ -127,7 +142,7 @@
                 android:textColor="#737078"
                 android:textSize="14sp"
                 android:layout_toRightOf="@+id/valor_venda"
-                android:layout_alignBottom="@+id/ValorText"/>
+                android:layout_alignBottom="@+id/textView$"/>
 
         </RelativeLayout>
 

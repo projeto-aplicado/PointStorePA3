@@ -11,18 +11,6 @@
     tools:context="br.com.pointstore.util.AlterarSenha">
 
 
-    <TextView
-        android:id="@+id/textViewTituloTela"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/editTextAlterEmailAtual"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="49dp"
-        android:text="Alterar senha"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="20sp" />
-
-
     <Button
         android:id="@+id/buttonAtualizarEmail"
         android:layout_width="wrap_content"

@@ -44,7 +44,6 @@ public class CadastrarVendas extends AppCompatActivity {
 
     private EditText editTextQtdPontos;
     private EditText editTextValorPontos;
-    private EditText editTextTipoPontos;
 
     private UsuarioService mUsuarioService;
     private Usuario usuario;
@@ -77,17 +76,14 @@ public class CadastrarVendas extends AppCompatActivity {
         //NomeSelecionadotextView = (TextView) findViewById(R.id.pontoSelecionadovenda);
         BT_ANUNCIAR_VENDAS = (Button)findViewById(R.id.buttonAnunciarVenda);
 
-
-
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://10.0.3.2")
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
 
-        pontos.add("Tipo de Ponto");
-        pontos.add("tam");
-        pontos.add("gol");
+        pontos.add("Tipo de Ponto:");
+        pontos.add("Tam");
+        pontos.add("Gol");
 
         spinner = (Spinner) findViewById(R.id.spinnervenda);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, pontos);
@@ -154,7 +150,6 @@ public class CadastrarVendas extends AppCompatActivity {
         });
 
 
-        //editTextTipoPontos = (EditText) findViewById(R.id.editTextTipoPontos);
         editTextQtdPontos = (EditText) findViewById(R.id.editTextQtdPontos);
         editTextValorPontos = (EditText) findViewById(R.id.editTextValorPontos);
 
@@ -170,51 +165,58 @@ public class CadastrarVendas extends AppCompatActivity {
         vendas2.setTipoDePontos(ponto);
         vendas2.setIdUsuario(this.usuario.getIdUsuario());
 
-        Intent cadastrarVendas = new Intent(this, ListarAnunciosActivity.class);
-        startActivity(cadastrarVendas);
+        //Intent cadastrarVendas = new Intent(this, ListarAnunciosActivity.class);
+        //startActivity(cadastrarVendas);
         //Call<Vendas3> vendasCall = mVendasService.cadastrarVendas(vendas2);
-        Call<Menssagem> menssagemCall = mVendasService.msgvenda(vendas2);
+        if ((editTextQtdPontos.getText().length() > 0) && ((editTextValorPontos.getText().length() > 0))) {
 
-        menssagemCall.enqueue(new Callback<Menssagem>() {
-            @Override
-            public void onResponse(Call<Menssagem> call, Response<Menssagem> response) {
-                Menssagem menssagem = response.body();
-                if (menssagem != null ) {
-                    Context context = getApplicationContext();
-                    /*
-                    Toast toast = Toast.makeText(context, " : "+menssagem.getMensagem(), Toast.LENGTH_SHORT);
-                    toast.show();
-                    */
-                    Intent listaranuncio = new Intent(CadastrarVendas.this, ListarAnunciosActivity.class);
-                    startActivity(listaranuncio);
+            Call<Menssagem> menssagemCall = mVendasService.msgvenda(vendas2);
+
+            menssagemCall.enqueue(new Callback<Menssagem>() {
+                @Override
+                public void onResponse(Call<Menssagem> call, Response<Menssagem> response) {
+                    Menssagem menssagem = response.body();
+                    if (menssagem != null ) {
+                        Context context = getApplicationContext();
+
+                        Toast toast = Toast.makeText(context, " : "+menssagem.getMensagem(), Toast.LENGTH_SHORT);
+                        toast.show();
+
+                        Intent cadastrarVendas = new Intent(CadastrarVendas.this, ListarAnunciosActivity.class);
+                        startActivity(cadastrarVendas);
+
                     /*
                     Context context1 = getApplicationContext();
                     Toast toast1 = Toast.makeText(context1, "Quantidade de pontos : "+ vendas2.getQuantidade(), Toast.LENGTH_SHORT);
                     toast.show();
                     */
-                    this.finish();
-                } else {
-                    /*
-                    Context context = getApplicationContext();
-                    Toast toast = Toast.makeText(context, "Venda não cadastrada" +"Quantidade de pontos : "+ vendas2.getQuantidade(), Toast.LENGTH_SHORT);
-                    toast.show();
-                    */
+                        this.finish();
+                    } else {
+
+                        Context context = getApplicationContext();
+                        Toast toast = Toast.makeText(context, "Venda não cadastrada" , Toast.LENGTH_SHORT);
+                        toast.show();
+
+                    }
 
                 }
 
+                private void finish() {
+                }
 
+                @Override
+                public void onFailure(Call<Menssagem> call, Throwable t) {
+
+                }
+            });
+
+        } else {
+            if ((editTextQtdPontos.getText().length() <= 0)) {
+                editTextQtdPontos.setError("Quantidade de Pontos Vazio!");
+            }  if ((editTextValorPontos.getText().length() <= 0)) {
+                editTextValorPontos.setError("Valor Vazio!");
             }
-
-            private void finish() {
-            }
-
-            @Override
-            public void onFailure(Call<Menssagem> call, Throwable t) {
-
-            }
-        });
-
-
+        }
     }
 
 

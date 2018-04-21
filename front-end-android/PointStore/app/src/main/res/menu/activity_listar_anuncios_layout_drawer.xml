@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <group android:checkableBehavior="single">
 
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_home_white_36dp"
-            android:title="Início" />
+            android:icon="@drawable/ic_featured_play_list_white_24dp"
+            android:title="Anúncios" />
 
         <item
             android:id="@+id/nav_meuperfil"
             android:icon="@drawable/ic_account_circle_white_36dp"
-            android:title="Meu Perfil" />
+            android:title="Perfil" />
 
         <item
             android:id="@+id/nav_cadastrarpontos"
@@ -59,3 +60,4 @@
      </item>
  -->
 </menu>
+

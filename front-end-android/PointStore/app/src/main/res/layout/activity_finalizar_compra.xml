@@ -42,9 +42,9 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/appImagem"
             android:layout_centerHorizontal="true"
-            android:text="  Pontos por R$:"
+            android:text="  Pontos"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp" />
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/quantidade_pontos"
@@ -54,19 +54,32 @@
             android:layout_toLeftOf="@+id/ValorText"
             android:text="qtd"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp" />
+            android:textSize="17sp" />
 
-        <TextView
-            android:id="@+id/valor_venda"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/ValorText"
-            android:layout_alignBottom="@+id/ValorText"
-            android:layout_toEndOf="@+id/ValorText"
-            android:layout_toRightOf="@+id/ValorText"
-            android:text="valor"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp" />
+            <TextView
+                android:id="@+id/textView$"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/reais"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_alignLeft="@id/quantidade_pontos"
+                android:textSize="17sp"
+                android:layout_below="@id/quantidade_pontos"
+                android:layout_toEndOf="@+id/appImagem"
+                android:layout_toRightOf="@+id/appImagem"/>
+
+            <TextView
+                android:id="@+id/valor_venda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textView$"
+                android:layout_alignBottom="@+id/textView$"
+                android:layout_toEndOf="@+id/textView$"
+                android:layout_toRightOf="@+id/textView$"
+                android:longClickable="true"
+                android:text=" valor"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="17sp" />
 
 
         <TextView
@@ -82,7 +95,7 @@
             android:layout_toRightOf="@+id/textView6"
             android:text="Michele Santos"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp" />
+            android:textSize="17sp" />
 
             <ImageView
                 android:id="@+id/appImagem"
@@ -90,14 +103,10 @@
                 android:layout_height="100dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="0dp"
-                android:layout_marginStart="0dp"
+                android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/quantidade_pontos"
                 android:layout_toStartOf="@+id/quantidade_pontos"
-                android:background="@drawable/pointstorelogo"
-                android:scaleType="centerCrop"
-                tools:ignore="ContentDescription" />
+                android:background="@drawable/pointstorelogo" />
 
         <TextView
             android:id="@+id/tituloTextPonto"
@@ -110,19 +119,19 @@
             android:text="HotMilhas"
             android:layout_below="@id/textView2"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/appImagem"
-            android:layout_toRightOf="@+id/appImagem"
-            android:text="Dados da Compra:"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView4"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/textView4"
+                android:text="Dados da Compra:"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView4"
@@ -134,29 +143,28 @@
             android:layout_alignStart="@+id/quantidade_pontos"
             android:text="Tipo de Ponto:"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView4"
-            android:layout_toEndOf="@+id/appImagem"
-            android:layout_toRightOf="@+id/appImagem"
-            android:text="Vendedor:"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp" />
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView4"
+                android:layout_alignStart="@+id/textView4"
+                android:layout_below="@+id/textView4"
+                android:text="Vendedor:"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="17sp" />
 
         <TextView
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/ValorText"
-            android:layout_toEndOf="@+id/valor_venda"
             android:layout_toRightOf="@+id/valor_venda"
+            android:layout_alignBottom="@+id/textView$"
             android:text=",00"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp" />
+            android:textSize="17sp" />
 
 
         </RelativeLayout>
@@ -179,10 +187,10 @@
             xmlns:tools="http://schemas.android.com/tools">
 
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="400dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="#FFFFFF">
+                android:background="#FFFFFF"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textViewCredito"
@@ -193,7 +201,7 @@
                     android:layout_toEndOf="@+id/textView8"
                     android:layout_toRightOf="@+id/textView8"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="20sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/textView10"
@@ -205,30 +213,33 @@
                     android:layout_toRightOf="@+id/textViewCredito"
                     android:text=",00"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="20sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/textView8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
+                    android:layout_alignLeft="@+id/textView9"
+                    android:layout_alignStart="@+id/textView9"
                     android:layout_below="@+id/textView9"
-                    android:layout_marginLeft="101dp"
-                    android:layout_marginStart="101dp"
-                    android:text="  Credito: "
+                    android:text="   Credito: "
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="20sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/textView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/textView8"
-                    android:layout_alignStart="@+id/textView8"
+
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
                     android:layout_below="@+id/textViewDados"
-                    android:text="  Nome: "
+                    android:layout_marginLeft="124dp"
+                    android:layout_marginStart="124dp"
+                    android:text="   Nome: "
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="20sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/textView11"
@@ -238,35 +249,35 @@
                     android:layout_centerHorizontal="true"
                     android:layout_toRightOf="@id/textView9"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="20sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/textViewDados"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
+
+                    android:layout_alignLeft="@+id/textView9"
                     android:layout_alignParentTop="true"
-                    android:layout_marginEnd="22dp"
-                    android:layout_marginRight="22dp"
-                    android:layout_toEndOf="@+id/contato"
-                    android:layout_toRightOf="@+id/contato"
-                    android:text="  Dados do Comprador:"
+                    android:layout_alignStart="@+id/textView9"
+                    android:text="   Dados do Comprador:"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="22sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/contato"
                     android:layout_width="72dp"
                     android:layout_height="100dp"
-
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_toLeftOf="@+id/textView9"
-                    android:layout_toStartOf="@+id/textView9"
-                    android:background="@drawable/if_contact_20284" />
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_toLeftOf="@+id/textViewDados"
+                    android:layout_toStartOf="@+id/textViewDados"
+                    android:background="@drawable/icontravel"
+                    android:scaleType="centerCrop"
+                    tools:ignore="ContentDescription" />
 
             </RelativeLayout>
 

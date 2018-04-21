@@ -22,7 +22,7 @@
 
             android:layout_weight="33"
             android:gravity="center"
-            android:text="Ponto"
+            android:text="Tipo"
             android:textAlignment="center"
             android:textSize="24sp"/>
 
@@ -46,18 +46,6 @@
         android:layout_alignStart="@+id/linearLayout"
         android:layout_below="@+id/linearLayout" />
 
-    <TextView
-        android:id="@+id/textViewTitulo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="145dp"
-        android:text="ANUNCIE SEUS PONTOS"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="20sp" />
-
     <Spinner
         android:id="@+id/spinnervenda"
         android:layout_width="match_parent"
@@ -65,14 +53,14 @@
         android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_below="@+id/textViewTitulo" />
+        android:layout_below="@+id/listViewDePontos" />
 
     <EditText
         android:id="@+id/editTextQtdPontos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/spinnervenda"
-        android:hint="Quantidade: "
+        android:hint="Quantidade de Pontos para a Venda: "
         android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
@@ -113,7 +101,19 @@
         android:textColor="#fff"
         android:textColorHint="@color/colorPrimary" />
 
-
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/listViewDePontos"
+        android:layout_alignLeft="@+id/listViewDePontos"
+        android:layout_alignRight="@+id/listViewDePontos"
+        android:layout_alignStart="@+id/listViewDePontos"
+        android:layout_below="@+id/listViewDePontos"
+        android:text="Escolha o Tipo de Ponto: "
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="18dp" />
 
 
 </RelativeLayout>

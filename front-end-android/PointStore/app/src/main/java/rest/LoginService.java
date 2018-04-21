@@ -21,7 +21,7 @@ import retrofit2.http.Path;
 public interface LoginService {
 
 
-
+/*
     @POST("pointstorePA3/index.php/login")
     Call<Usuario> loginUser(@Body UsuarioLogin usuarioLogin);
 
@@ -31,4 +31,13 @@ public interface LoginService {
     @PUT("pointstorePA3/index.php/usuario/senha")
     Call<Menssagem> atualizaSenha(@Body UsuarioAlterarSenha usuarioAlterarSenha);
 
+
+    /*Segue as novas urls para consumo do herokuapp*/
+
+
+    @POST("http://pointstore.herokuapp.com/index.php/login")
+    Call<Usuario> loginUser(@Body UsuarioLogin usuarioLogin);
+
+    @PUT("http://pointstore.herokuapp.com/index.php/usuario/senha")
+    Call<Menssagem> atualizaSenha(@Body UsuarioAlterarSenha usuarioAlterarSenha);
 }

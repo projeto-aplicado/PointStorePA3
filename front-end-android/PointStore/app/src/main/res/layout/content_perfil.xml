@@ -15,19 +15,6 @@
     tools:showIn="@layout/layout_activity_perfil">
 
 
-    <TextView
-        android:text="MEU PERFIL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewTituloLogin"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:textColor="#000"
-        android:textSize="20sp"
-        />
-
-
     <Button
         android:id="@+id/buttonAtualizar"
         android:layout_width="match_parent"
@@ -36,7 +23,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="14dp"
         android:background="@drawable/screen_border"
-        android:text="Atualizar"
+        android:text="Alterar"
         android:textColor="#fff"
         android:textColorHint="#000" />
 
@@ -71,38 +58,62 @@
         android:textColor="#000"
         android:inputType="textPersonName" />
 
+    <TextView
+        android:id="@+id/viewemail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editTextAttUsuario"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="Email: "
+        android:textColor="#000"
+        android:textSize="19dp" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextAttEmail"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/editTextSobrenome"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/viewemail"
+        android:layout_toRightOf="@+id/viewemail"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:layout_marginTop="19dp"
-        android:hint="Email"
+        android:inputType="textWebEmailAddress"
+        android:text="Email"
         android:textColor="#000"
         android:textColorHint="#000"
-        android:inputType="textWebEmailAddress" />
+        android:textSize="19dp" />
 
-    <EditText
-        android:id="@+id/editTextAttUsuario"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/viewusuario"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:layout_alignParentEnd="true"
+        android:layout_alignBaseline="@+id/editTextAttUsuario"
+        android:layout_alignBottom="@+id/editTextAttUsuario"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
+        android:text="Usuário: "
+        android:textColor="#000"
+        android:textSize="19dp" />
+
+    <TextView
+        android:id="@+id/editTextAttUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextAttEmail"
+        android:layout_alignStart="@+id/editTextAttEmail"
         android:layout_below="@+id/editTextAttEmail"
-        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="14dp"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:hint="Usuario"
+        android:inputType="textPersonName"
         android:textColor="#000"
         android:textColorHint="#000"
-        android:inputType="textPersonName" />
+        android:textSize="19dp" />
 
     <EditText
         android:id="@+id/editTextAttSenha"
