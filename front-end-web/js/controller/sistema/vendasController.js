@@ -6,10 +6,18 @@ app.controller('vendasController', function ($scope, $http, $route, $routeParams
         $scope.usuario = usuario;
         $scope.venda = []
         $scope.listarVendasPublicadas = [];
+        $scope.listarVendasCompradas = [];
 
         $http.get('http://localhost/pointstorePA3/index.php/venda/gerenciarVendas/'+$scope.usuario.id, {})
         .success(function(retorno){
             $scope.listarVendasPublicadas = retorno;
+        }).error(function(){
+            //alert("Erro ao cerregar");
+        });
+
+        $http.get('http://localhost/pointstorePA3/index.php/venda/historicoVendas/'+$scope.usuario.id, {})
+        .success(function(retorno){
+            $scope.listarVendasCompradas = retorno;
         }).error(function(){
             //alert("Erro ao cerregar");
         });

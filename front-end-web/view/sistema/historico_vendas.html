@@ -1,0 +1,29 @@
+<div class="col-xs-12">
+	<div class="row">
+		<h1 class="titulo">Minhas vendas</h1>
+	</div>
+
+ 	<div class="row">
+ 		<div class="col-md-12 well gerenciarVenda">
+			<div ng-controller="vendasController">
+				<table class="table table-hover table-condensed">
+					<tr>
+						<th>#</th>
+						<th>Tipo de ponto</th>
+						<th>Comprador</th>
+						<th>Quantidade</th>
+						<th>Valor</th>
+					</tr>
+					<tr ng-repeat="x in listarVendasCompradas">
+						<td>{{ $index + 1 }}</td>
+						<td>{{ x.titulo }}</td>
+						<td>{{ x.nome }}</td>
+						<td>{{ x.qtd_pontos }}</td>
+						<td>R${{ x.valor }},00</td>
+					</tr>
+				</table>
+
+			</div>
+ 		</div>
+ 	</div>
+</div>

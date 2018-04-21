@@ -17,6 +17,10 @@ app.config(['$routeProvider', function($routeProvider) {
         templateUrl: 'view/sistema/cadastrar_vendas.html',
         controller: 'vendasController'
     });
+    $routeProvider.when('/historico_vendas', {
+        templateUrl: 'view/sistema/historico_vendas.html',
+        controller: 'vendasController'
+    });
     $routeProvider.when('/listar_vendas', {
         templateUrl: 'view/sistema/listar_vendas.html',
         controller: 'vendasController'

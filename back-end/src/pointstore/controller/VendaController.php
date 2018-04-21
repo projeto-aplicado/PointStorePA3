@@ -93,6 +93,15 @@ class VendaController extends AbstractController
         }
     }
 
+    public function listarVendaComprada($id){
+        if ($id == null) {
+            return "nenhum registro de venda cadastrado encontrado";
+        }else{
+            $qb = $this->getDao()->entityManager->getConnection();
+            return $qb->query('select *,v.id as venda_id from venda v inner join usuario u on u.id = v.id_usuario_comprador where status = 2 and v.id_usuario_vendedor = ' . $id)->fetchAll();
+        }
+    }
+
     public function atualizarVendaPublicada($json){
         $minhasVendas = $this->getDao()->entityManager->find('\pointstore\entity\Venda', $json->venda_id);
         $minhasVendas->setValor($json->valor);

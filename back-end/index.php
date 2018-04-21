@@ -83,6 +83,10 @@ $app->get( '/venda/gerenciarVendas(/(:id))', function($id = null) use ($vendaCtr
     echo json_encode($vendaCtrl->listarVendaPublicado($id));
 });
 
+$app->get( '/venda/historicoVendas(/(:id))', function($id = null) use ($vendaCtrl){
+    echo json_encode($vendaCtrl->listarVendaComprada($id));
+});
+
 $app->put( '/venda/gerenciarVendas(/(:id))', function() use ($vendaCtrl){
     $app = \Slim\Slim::getInstance();
     $json = json_decode($app->request()->getBody());
