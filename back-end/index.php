@@ -24,11 +24,11 @@ $app->get ( '/', function () {
 });
 
 $app->get ( '/usuario(/)', function ($id = null) use ($usuarioCtrl) {
-	echo json_encode($usuarioCtrl->get($id));
+	echo json_encode($usuarioCtrl->listarUsuario($id));
 });
 
 $app->get( '/usuario(/(:id))', function($id = null) use ($usuarioCtrl){
-	echo json_encode($usuarioCtrl->get($id));
+	echo json_encode($usuarioCtrl->listarUsuario($id));
 });
 
 $app->post( '/usuario(/)', function() use ($usuarioCtrl){

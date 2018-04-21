@@ -11,4 +11,3 @@ function validarMeusPontos() {
 		return false;
 	}
 }
-

@@ -41,7 +41,7 @@ app.controller('comprasController', function ($scope, $http, $route, $routeParam
                     alert(retorno.mensagem);
                     window.location.href = 'home.html';
                 }).error(function () {
-                $scope.erroMessage = "Compra " + $scope.venda.nome + " não foi salva!";
+                    alert("Compra não foi realizada!");
             });
         }
 

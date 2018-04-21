@@ -24,7 +24,7 @@ header{background-color: #00888b; height: 80px; color: #ffffff; display: table;}
 
 .headerMenu{background-color: #00bdc1; height: 80px; display: table;}
 .menuBloco{padding: 10px 15px !important; display: table;}
-
+.alterarNome{text-transform: capitalize;}
 
 /* BOX */
 .boxFull{display: table;}
@@ -87,6 +87,6 @@ span.maiusculo{text-transform: capitalize;}
 
 
 /*Footer*/
-.footer{background-color: #00bdc1; height: 150px; color: #ffffff; border-top: 5px solid #ff5f3f;}
+.footer{background-color: #00bdc1; height: 180px; color: #ffffff; border-top: 5px solid #ff5f3f;}
 .contato{}
 .redesociais img{margin: 0 10px 0 0; float: left;}

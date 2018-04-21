@@ -53,7 +53,7 @@ class UsuarioController extends AbstractController {
 		$usuarioDetached = $this->getDao()->entityManager->createQuery('SELECT user FROM \pointstore\entity\Usuario user WHERE user.email = :email');
 		$usuarioDetached->setParameter('email', $json->email);
 		$queryResult = $usuarioDetached->getResult()[0];
-    	$queryResult->setSenha(sha1($json->senha . $this->criptografia));
+    	$queryResult->setSenha($json->senha);
 		$this->getDao()->update($queryResult);
     	return ["mensagem"=>"Senha atualizada com sucesso"];
 	}
@@ -72,12 +72,31 @@ class UsuarioController extends AbstractController {
 		
 	}
 
+
 	public function logarUsuario($json){
 		$usuarioDetached = new Usuario();
 		$usuarioDetached = $this->getDao()->entityManager->createQuery('SELECT user FROM \pointstore\entity\Usuario user WHERE user.login = :login and user.senha = :senha');
 		$usuarioDetached->setParameter('login', $json->login);
 		$usuarioDetached->setParameter('senha', $json->senha);
-		$queryResult = (object) $usuarioDetached->getArrayResult()[0];
+		if(!empty($usuarioDetached->getResult())){
+			$queryResult = (object) $usuarioDetached->getArrayResult()[0];
+			return $queryResult;			
+		}else{
+			$usuarioDetached = null;
+			return $usuarioDetached;
+		}
+	}
+
+	public function listarUsuario($id){
+		$usuarioDetached = new Usuario();
+		if($id == null){
+			$usuarioDetached = $this->getDao()->entityManager->createQuery('SELECT user FROM pointstore\entity\Usuario user');
+			$queryResult = $usuarioDetached->getArrayResult();
+		}else{
+			$usuarioDetached = $this->getDao()->entityManager->createQuery('SELECT user FROM \pointstore\entity\Usuario user WHERE user.id = :id');
+            $usuarioDetached->setParameter('id', $id);
+            $queryResult = $usuarioDetached->getArrayResult();
+		}
 		return $queryResult;
 	}
 	

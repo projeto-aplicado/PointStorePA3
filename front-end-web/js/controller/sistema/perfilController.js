@@ -9,7 +9,6 @@ app.controller('perfilController', function($scope, $http) {
         $('#credito').attr("disabled", true);
         $('#login').attr("disabled", true);
     });
-    
 
     $scope.atualizarPerfilUsuario = function(){
 

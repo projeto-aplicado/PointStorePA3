@@ -13,6 +13,7 @@
     <script src="lib/angular-route.js"></script>
     <script src="lib/angular-locale_pt-br.js"></script>
     <script src="js/app.js"></script>
+    <script scr="js/jquery.maskedinput-1.1.4.pack.js"></script>
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/flaunt.js"></script>
     <script src="js/scripts.js"></script>
@@ -35,7 +36,7 @@
 	        </div> <!-- fim da div da logo -->
 
 	        <div class="nomeusuario col-xs-12 col-sm-6 col-md-6">
-	            <span id="nome_usuario">Nome do usuário</span> R$<span id="creditoUsuario">seu credito</span>,00 | <a href="#" onclick="deslogar()">deslogar</a>
+	            <span id="nome_usuario" class="alterarNome">Nome do usuário</span> R$<span id="creditoUsuario">seu credito</span>,00 | <a href="#" onclick="deslogar()">deslogar</a>
 	        </div>
 	    </div>
 	</header>
@@ -107,8 +108,7 @@
 		var decisao = confirm("deseja se deslogar?");
 		if (decisao == true) {
 			window.location.href = 'index.html';
-		}
-		
+		}	
 	}
 
 </script>
