@@ -8,6 +8,7 @@ import br.com.pointstore.Adapter.UsuarioCadastro;
 import br.com.pointstore.model.Usuario;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 
@@ -38,4 +39,11 @@ public interface UsuarioService {
 
     @PUT("http://pointstore.herokuapp.com/index.php/login/usuario")
     Call<Menssagem> updateUser(@Body Usuario usuario);
+
+    /*
+    * Caputura usuario por ID
+    * */
+
+    @GET("http://pointstore.herokuapp.com/index.php/usuario/{id}")
+    Call<Usuario> selecionaUmUsuarioID (@Body String idComprador);
 }

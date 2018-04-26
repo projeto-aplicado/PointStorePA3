@@ -35,6 +35,11 @@
             android:icon="@drawable/ic_minhas_compras"
             android:title="Histórico de Compras" />
 
+        <item
+            android:id="@+id/nav_historico_venda"
+            android:icon="@drawable/ic_minhas_compras"
+            android:title="Histórico de Vendas" />
+
 
 
         <item

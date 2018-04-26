@@ -55,4 +55,8 @@ public interface VendasService {
         //Call<Menssagem> auterarPrecoDaVenda (@Body String valor, String venda_id);
     Call<Menssagem> auterarPrecoDaVenda (@Body AtualizadorDeVendas atualizadorDeVendas);
 
+    @GET("http://pointstore.herokuapp.com/index.php/venda/historicoVendas/{id}")
+    Call<List<Vendas3>> listarTodasVendasUsuario (@Path("id") String id);
+
+
 }

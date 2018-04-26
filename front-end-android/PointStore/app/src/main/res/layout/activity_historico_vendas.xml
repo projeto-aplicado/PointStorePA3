@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="100">
+    tools:context=".HistoricoCompras">
+
 
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="#607D8B"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:weightSum="100">
 
+
         <TextView
-            android:id="@+id/tipo_de_ponto_venda"
+            android:id="@+id/textView18"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -22,7 +29,7 @@
             android:textAlignment="center"/>
 
         <TextView
-            android:id="@+id/quantidade_de_pontos_da_venda_venda"
+            android:id="@+id/textView17"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -31,25 +38,21 @@
             android:textAlignment="center"/>
 
         <TextView
-            android:id="@+id/preco_da_compra_realizada_venda"
-            android:layout_width="wrap_content"
+            android:id="@+id/textView16"
+            android:layout_width="98dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Preço"
-            android:layout_marginLeft="35dp"
+            android:text="Valor"
             android:textAlignment="center"
             android:textSize="18dp" />
 
-        <TextView
-            android:id="@+id/preco_zero"
-            android:layout_width="25dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=",00"
-            android:layout_toRightOf="@+id/preco_da_compra_realizada"
-            android:textSize="18dp"
-            android:gravity="start" />
-
-
     </LinearLayout>
-</LinearLayout>
+
+    <ListView
+        android:id="@+id/listviewdecompras"
+        android:layout_width="match_parent"
+        android:layout_height="473dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout" />
+
+</RelativeLayout>

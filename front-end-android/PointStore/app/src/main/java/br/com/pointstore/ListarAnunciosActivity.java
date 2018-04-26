@@ -333,6 +333,15 @@ public class ListarAnunciosActivity extends AppCompatActivity
             startActivity(home);
         }
 
+        else if (id == R.id.nav_historico_venda){
+
+            String idToString = user.getIdUsuario().toString();
+            Intent home = new Intent(this, HistoricoVendas.class);
+            home.putExtra("id_usuario",idToString);
+            startActivity(home);
+        }
+
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

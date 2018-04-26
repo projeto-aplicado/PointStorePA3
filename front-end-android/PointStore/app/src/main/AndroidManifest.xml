@@ -51,6 +51,10 @@
             android:name=".HistoricoCompras"
             android:label="Histórico de Compras">
         </activity>
+        <activity
+            android:name=".HistoricoVendas"
+            android:label="Histórico de Vendas">
+        </activity>
     </application>
 
 </manifest>
