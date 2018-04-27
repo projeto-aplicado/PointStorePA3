@@ -33,6 +33,7 @@
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginLeft="40dp"
             android:text="Quantidade"
             android:textSize="18dp"
             android:textAlignment="center"/>
@@ -41,6 +42,7 @@
             android:id="@+id/textView16"
             android:layout_width="98dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
             android:layout_weight="1"
             android:text="Valor"
             android:textAlignment="center"
