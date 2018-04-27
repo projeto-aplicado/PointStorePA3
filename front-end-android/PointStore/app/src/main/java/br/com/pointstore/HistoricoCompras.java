@@ -58,7 +58,7 @@ public class HistoricoCompras extends AppCompatActivity {
 
                     AlertDialog.Builder adb = new AlertDialog.Builder(HistoricoCompras.this);
                     adb.setTitle("ATENÇÃO !");
-                    adb.setMessage("Seu histórico de vendas está vazio!");
+                    adb.setMessage("Seu histórico de compras está vazio!");
 
                     adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface arg0, int arg1) {
